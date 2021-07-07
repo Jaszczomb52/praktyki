@@ -24,7 +24,6 @@ namespace gra1
         public MainWindow()
         {
             InitializeComponent();
-            canv.CaptureMouse();
             ContentControl content = new ContentControl();
             content.Template = Resources["templ"] as ControlTemplate;
             Anim(content, canv.Width-70, canv.ActualWidth, "(Canvas.Left)");
@@ -32,12 +31,13 @@ namespace gra1
 
         private void Anim(ContentControl cont, double p1, double p2, string p3)
         {
+            Random rand = new Random();
             Storyboard story = new Storyboard() { AutoReverse = true, RepeatBehavior = RepeatBehavior.Forever };
             DoubleAnimation animation = new DoubleAnimation()
             {
                 From = p1,
                 To = p2,
-                Duration = new Duration(TimeSpan.FromSeconds(1))
+                Duration = new Duration(TimeSpan.FromSeconds(rand.Next(2,6)))
             };
             Storyboard.SetTarget(animation, enemy);
             Storyboard.SetTargetProperty(animation, new PropertyPath(p3));
