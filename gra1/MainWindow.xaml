@@ -7,9 +7,9 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Canvas x:Name="canv" HorizontalAlignment="Left" Height="311" Margin="42,46,0,0" VerticalAlignment="Top" Width="715">
+        <Canvas x:Name="canv" Background="LightGray" HorizontalAlignment="Left" Height="399" Margin="10,10,0,0" VerticalAlignment="Top" Width="772">
             <Rectangle x:Name="human" Fill="Aquamarine" Height="59" Canvas.Left="180" Stroke="Black" Canvas.Top="242" Width="11"/>
-            <Ellipse x:Name="enemy" Fill="Red" Height="71" Canvas.Left="442" Stroke="Black" Canvas.Top="137" Width="71"/>
+            <Ellipse x:Name="enemy" Fill="Red" Height="70" Canvas.Left="442" Stroke="Black" Canvas.Top="137" Width="70"/>
         </Canvas>
 
     </Grid>

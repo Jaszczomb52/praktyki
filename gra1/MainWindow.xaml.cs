@@ -27,7 +27,7 @@ namespace gra1
             canv.CaptureMouse();
             ContentControl content = new ContentControl();
             content.Template = Resources["templ"] as ControlTemplate;
-            Anim(content, 0, canv.ActualWidth - 100, "(Canvas.Left)");
+            Anim(content, canv.Width-70, canv.ActualWidth, "(Canvas.Left)");
         }
 
         private void Anim(ContentControl cont, double p1, double p2, string p3)
@@ -37,7 +37,7 @@ namespace gra1
             {
                 From = p1,
                 To = p2,
-                Duration = new Duration(TimeSpan.FromSeconds(10))
+                Duration = new Duration(TimeSpan.FromSeconds(1))
             };
             Storyboard.SetTarget(animation, enemy);
             Storyboard.SetTargetProperty(animation, new PropertyPath(p3));
