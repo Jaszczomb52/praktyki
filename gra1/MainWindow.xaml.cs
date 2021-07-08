@@ -40,9 +40,6 @@ namespace gra1
             targetTimer.Tick += targetTimer_Tick;
             targetTimer.Interval = TimeSpan.FromSeconds(0.1);
             canv.Children.Clear();
-            ImageBrush img = new ImageBrush();
-            img.ImageSource = new BitmapImage(new Uri("C:/Users/xopero/source/repos/Hello_world/gra1/OIP.jpg"));
-            bitcoin.Fill = img;
         }
 
 
