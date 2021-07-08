@@ -92,6 +92,7 @@ namespace gra1
             canv.Children.Add(enemy);
 
             enemy.MouseEnter += enemy_MouseEntered;
+            aliens.Content = int.Parse(aliens.Content.ToString()) + 1;
         }
 
         private void enemy_MouseEntered(object sender, MouseEventArgs e)
@@ -137,6 +138,8 @@ namespace gra1
             canv.Children.Add(portal);
             enemyTimer.Start();
             targetTimer.Start();
+            points.Content = 0;
+            aliens.Content = 0;
         }
 
         private void human_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -157,6 +160,7 @@ namespace gra1
                 Canvas.SetTop(portal, rand.Next(100, (int)canv.ActualHeight - 100));
                 Canvas.SetLeft(human, rand.Next(100, (int)canv.ActualWidth - 100));
                 Canvas.SetTop(human, rand.Next(100, (int)canv.ActualHeight - 100));
+                points.Content = int.Parse(points.Content.ToString()) + 1;
             }
         }
 

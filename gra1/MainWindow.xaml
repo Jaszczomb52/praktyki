@@ -37,6 +37,10 @@
             </Button.Effect>
         </Button>
         <ProgressBar x:Name="progressBar" Grid.Column="1" HorizontalAlignment="Left" Height="26" Margin="0,10,0,0" Grid.Row="2" VerticalAlignment="Top" Width="833"/>
+        <Label Content="Ilość kosmitów" Grid.Column="1" HorizontalAlignment="Left" Margin="731,10,0,0" VerticalAlignment="Top" Foreground="White" Width="102"/>
+        <Label Content="punkty" Grid.Column="1" HorizontalAlignment="Left" Margin="731,29,0,0" VerticalAlignment="Top" Foreground="White" Width="59"/>
+        <Label x:Name="aliens" Content="0" Grid.Column="2" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Label x:Name="points" Content="0" Grid.Column="2" HorizontalAlignment="Left" Margin="10,36,0,0" VerticalAlignment="Top" Foreground="White"/>
 
     </Grid>
 </Window>
