@@ -57,6 +57,11 @@
             </Ellipse.Fill>
         </Ellipse>
         <Label Content="Unikaj" Grid.Column="2" HorizontalAlignment="Left" Margin="19,386,0,31" Grid.Row="1" Foreground="White" FontSize="25" Width="95"/>
+        <Rectangle x:Name="startScreen" HorizontalAlignment="Left" Height="625" Stroke="Black" VerticalAlignment="Top" Width="1082" Grid.RowSpan="3" Grid.Column="2" Margin="134,10,-1092,-9.483">
+            <Rectangle.Fill>
+                <ImageBrush ImageSource="OIP.jpg"/>
+            </Rectangle.Fill>
+        </Rectangle>
 
     </Grid>
 </Window>

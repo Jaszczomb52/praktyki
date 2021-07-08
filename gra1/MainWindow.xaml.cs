@@ -40,6 +40,7 @@ namespace gra1
             targetTimer.Tick += targetTimer_Tick;
             targetTimer.Interval = TimeSpan.FromSeconds(0.1);
             canv.Children.Clear();
+            //logoFade();
         }
 
 
@@ -211,6 +212,20 @@ namespace gra1
             {
                 end();
             }
+        }
+
+        private void logoFade()
+        {
+            
+            Storyboard story = new Storyboard() { AutoReverse = false};
+            DoubleAnimation animation = new DoubleAnimation()
+            {
+                To = 0,
+                Duration = new Duration(TimeSpan.FromSeconds(5)),
+                FillBehavior = FillBehavior.Stop
+            };
+            animation.Completed += (s, a) => startScreen.Visibility = Visibility.Hidden;
+            startScreen.BeginAnimation(UIElement.OpacityProperty, animation);
         }
     }
 }
