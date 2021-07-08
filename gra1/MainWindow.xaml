@@ -17,8 +17,8 @@
             <ColumnDefinition Width="603*"/>
             <ColumnDefinition Width="90*"/>
         </Grid.ColumnDefinitions>
-        <Canvas x:Name="canv" Background="LightGray" HorizontalAlignment="Left" Height="482" VerticalAlignment="Top" Width="833" Grid.Column="1" Grid.Row="1" MouseMove="canv_MouseMove" MouseLeave="canv_MouseLeave">
-            <Rectangle x:Name="portal" Fill="Red" Height="60" Canvas.Left="731" Stroke="Black" Canvas.Top="47" Width="60" RenderTransformOrigin="0.5,0.5" MouseEnter="portal_MouseEnter">
+        <Canvas x:Name="canv" Background="LightGray" HorizontalAlignment="Left" Height="482" VerticalAlignment="Top" Width="833" Grid.Column="1" Grid.Row="1" MouseMove="Canv_MouseMove" MouseLeave="Canv_MouseLeave">
+            <Rectangle x:Name="portal" Fill="Red" Height="60" Canvas.Left="731" Stroke="Black" Canvas.Top="47" Width="60" RenderTransformOrigin="0.5,0.5" MouseEnter="Portal_MouseEnter">
                 <Rectangle.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -28,7 +28,7 @@
                     </TransformGroup>
                 </Rectangle.RenderTransform>
             </Rectangle>
-            <Rectangle x:Name="human" Height="64" Canvas.Left="10" Stroke="Black" Canvas.Top="10" Width="12" MouseLeftButtonDown="human_MouseLeftButtonDown">
+            <Rectangle x:Name="human" Height="64" Canvas.Left="10" Stroke="Black" Canvas.Top="10" Width="12" MouseLeftButtonDown="Human_MouseLeftButtonDown">
                 <Rectangle.Fill>
                     <RadialGradientBrush>
                         <GradientStop Color="Black" Offset="0"/>
@@ -57,11 +57,6 @@
             </Ellipse.Fill>
         </Ellipse>
         <Label Content="Unikaj" Grid.Column="2" HorizontalAlignment="Left" Margin="19,386,0,31" Grid.Row="1" Foreground="White" FontSize="25" Width="95"/>
-        <Rectangle x:Name="startScreen" HorizontalAlignment="Left" Height="625" Stroke="Black" VerticalAlignment="Top" Width="1082" Grid.RowSpan="3" Grid.Column="2" Margin="134,10,-1092,-9.483">
-            <Rectangle.Fill>
-                <ImageBrush ImageSource="OIP.jpg"/>
-            </Rectangle.Fill>
-        </Rectangle>
 
     </Grid>
 </Window>

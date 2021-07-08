@@ -27,17 +27,19 @@ namespace gra1
         {
             InitializeComponent();
             // gradient brush tla
-            LinearGradientBrush brush = new LinearGradientBrush();
-            brush.StartPoint = new Point(0, 0);
-            brush.EndPoint = new Point(1, 1);
+            LinearGradientBrush brush = new LinearGradientBrush
+            {
+                StartPoint = new Point(0, 0),
+                EndPoint = new Point(1, 1)
+            };
             brush.GradientStops.Add(new GradientStop(Colors.Blue, 0.0));
             brush.GradientStops.Add(new GradientStop(Colors.Red, 1.0));
             canv.Background = brush;
             // interval przeciwnika
-            enemyTimer.Tick += enemyTimer_Tick;
+            enemyTimer.Tick += EnemyTimer_Tick;
             enemyTimer.Interval = TimeSpan.FromSeconds(2);
             // interval targetu
-            targetTimer.Tick += targetTimer_Tick;
+            targetTimer.Tick += TargetTimer_Tick;
             targetTimer.Interval = TimeSpan.FromSeconds(0.1);
             canv.Children.Clear();
             //logoFade();
@@ -45,21 +47,21 @@ namespace gra1
 
 
         //reakcja przeciwnika co tick
-        private void enemyTimer_Tick(object sender, EventArgs e)
+        private void EnemyTimer_Tick(object sender, EventArgs e)
         {
             AddEnemy();
         }
 
         //reakcja targetu(portalu) co tick
-        private void targetTimer_Tick(object sender, EventArgs e)
+        private void TargetTimer_Tick(object sender, EventArgs e)
         {
             progressBar.Value += 1;
             if (progressBar.Value == progressBar.Maximum)
-                end();
+                End();
         }
 
         //reakcja na koniec gry
-        private void end()
+        private void End()
         {
             //dodanie elementow UI na koniec gry 
             canv.Children.Add(endText);
@@ -83,9 +85,9 @@ namespace gra1
         }
 
         //zmienne globalne
-        Random rand = new Random();
-        DispatcherTimer enemyTimer = new DispatcherTimer();
-        DispatcherTimer targetTimer = new DispatcherTimer();
+        readonly Random rand = new Random();
+        readonly DispatcherTimer enemyTimer = new DispatcherTimer();
+        readonly DispatcherTimer targetTimer = new DispatcherTimer();
         bool humanCaptured = false;
 
         //dodanie przeciwnika do canvasa
@@ -93,11 +95,15 @@ namespace gra1
         {
             //stworzenie przeciwnika jako elipsy bitcoin
             ContentControl enemy = new ContentControl();
-            Ellipse el = new Ellipse();
-            el.Width = 100;
-            el.Height = 100;
-            ImageBrush img = new ImageBrush();
-            img.ImageSource = new BitmapImage(new Uri("C:/Users/xopero/source/repos/Hello_world/gra1/OIP.jpg"));
+            Ellipse el = new Ellipse
+            {
+                Width = 100,
+                Height = 100
+            };
+            ImageBrush img = new ImageBrush
+            {
+                ImageSource = new BitmapImage(new Uri("C:/Users/xopero/source/repos/Hello_world/gra1/OIP.jpg"))
+            };
             el.Fill = img;
             //dodanie elipsy jako przeciwnika i animacja
             enemy.Content = el;
@@ -106,15 +112,15 @@ namespace gra1
                 rand.Next((int)canv.ActualHeight-100), "(Canvas.Top)");
             canv.Children.Add(enemy);
             // sprawdzanie czy mysz najechala na wroga i zliczanie wrogow
-            enemy.MouseEnter += enemy_MouseEntered;
+            enemy.MouseEnter += Enemy_MouseEntered;
             aliens.Content = int.Parse(aliens.Content.ToString()) + 1;
         }
         // metoda sprawdzajaca czy ludzik najechal na wroga
-        private void enemy_MouseEntered(object sender, MouseEventArgs e)
+        private void Enemy_MouseEntered(object sender, MouseEventArgs e)
         {
             if (humanCaptured)
             {
-                end();
+                End();
             }
         }
 
@@ -138,10 +144,10 @@ namespace gra1
         //klikniecie przycisku start
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            start();
+            Start();
         }
         // start gry
-        private void start()
+        private void Start()
         {
             // pokazanie rzeczy w canvasie i UI oraz rozpoczecie gry
             human.IsHitTestVisible = true;
@@ -161,7 +167,7 @@ namespace gra1
             Canvas.SetTop(human, rand.Next(100, (int)canv.ActualHeight - 100));
         }
 
-        private void human_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void Human_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {   //wykrywanie przejecia kontroli nad ludzikiem
             if (enemyTimer.IsEnabled)
             {
@@ -170,7 +176,7 @@ namespace gra1
             }
         }
 
-        private void portal_MouseEnter(object sender, MouseEventArgs e)
+        private void Portal_MouseEnter(object sender, MouseEventArgs e)
         {   // rozpoczecie rundy
             if(targetTimer.IsEnabled&&humanCaptured)
             {
@@ -183,7 +189,7 @@ namespace gra1
             }
         }
 
-        private void canv_MouseMove(object sender, MouseEventArgs e)
+        private void Canv_MouseMove(object sender, MouseEventArgs e)
         {   // ruch ludzika za myszka
             if (humanCaptured)
             {
@@ -206,18 +212,18 @@ namespace gra1
             }        
         }
 
-        private void canv_MouseLeave(object sender, MouseEventArgs e)
+        private void Canv_MouseLeave(object sender, MouseEventArgs e)
         {   //koniec gry jesli kursor z ludzikiem wyjedzie poza canvas
             if (humanCaptured)
             {
-                end();
+                End();
             }
         }
 
-        private void logoFade()
+        private void LogoFade()
         {
             
-            Storyboard story = new Storyboard() { AutoReverse = false};
+           /*Storyboard story = new Storyboard() { AutoReverse = false};
             DoubleAnimation animation = new DoubleAnimation()
             {
                 To = 0,
@@ -225,7 +231,7 @@ namespace gra1
                 FillBehavior = FillBehavior.Stop
             };
             animation.Completed += (s, a) => startScreen.Visibility = Visibility.Hidden;
-            startScreen.BeginAnimation(UIElement.OpacityProperty, animation);
+            startScreen.BeginAnimation(UIElement.OpacityProperty, animation);*/
         }
     }
 }

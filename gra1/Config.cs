@@ -9,7 +9,7 @@ namespace gra1
 {
     class Config
     {
-        static Configuration conf = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+        static readonly Configuration conf = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
         
         private static void Refresh()
         {
