@@ -5,13 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:gra1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="655.87" Width="1089.676">
     <Grid>
-        <Canvas x:Name="canv" Background="LightGray" HorizontalAlignment="Left" Height="368" Margin="10,41,0,0" VerticalAlignment="Top" Width="772">
-            <Rectangle x:Name="human" Fill="Aquamarine" Height="59" Canvas.Left="180" Stroke="Black" Canvas.Top="242" Width="11"/>
-            <Ellipse x:Name="enemy" Fill="Red" Height="70" Canvas.Left="442" Stroke="Black" Canvas.Top="137" Width="70"/>
-        </Canvas>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="46*"/>
+            <RowDefinition Height="310*"/>
+            <RowDefinition Height="46*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="90*"/>
+            <ColumnDefinition Width="603*"/>
+            <ColumnDefinition Width="90*"/>
+        </Grid.ColumnDefinitions>
+        <Canvas x:Name="canv" Background="LightGray" HorizontalAlignment="Left" Height="482" VerticalAlignment="Top" Width="833" Grid.Column="1" Grid.Row="1"/>
+        <Button Content="Start" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="105" Click="Button_Click" Height="52"/>
 
     </Grid>
 </Window>
