@@ -40,7 +40,11 @@ namespace gra1
             targetTimer.Tick += targetTimer_Tick;
             targetTimer.Interval = TimeSpan.FromSeconds(0.1);
             canv.Children.Clear();
+            ImageBrush img = new ImageBrush();
+            img.ImageSource = new BitmapImage(new Uri("C:/Users/xopero/source/repos/Hello_world/gra1/OIP.jpg"));
+            bitcoin.Fill = img;
         }
+
 
         //reakcja przeciwnika co tick
         private void enemyTimer_Tick(object sender, EventArgs e)
@@ -153,6 +157,10 @@ namespace gra1
             targetTimer.Start();
             points.Content = 0;
             aliens.Content = 0;
+            Canvas.SetLeft(portal, rand.Next(100, (int)canv.ActualWidth - 100));
+            Canvas.SetTop(portal, rand.Next(100, (int)canv.ActualHeight - 100));
+            Canvas.SetLeft(human, rand.Next(100, (int)canv.ActualWidth - 100));
+            Canvas.SetTop(human, rand.Next(100, (int)canv.ActualHeight - 100));
         }
 
         private void human_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)

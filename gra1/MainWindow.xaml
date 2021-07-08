@@ -44,6 +44,8 @@
         <Label Content="punkty" Grid.Column="1" HorizontalAlignment="Left" Margin="731,29,0,0" VerticalAlignment="Top" Foreground="White" Width="59"/>
         <Label x:Name="aliens" Content="0" Grid.Column="2" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Foreground="White"/>
         <Label x:Name="points" Content="0" Grid.Column="2" HorizontalAlignment="Left" Margin="10,36,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Ellipse x:Name="bitcoin" Grid.Column="2" Fill="White" HorizontalAlignment="Left" Height="100" Margin="14,432,0,0" Grid.Row="1" Stroke="Black" VerticalAlignment="Top" Width="100" Grid.RowSpan="2"/>
+        <Label Content="Unikaj" Grid.Column="2" HorizontalAlignment="Left" Margin="19,386,0,31" Grid.Row="1" Foreground="White" FontSize="25" Width="95"/>
 
     </Grid>
 </Window>
