@@ -1,0 +1,38 @@
+﻿<Window x:Class="gra1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:gra1"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="655.87" Width="1089.676">
+    <Grid x:Name="grid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="46*"/>
+            <RowDefinition Height="310*"/>
+            <RowDefinition Height="46*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="90*"/>
+            <ColumnDefinition Width="603*"/>
+            <ColumnDefinition Width="90*"/>
+        </Grid.ColumnDefinitions>
+        <Canvas x:Name="canv" Background="LightGray" HorizontalAlignment="Left" Height="482" VerticalAlignment="Top" Width="833" Grid.Column="1" Grid.Row="1" MouseMove="canv_MouseMove" MouseLeave="canv_MouseLeave">
+            <Rectangle x:Name="portal" Fill="Red" Height="60" Canvas.Left="731" Stroke="Black" Canvas.Top="47" Width="60" RenderTransformOrigin="0.5,0.5" MouseEnter="portal_MouseEnter">
+                <Rectangle.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="-45"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Rectangle.RenderTransform>
+            </Rectangle>
+            <Rectangle x:Name="human" Fill="White" Height="64" Canvas.Left="10" Stroke="Black" Canvas.Top="10" Width="12" MouseLeftButtonDown="human_MouseLeftButtonDown"/>
+            <Label x:Name="endText" Content="KONIEC GRY" Canvas.Left="266" Canvas.Top="175" Height="148" Width="366" FontSize="50"/>
+        </Canvas>
+        <Button x:Name="startButt" Content="Start" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="105" Click="Button_Click" Height="52"/>
+        <ProgressBar x:Name="progressBar" Grid.Column="1" HorizontalAlignment="Left" Height="26" Margin="0,10,0,0" Grid.Row="2" VerticalAlignment="Top" Width="833"/>
+
+    </Grid>
+</Window>
