@@ -42,13 +42,14 @@ namespace gra1
             canv.Children.Clear();
         }
 
+
         //reakcja przeciwnika co tick
         private void enemyTimer_Tick(object sender, EventArgs e)
         {
             AddEnemy();
         }
 
-        //reakcja targetu co tick
+        //reakcja targetu(portalu) co tick
         private void targetTimer_Tick(object sender, EventArgs e)
         {
             progressBar.Value += 1;
@@ -59,21 +60,23 @@ namespace gra1
         //reakcja na koniec gry
         private void end()
         {
+            //dodanie elementow UI na koniec gry 
             canv.Children.Add(endText);
             canv.Children.Add(score);
             canv.Children.Add(coins);
             canv.Children.Add(best);
-            
+            //zatrzymanie timerow
             enemyTimer.Stop();
             targetTimer.Stop();
             humanCaptured = false;
             startButt.Visibility = Visibility.Visible;
-            score.Content = points.Content.ToString();
+            // sprawdzenie czy wynik jest rekordem, jesli tak zaktualizowanie
             if (Config.ChceckScore(int.Parse(points.Content.ToString())))
             {
                 Config.UpdateScore(int.Parse(points.Content.ToString()));
                 Config.UpdateCoins(int.Parse(aliens.Content.ToString()));
             }
+            //wyswietlenie rekordu
             score.Content = Config.GetScore().ToString() + " punktów";
             coins.Content = Config.GetCoins().ToString() + " kosmitów";
         }
@@ -87,26 +90,25 @@ namespace gra1
         //dodanie przeciwnika do canvasa
         private void AddEnemy()
         {
+            //stworzenie przeciwnika jako elipsy bitcoin
             ContentControl enemy = new ContentControl();
             Ellipse el = new Ellipse();
             el.Width = 100;
             el.Height = 100;
-            //Canvas.SetLeft(el, 500);
-            
             ImageBrush img = new ImageBrush();
             img.ImageSource = new BitmapImage(new Uri("C:/Users/xopero/source/repos/Hello_world/gra1/OIP.jpg"));
-            
             el.Fill = img;
+            //dodanie elipsy jako przeciwnika i animacja
             enemy.Content = el;
             AnimateEnemy(enemy, canv.ActualWidth - 100, 0, "(Canvas.Left)");
             AnimateEnemy(enemy, rand.Next((int)canv.ActualHeight-100),
                 rand.Next((int)canv.ActualHeight-100), "(Canvas.Top)");
             canv.Children.Add(enemy);
-
+            // sprawdzanie czy mysz najechala na wroga i zliczanie wrogow
             enemy.MouseEnter += enemy_MouseEntered;
             aliens.Content = int.Parse(aliens.Content.ToString()) + 1;
         }
-
+        // metoda sprawdzajaca czy ludzik najechal na wroga
         private void enemy_MouseEntered(object sender, MouseEventArgs e)
         {
             if (humanCaptured)
@@ -135,12 +137,12 @@ namespace gra1
         //klikniecie przycisku start
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            //AddEnemy();
             start();
         }
-
+        // start gry
         private void start()
         {
+            // pokazanie rzeczy w canvasie i UI oraz rozpoczecie gry
             human.IsHitTestVisible = true;
             humanCaptured = false;
             progressBar.Value = 0;
@@ -152,10 +154,14 @@ namespace gra1
             targetTimer.Start();
             points.Content = 0;
             aliens.Content = 0;
+            Canvas.SetLeft(portal, rand.Next(100, (int)canv.ActualWidth - 100));
+            Canvas.SetTop(portal, rand.Next(100, (int)canv.ActualHeight - 100));
+            Canvas.SetLeft(human, rand.Next(100, (int)canv.ActualWidth - 100));
+            Canvas.SetTop(human, rand.Next(100, (int)canv.ActualHeight - 100));
         }
 
         private void human_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
+        {   //wykrywanie przejecia kontroli nad ludzikiem
             if (enemyTimer.IsEnabled)
             {
                 humanCaptured = true;
@@ -164,7 +170,7 @@ namespace gra1
         }
 
         private void portal_MouseEnter(object sender, MouseEventArgs e)
-        {
+        {   // rozpoczecie rundy
             if(targetTimer.IsEnabled&&humanCaptured)
             {
                 progressBar.Value = 0;
@@ -177,13 +183,14 @@ namespace gra1
         }
 
         private void canv_MouseMove(object sender, MouseEventArgs e)
-        {
+        {   // ruch ludzika za myszka
             if (humanCaptured)
             {
                 double x = e.GetPosition(null).X;
                 double y = e.GetPosition(null).Y;
                 Point position = new Point(x, y);
                 Point relativePos = grid.TransformToVisual(canv).Transform(position);
+                // jesli ruch jest za szybki puszczenie ludzika
                 if ((Math.Abs(relativePos.X - Canvas.GetLeft(human)) > human.ActualWidth * 3)
                     || (Math.Abs(relativePos.Y - Canvas.GetTop(human)) > human.ActualHeight * 3))
                 {
@@ -191,7 +198,7 @@ namespace gra1
                     human.IsHitTestVisible = true;
                 }
                 else
-                {
+                {   // jesli nie, podazanie
                     Canvas.SetLeft(human, relativePos.X - human.ActualWidth / 2);
                     Canvas.SetTop(human, relativePos.Y - human.ActualHeight / 2);
                 }
@@ -199,7 +206,7 @@ namespace gra1
         }
 
         private void canv_MouseLeave(object sender, MouseEventArgs e)
-        {
+        {   //koniec gry jesli kursor z ludzikiem wyjedzie poza canvas
             if (humanCaptured)
             {
                 end();
