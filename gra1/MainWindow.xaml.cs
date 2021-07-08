@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Media.Animation;
 using System.Windows.Threading;
+using System.Windows.Media.Effects;
 
 namespace gra1
 {
@@ -178,7 +179,7 @@ namespace gra1
                     Canvas.SetLeft(human, relativePos.X - human.ActualWidth / 2);
                     Canvas.SetTop(human, relativePos.Y - human.ActualHeight / 2);
                 }
-            }
+            }        
         }
 
         private void canv_MouseLeave(object sender, MouseEventArgs e)
