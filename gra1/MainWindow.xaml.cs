@@ -89,7 +89,16 @@ namespace gra1
             AnimateEnemy(enemy, rand.Next((int)canv.ActualHeight-100),
                 rand.Next((int)canv.ActualHeight-100), "(Canvas.Top)");
             canv.Children.Add(enemy);
-            
+
+            enemy.MouseEnter += enemy_MouseEntered;
+        }
+
+        private void enemy_MouseEntered(object sender, MouseEventArgs e)
+        {
+            if (humanCaptured)
+            {
+                end();
+            }
         }
 
         //animowanie przeciwnika
@@ -101,7 +110,7 @@ namespace gra1
             {
                 From = p1,
                 To = p2,
-                Duration = new Duration(TimeSpan.FromSeconds(rand.Next(2,3)))
+                Duration = new Duration(TimeSpan.FromSeconds(rand.Next(4,8)))
             };
             Storyboard.SetTarget(animation, cont);
             Storyboard.SetTargetProperty(animation, new PropertyPath(p3));
@@ -127,6 +136,57 @@ namespace gra1
             canv.Children.Add(portal);
             enemyTimer.Start();
             targetTimer.Start();
+        }
+
+        private void human_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (enemyTimer.IsEnabled)
+            {
+                humanCaptured = true;
+                human.IsHitTestVisible = false;
+            }
+        }
+
+        private void portal_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if(targetTimer.IsEnabled&&humanCaptured)
+            {
+                progressBar.Value = 0;
+                Canvas.SetLeft(portal, rand.Next(100, (int)canv.ActualWidth - 100));
+                Canvas.SetTop(portal, rand.Next(100, (int)canv.ActualHeight - 100));
+                Canvas.SetLeft(human, rand.Next(100, (int)canv.ActualWidth - 100));
+                Canvas.SetTop(human, rand.Next(100, (int)canv.ActualHeight - 100));
+            }
+        }
+
+        private void canv_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (humanCaptured)
+            {
+                double x = e.GetPosition(null).X;
+                double y = e.GetPosition(null).Y;
+                Point position = new Point(x, y);
+                Point relativePos = grid.TransformToVisual(canv).Transform(position);
+                if ((Math.Abs(relativePos.X - Canvas.GetLeft(human)) > human.ActualWidth * 3)
+                    || (Math.Abs(relativePos.Y - Canvas.GetTop(human)) > human.ActualHeight * 3))
+                {
+                    humanCaptured = false;
+                    human.IsHitTestVisible = true;
+                }
+                else
+                {
+                    Canvas.SetLeft(human, relativePos.X - human.ActualWidth / 2);
+                    Canvas.SetTop(human, relativePos.Y - human.ActualHeight / 2);
+                }
+            }
+        }
+
+        private void canv_MouseLeave(object sender, MouseEventArgs e)
+        {
+            if (humanCaptured)
+            {
+                end();
+            }
         }
     }
 }

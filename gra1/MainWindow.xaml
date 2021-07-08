@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:gra1"
         mc:Ignorable="d"
         Title="MainWindow" Height="655.87" Width="1089.676">
-    <Grid>
+    <Grid x:Name="grid">
         <Grid.RowDefinitions>
             <RowDefinition Height="46*"/>
             <RowDefinition Height="310*"/>
@@ -17,8 +17,8 @@
             <ColumnDefinition Width="603*"/>
             <ColumnDefinition Width="90*"/>
         </Grid.ColumnDefinitions>
-        <Canvas x:Name="canv" Background="LightGray" HorizontalAlignment="Left" Height="482" VerticalAlignment="Top" Width="833" Grid.Column="1" Grid.Row="1">
-            <Rectangle x:Name="portal" Fill="Red" Height="60" Canvas.Left="731" Stroke="Black" Canvas.Top="47" Width="60" RenderTransformOrigin="0.5,0.5">
+        <Canvas x:Name="canv" Background="LightGray" HorizontalAlignment="Left" Height="482" VerticalAlignment="Top" Width="833" Grid.Column="1" Grid.Row="1" MouseMove="canv_MouseMove" MouseLeave="canv_MouseLeave">
+            <Rectangle x:Name="portal" Fill="Red" Height="60" Canvas.Left="731" Stroke="Black" Canvas.Top="47" Width="60" RenderTransformOrigin="0.5,0.5" MouseEnter="portal_MouseEnter">
                 <Rectangle.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -28,7 +28,7 @@
                     </TransformGroup>
                 </Rectangle.RenderTransform>
             </Rectangle>
-            <Rectangle x:Name="human" Fill="White" Height="64" Canvas.Left="10" Stroke="Black" Canvas.Top="10" Width="12"/>
+            <Rectangle x:Name="human" Fill="White" Height="64" Canvas.Left="10" Stroke="Black" Canvas.Top="10" Width="12" MouseLeftButtonDown="human_MouseLeftButtonDown"/>
             <Label x:Name="endText" Content="KONIEC GRY" Canvas.Left="228" Canvas.Top="160" Height="148" Width="366" FontSize="50"/>
         </Canvas>
         <Button x:Name="startButt" Content="Start" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="105" Click="Button_Click" Height="52"/>
