@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:gra1"
         mc:Ignorable="d"
         Title="MainWindow" Height="655.87" Width="1089.676">
-    <Grid x:Name="grid">
+    <Grid x:Name="grid" Background="Black">
         <Grid.RowDefinitions>
             <RowDefinition Height="46*"/>
             <RowDefinition Height="310*"/>
@@ -28,11 +28,22 @@
                     </TransformGroup>
                 </Rectangle.RenderTransform>
             </Rectangle>
-            <Rectangle x:Name="human" Fill="White" Height="64" Canvas.Left="10" Stroke="Black" Canvas.Top="10" Width="12" MouseLeftButtonDown="human_MouseLeftButtonDown"/>
-            <Label x:Name="endText" Content="KONIEC GRY" Canvas.Left="266" Canvas.Top="175" Height="148" Width="366" FontSize="50"/>
+            <Rectangle x:Name="human" Fill="White" Height="64" Canvas.Left="10" Stroke="Black" Canvas.Top="10" Width="12" MouseLeftButtonDown="human_MouseLeftButtonDown"></Rectangle>
+            <Label x:Name="endText" Content="KONIEC GRY" Canvas.Left="208" Canvas.Top="168" Height="148" Width="455" FontSize="70" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Label x:Name="best" Content="Rekord: " Canvas.Left="208" Canvas.Top="87" FontSize="30"/>
+            <Label x:Name="coins" Content="" Canvas.Left="387" Canvas.Top="113" FontSize="30"/>
+            <Label x:Name="score" Content="" Canvas.Left="387" Canvas.Top="50" FontSize="30"/>
         </Canvas>
-        <Button x:Name="startButt" Content="Start" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="105" Click="Button_Click" Height="52"/>
-        <ProgressBar x:Name="progressBar" Grid.Column="1" HorizontalAlignment="Left" Height="26" Margin="0,10,0,0" Grid.Row="2" VerticalAlignment="Top" Width="833"/>
+        <Button x:Name="startButt" Background="Black" Content="Start" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="105" Click="Button_Click" Height="52" FontSize="25" BorderBrush="White" Foreground="White">
+            <Button.Effect>
+                <DropShadowEffect Color="White" ShadowDepth="3" BlurRadius="10"/>
+            </Button.Effect>
+        </Button>
+        <ProgressBar x:Name="progressBar" Grid.Column="1" HorizontalAlignment="Left" Height="26" Margin="0,10,0,0" Grid.Row="2" VerticalAlignment="Top" Width="833" Background="#FF3E3E3E" Foreground="#FFEEC437"/>
+        <Label Content="Ilość kosmitów" Grid.Column="1" HorizontalAlignment="Left" Margin="731,10,0,0" VerticalAlignment="Top" Foreground="White" Width="102"/>
+        <Label Content="punkty" Grid.Column="1" HorizontalAlignment="Left" Margin="731,29,0,0" VerticalAlignment="Top" Foreground="White" Width="59"/>
+        <Label x:Name="aliens" Content="0" Grid.Column="2" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Label x:Name="points" Content="0" Grid.Column="2" HorizontalAlignment="Left" Margin="10,36,0,0" VerticalAlignment="Top" Foreground="White"/>
 
     </Grid>
 </Window>

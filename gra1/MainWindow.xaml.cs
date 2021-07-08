@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Media.Animation;
 using System.Windows.Threading;
+using System.Windows.Media.Effects;
 
 namespace gra1
 {
@@ -59,10 +60,22 @@ namespace gra1
         private void end()
         {
             canv.Children.Add(endText);
+            canv.Children.Add(score);
+            canv.Children.Add(coins);
+            canv.Children.Add(best);
+            
             enemyTimer.Stop();
             targetTimer.Stop();
             humanCaptured = false;
             startButt.Visibility = Visibility.Visible;
+            score.Content = points.Content.ToString();
+            if (Config.ChceckScore(int.Parse(points.Content.ToString())))
+            {
+                Config.UpdateScore(int.Parse(points.Content.ToString()));
+                Config.UpdateCoins(int.Parse(aliens.Content.ToString()));
+            }
+            score.Content = Config.GetScore().ToString() + " punktów";
+            coins.Content = Config.GetCoins().ToString() + " kosmitów";
         }
 
         //zmienne globalne
@@ -78,10 +91,10 @@ namespace gra1
             Ellipse el = new Ellipse();
             el.Width = 100;
             el.Height = 100;
-            Canvas.SetLeft(el, 500);
+            //Canvas.SetLeft(el, 500);
             
             ImageBrush img = new ImageBrush();
-            img.ImageSource = new BitmapImage(new Uri("C:/Users/xopero/Downloads/OIP.jpg"));
+            img.ImageSource = new BitmapImage(new Uri("C:/Users/xopero/source/repos/Hello_world/gra1/OIP.jpg"));
             
             el.Fill = img;
             enemy.Content = el;
@@ -91,6 +104,7 @@ namespace gra1
             canv.Children.Add(enemy);
 
             enemy.MouseEnter += enemy_MouseEntered;
+            aliens.Content = int.Parse(aliens.Content.ToString()) + 1;
         }
 
         private void enemy_MouseEntered(object sender, MouseEventArgs e)
@@ -136,6 +150,8 @@ namespace gra1
             canv.Children.Add(portal);
             enemyTimer.Start();
             targetTimer.Start();
+            points.Content = 0;
+            aliens.Content = 0;
         }
 
         private void human_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -156,6 +172,7 @@ namespace gra1
                 Canvas.SetTop(portal, rand.Next(100, (int)canv.ActualHeight - 100));
                 Canvas.SetLeft(human, rand.Next(100, (int)canv.ActualWidth - 100));
                 Canvas.SetTop(human, rand.Next(100, (int)canv.ActualHeight - 100));
+                points.Content = int.Parse(points.Content.ToString()) + 1;
             }
         }
 
@@ -178,7 +195,7 @@ namespace gra1
                     Canvas.SetLeft(human, relativePos.X - human.ActualWidth / 2);
                     Canvas.SetTop(human, relativePos.Y - human.ActualHeight / 2);
                 }
-            }
+            }        
         }
 
         private void canv_MouseLeave(object sender, MouseEventArgs e)
