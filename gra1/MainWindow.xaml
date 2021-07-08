@@ -30,6 +30,9 @@
             </Rectangle>
             <Rectangle x:Name="human" Fill="White" Height="64" Canvas.Left="10" Stroke="Black" Canvas.Top="10" Width="12" MouseLeftButtonDown="human_MouseLeftButtonDown"></Rectangle>
             <Label x:Name="endText" Content="KONIEC GRY" Canvas.Left="208" Canvas.Top="168" Height="148" Width="455" FontSize="70" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Label x:Name="best" Content="Rekord: " Canvas.Left="208" Canvas.Top="87" FontSize="30"/>
+            <Label x:Name="coins" Content="" Canvas.Left="387" Canvas.Top="113" FontSize="30"/>
+            <Label x:Name="score" Content="" Canvas.Left="387" Canvas.Top="50" FontSize="30"/>
         </Canvas>
         <Button x:Name="startButt" Background="Black" Content="Start" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="105" Click="Button_Click" Height="52" FontSize="25" BorderBrush="White" Foreground="White">
             <Button.Effect>

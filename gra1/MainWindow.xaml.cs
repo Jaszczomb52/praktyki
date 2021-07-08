@@ -60,10 +60,22 @@ namespace gra1
         private void end()
         {
             canv.Children.Add(endText);
+            canv.Children.Add(score);
+            canv.Children.Add(coins);
+            canv.Children.Add(best);
+            
             enemyTimer.Stop();
             targetTimer.Stop();
             humanCaptured = false;
             startButt.Visibility = Visibility.Visible;
+            score.Content = points.Content.ToString();
+            if (Config.ChceckScore(int.Parse(points.Content.ToString())))
+            {
+                Config.UpdateScore(int.Parse(points.Content.ToString()));
+                Config.UpdateCoins(int.Parse(aliens.Content.ToString()));
+            }
+            score.Content = Config.GetScore().ToString() + " punktów";
+            coins.Content = Config.GetCoins().ToString() + " kosmitów";
         }
 
         //zmienne globalne
@@ -79,10 +91,10 @@ namespace gra1
             Ellipse el = new Ellipse();
             el.Width = 100;
             el.Height = 100;
-            Canvas.SetLeft(el, 500);
+            //Canvas.SetLeft(el, 500);
             
             ImageBrush img = new ImageBrush();
-            img.ImageSource = new BitmapImage(new Uri("C:/Users/xopero/Downloads/OIP.jpg"));
+            img.ImageSource = new BitmapImage(new Uri("C:/Users/xopero/source/repos/Hello_world/gra1/OIP.jpg"));
             
             el.Fill = img;
             enemy.Content = el;
