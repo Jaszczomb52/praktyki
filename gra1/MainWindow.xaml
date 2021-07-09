@@ -17,8 +17,8 @@
             <ColumnDefinition Width="603*"/>
             <ColumnDefinition Width="90*"/>
         </Grid.ColumnDefinitions>
-        <Canvas x:Name="canv" Background="LightGray" HorizontalAlignment="Left" Height="482" VerticalAlignment="Top" Width="833" Grid.Column="1" Grid.Row="1" MouseMove="canv_MouseMove" MouseLeave="canv_MouseLeave">
-            <Rectangle x:Name="portal" Fill="Red" Height="60" Canvas.Left="731" Stroke="Black" Canvas.Top="47" Width="60" RenderTransformOrigin="0.5,0.5" MouseEnter="portal_MouseEnter">
+        <Canvas x:Name="canv" Background="LightGray" HorizontalAlignment="Left" Height="482" VerticalAlignment="Top" Width="833" Grid.Column="1" Grid.Row="1" MouseMove="Canv_MouseMove" MouseLeave="Canv_MouseLeave">
+            <Rectangle x:Name="portal" Fill="Red" Height="60" Canvas.Left="731" Stroke="Black" Canvas.Top="47" Width="60" RenderTransformOrigin="0.5,0.5" MouseEnter="Portal_MouseEnter">
                 <Rectangle.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -28,7 +28,7 @@
                     </TransformGroup>
                 </Rectangle.RenderTransform>
             </Rectangle>
-            <Rectangle x:Name="human" Height="64" Canvas.Left="10" Stroke="Black" Canvas.Top="10" Width="12" MouseLeftButtonDown="human_MouseLeftButtonDown">
+            <Rectangle x:Name="human" Height="64" Canvas.Left="10" Stroke="Black" Canvas.Top="10" Width="12" MouseLeftButtonDown="Human_MouseLeftButtonDown">
                 <Rectangle.Fill>
                     <RadialGradientBrush>
                         <GradientStop Color="Black" Offset="0"/>
@@ -57,6 +57,11 @@
             </Ellipse.Fill>
         </Ellipse>
         <Label Content="Unikaj" Grid.Column="2" HorizontalAlignment="Left" Margin="19,386,0,31" Grid.Row="1" Foreground="White" FontSize="25" Width="95"/>
+        <ComboBox x:Name="mode" Grid.Column="1" HorizontalAlignment="Left" Margin="10,14,0,0" VerticalAlignment="Top" Foreground="Black" Background="Black" FontSize="25" Width="146" Height="47" BorderBrush="White">
+            <ListBoxItem Content="Easy" Foreground="Black"/>
+            <ListBoxItem Content="Hard" Foreground="Black"/>
+            <ListBoxItem Content="Insane" Foreground="Black"/>
+        </ComboBox>
 
     </Grid>
 </Window>

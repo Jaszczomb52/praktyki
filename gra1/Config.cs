@@ -9,7 +9,7 @@ namespace gra1
 {
     class Config
     {
-        static Configuration conf = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+        static readonly Configuration conf = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
         
         private static void Refresh()
         {
@@ -49,6 +49,17 @@ namespace gra1
         public static int GetCoins()
         {
             return int.Parse(conf.AppSettings.Settings["coins"].Value);
+        }
+
+        public static string ModeGet()
+        {
+            return conf.AppSettings.Settings["mode"].Value;
+        }
+
+        public static void ModeSet(string mode)
+        {
+            conf.AppSettings.Settings["mode"].Value = mode;
+            Refresh();
         }
     }
 }
