@@ -201,20 +201,6 @@ namespace gra1
             }
         }
 
-        private void LogoFade()
-        {
-            
-           /*Storyboard story = new Storyboard() { AutoReverse = false};
-            DoubleAnimation animation = new DoubleAnimation()
-            {
-                To = 0,
-                Duration = new Duration(TimeSpan.FromSeconds(5)),
-                FillBehavior = FillBehavior.Stop
-            };
-            animation.Completed += (s, a) => startScreen.Visibility = Visibility.Hidden;
-            startScreen.BeginAnimation(UIElement.OpacityProperty, animation);*/
-        }
-
         //-----------------------------------------event handlery--------------------------------------------------
 
         private void Canv_MouseLeave(object sender, MouseEventArgs e)
