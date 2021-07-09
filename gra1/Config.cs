@@ -22,7 +22,7 @@ namespace gra1
             conf.AppSettings.Settings["points"].Value = score.ToString();
             Refresh();
         }
-        #endregion 
+        #endregion  
         public static void UpdateCoins(int coins)
         {
             conf.AppSettings.Settings["coins"].Value = coins.ToString();
