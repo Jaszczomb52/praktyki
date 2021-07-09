@@ -20,9 +20,19 @@ namespace Zaklady
     /// </summary>
     public partial class MainWindow : Window
     {
+        Typo[] typy = {new Typo(50, "Zbychu"), new Typo(50, "Stachu"), new Typo(50, "Mirek")};
         public MainWindow()
         {
             InitializeComponent();
+            Load();
+
+        }
+
+        private void Load()
+        {
+            RadioButton[] typyRad = { ZbychuRad, StachuRad, MirekRad };
+            for(int i = 0;i<3;i++)
+            typyRad[i].Content =typy[i].name + " ma " + typy[i].money + "zł";
         }
     }
 }
