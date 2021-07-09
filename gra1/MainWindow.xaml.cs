@@ -52,7 +52,7 @@ namespace gra1
             //logoFade();
             ModeHandler();
         }
-        //----------------------------------------------elementy posrednie---------------------------------------------
+        #region Drobne metody
         private void ModeHandler()
         {
             if (Config.ModeGet() == "Easy")
@@ -88,7 +88,39 @@ namespace gra1
             if (progressBar.Value == progressBar.Maximum)
                 End();
         }
-        //---------------------------------------------------start i end--------------------------------------
+        #endregion
+        #region metody start, end i przeciwnika
+
+        // start gry
+        private void Start()
+        {
+            // pokazanie rzeczy w canvasie i UI oraz rozpoczecie gry
+            human.IsHitTestVisible = true;
+            humanCaptured = false;
+            progressBar.Value = 0;
+            startButt.Visibility = Visibility.Collapsed;
+            canv.Children.Clear();
+            canv.Children.Add(human);
+            canv.Children.Add(portal);
+            enemyTimer.Start();
+            targetTimer.Start();
+            points.Content = 0;
+            aliens.Content = 0;
+            Canvas.SetLeft(portal, rand.Next(100, (int)canv.ActualWidth - 100));
+            Canvas.SetTop(portal, rand.Next(100, (int)canv.ActualHeight - 100));
+            Canvas.SetLeft(human, rand.Next(100, (int)canv.ActualWidth - 100));
+            Canvas.SetTop(human, rand.Next(100, (int)canv.ActualHeight - 100));
+            Config.ModeSet(mode.SelectionBoxItem.ToString());
+            if (Config.ModeGet() == "Insane")
+            {
+                enemyTimer.Interval = TimeSpan.FromSeconds(1);
+            }
+            else
+            {
+                enemyTimer.Interval = TimeSpan.FromSeconds(2);
+            }
+        }
+
         //reakcja na koniec gry
         private void End()
         {
@@ -171,37 +203,9 @@ namespace gra1
         }
 
 
-        // start gry
-        private void Start()
-        {
-            // pokazanie rzeczy w canvasie i UI oraz rozpoczecie gry
-            human.IsHitTestVisible = true;
-            humanCaptured = false;
-            progressBar.Value = 0;
-            startButt.Visibility = Visibility.Collapsed;
-            canv.Children.Clear();
-            canv.Children.Add(human);
-            canv.Children.Add(portal);
-            enemyTimer.Start();
-            targetTimer.Start();
-            points.Content = 0;
-            aliens.Content = 0;
-            Canvas.SetLeft(portal, rand.Next(100, (int)canv.ActualWidth - 100));
-            Canvas.SetTop(portal, rand.Next(100, (int)canv.ActualHeight - 100));
-            Canvas.SetLeft(human, rand.Next(100, (int)canv.ActualWidth - 100));
-            Canvas.SetTop(human, rand.Next(100, (int)canv.ActualHeight - 100));
-            Config.ModeSet(mode.SelectionBoxItem.ToString());
-            if (Config.ModeGet() == "Insane")
-            {
-                enemyTimer.Interval = TimeSpan.FromSeconds(1);
-            }
-            else
-            {
-                enemyTimer.Interval = TimeSpan.FromSeconds(2);
-            }
-        }
 
-        //-----------------------------------------event handlery--------------------------------------------------
+        #endregion
+        #region eventhandlery
 
         private void Canv_MouseLeave(object sender, MouseEventArgs e)
         {   //koniec gry jesli kursor z ludzikiem wyjedzie poza canvas
@@ -264,5 +268,6 @@ namespace gra1
                 End();
             }
         }
+        #endregion
     }
 }

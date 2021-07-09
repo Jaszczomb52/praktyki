@@ -16,13 +16,13 @@ namespace gra1
             conf.Save(ConfigurationSaveMode.Modified);
             ConfigurationManager.RefreshSection("appSettings");
         }
-        #region nazwa 
+
         public static void UpdateScore(int score)
         {
             conf.AppSettings.Settings["points"].Value = score.ToString();
             Refresh();
         }
-        #endregion   
+        
         public static void UpdateCoins(int coins)
         {
             conf.AppSettings.Settings["coins"].Value = coins.ToString();
