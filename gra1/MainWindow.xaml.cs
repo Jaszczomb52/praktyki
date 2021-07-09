@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using System.Windows.Media.Animation;
 using System.Windows.Threading;
 using System.Windows.Media.Effects;
+using System.Threading;
 
 namespace gra1
 {
@@ -28,7 +29,6 @@ namespace gra1
         readonly DispatcherTimer enemyTimer = new DispatcherTimer();
         readonly DispatcherTimer targetTimer = new DispatcherTimer();
         bool humanCaptured = false;
-        List<ContentControl> enemies = new List<ContentControl>();
 
         public MainWindow()
         {
@@ -79,7 +79,6 @@ namespace gra1
         private void EnemyTimer_Tick(object sender, EventArgs e)
         {
             AddEnemy();
-            //Rect enemy = new Rect(Canvas.GetLeft());
         }
 
         //reakcja targetu(portalu) co tick
@@ -134,12 +133,11 @@ namespace gra1
             enemy.Content = el;
             AnimateEnemy(enemy, canv.ActualWidth - 100, 0, "(Canvas.Left)");
             AnimateEnemy(enemy, rand.Next((int)canv.ActualHeight-100),
-                rand.Next((int)canv.ActualHeight-100), "(Canvas.Top)");
-            canv.Children.Add(enemy);
+                rand.Next((int)canv.ActualHeight - 100), "(Canvas.Top)");
+            canv.Children.Add(enemy);            
             // sprawdzanie czy mysz najechala na wroga i zliczanie wrogow
             enemy.MouseEnter += Enemy_MouseEntered;
             aliens.Content = int.Parse(aliens.Content.ToString()) + 1;
-            enemies.Add(enemy);
         }
 
 
