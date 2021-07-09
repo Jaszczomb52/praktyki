@@ -155,10 +155,11 @@ namespace gra1
                 Width = 100,
                 Height = 100
             };
-            ImageBrush img = new ImageBrush
-            {
-                ImageSource = new BitmapImage(new Uri("pack://application:,,,/gra1;component/OIP.jpg"))
-            };
+            ImageBrush img = new ImageBrush();
+            if(Config.GetSkin() == "btc")
+                img.ImageSource = new BitmapImage(new Uri("pack://application:,,,/gra1;component/OIP.jpg"));
+            else
+                img.ImageSource = new BitmapImage(new Uri("pack://application:,,,/gra1;component/eth.jpg"));
             el.Fill = img;
 
             //dodanie elipsy jako przeciwnika i animacja
@@ -267,6 +268,13 @@ namespace gra1
             {
                 End();
             }
+        }
+
+        //obsluga przycisku do skinow
+        private void Skin_Button_Click(object sender, RoutedEventArgs e)
+        {
+            Skins window = new Skins(bitcoin);
+            window.Visibility = Visibility.Visible;
         }
         #endregion
     }

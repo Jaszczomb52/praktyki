@@ -61,5 +61,15 @@ namespace gra1
             conf.AppSettings.Settings["mode"].Value = mode;
             Refresh();
         }
+        public static string GetSkin()
+        {
+            return conf.AppSettings.Settings["skin"].Value;
+        }
+
+        public static void SetSkin(string skin)
+        {
+            conf.AppSettings.Settings["skin"].Value = skin;
+            Refresh();
+        }
     }
 }

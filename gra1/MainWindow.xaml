@@ -13,11 +13,12 @@
             <RowDefinition Height="46*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="90*"/>
-            <ColumnDefinition Width="603*"/>
-            <ColumnDefinition Width="90*"/>
+            <ColumnDefinition Width="125*"/>
+            <ColumnDefinition Width="47*"/>
+            <ColumnDefinition Width="786*"/>
+            <ColumnDefinition Width="124*"/>
         </Grid.ColumnDefinitions>
-        <Canvas x:Name="canv" Background="LightGray" HorizontalAlignment="Left" Height="482" VerticalAlignment="Top" Width="833" Grid.Column="1" Grid.Row="1" MouseMove="Canv_MouseMove" MouseLeave="Canv_MouseLeave">
+        <Canvas x:Name="canv" Background="LightGray" HorizontalAlignment="Left" Height="482" VerticalAlignment="Top" Width="833" Grid.Column="1" Grid.Row="1" MouseMove="Canv_MouseMove" MouseLeave="Canv_MouseLeave" Grid.ColumnSpan="2">
             <Rectangle x:Name="portal" Fill="Red" Height="60" Canvas.Left="731" Stroke="Black" Canvas.Top="47" Width="60" RenderTransformOrigin="0.5,0.5" MouseEnter="Portal_MouseEnter">
                 <Rectangle.RenderTransform>
                     <TransformGroup>
@@ -46,22 +47,27 @@
                 <DropShadowEffect Color="White" ShadowDepth="3" BlurRadius="10"/>
             </Button.Effect>
         </Button>
-        <ProgressBar x:Name="progressBar" Grid.Column="1" HorizontalAlignment="Left" Height="26" Margin="0,10,0,0" Grid.Row="2" VerticalAlignment="Top" Width="833" Background="#FF3E3E3E" Foreground="#FFEEC437"/>
-        <Label Content="Ilość kosmitów" Grid.Column="1" HorizontalAlignment="Left" Margin="731,10,0,0" VerticalAlignment="Top" Foreground="White" Width="102"/>
-        <Label Content="punkty" Grid.Column="1" HorizontalAlignment="Left" Margin="731,29,0,0" VerticalAlignment="Top" Foreground="White" Width="59"/>
-        <Label x:Name="aliens" Content="0" Grid.Column="2" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Foreground="White"/>
-        <Label x:Name="points" Content="0" Grid.Column="2" HorizontalAlignment="Left" Margin="10,36,0,0" VerticalAlignment="Top" Foreground="White"/>
-        <Ellipse x:Name="bitcoin" Grid.Column="2" HorizontalAlignment="Left" Height="100" Margin="14,432,0,0" Grid.Row="1" Stroke="Black" VerticalAlignment="Top" Width="100" Grid.RowSpan="2">
+        <ProgressBar x:Name="progressBar" Grid.Column="1" HorizontalAlignment="Left" Height="26" Margin="0,10,0,0" Grid.Row="2" VerticalAlignment="Top" Width="833" Background="#FF3E3E3E" Foreground="#FFEEC437" Grid.ColumnSpan="2"/>
+        <Label Content="Ilość kosmitów" Grid.Column="2" HorizontalAlignment="Left" Margin="684,10,0,0" VerticalAlignment="Top" Foreground="White" Width="102"/>
+        <Label Content="punkty" Grid.Column="2" HorizontalAlignment="Left" Margin="684,29,0,0" VerticalAlignment="Top" Foreground="White" Width="59"/>
+        <Label x:Name="aliens" Content="0" Grid.Column="3" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Label x:Name="points" Content="0" Grid.Column="3" HorizontalAlignment="Left" Margin="10,36,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Ellipse x:Name="bitcoin" Grid.Column="3" HorizontalAlignment="Left" Height="100" Margin="14,432,0,0" Grid.Row="1" Stroke="Black" VerticalAlignment="Top" Width="100" Grid.RowSpan="2">
             <Ellipse.Fill>
                 <ImageBrush ImageSource="OIP.jpg"/>
             </Ellipse.Fill>
         </Ellipse>
-        <Label Content="Unikaj" Grid.Column="2" HorizontalAlignment="Left" Margin="19,386,0,31" Grid.Row="1" Foreground="White" FontSize="25" Width="95"/>
-        <ComboBox x:Name="mode" Grid.Column="1" HorizontalAlignment="Left" Margin="10,14,0,0" VerticalAlignment="Top" Foreground="Black" Background="Black" FontSize="25" Width="146" Height="47" BorderBrush="White">
+        <Label Content="Unikaj" Grid.Column="3" HorizontalAlignment="Left" Margin="19,386,0,31" Grid.Row="1" Foreground="White" FontSize="25" Width="95"/>
+        <ComboBox x:Name="mode" Grid.Column="1" HorizontalAlignment="Left" Margin="10,14,0,0" VerticalAlignment="Top" Foreground="Black" Background="Black" FontSize="25" Width="146" Height="47" BorderBrush="White" Grid.ColumnSpan="2">
             <ListBoxItem Content="Easy" Foreground="Black"/>
             <ListBoxItem Content="Hard" Foreground="Black"/>
             <ListBoxItem Content="Insane" Foreground="Black"/>
         </ComboBox>
+        <Button x:Name="skins" Background="Black" Content="Skiny" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="105" Click="Skin_Button_Click" Height="52" FontSize="25" BorderBrush="White" Foreground="White" Grid.Row="1">
+            <Button.Effect>
+                <DropShadowEffect Color="White" ShadowDepth="3" BlurRadius="10"/>
+            </Button.Effect>
+        </Button>
 
     </Grid>
 </Window>
