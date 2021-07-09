@@ -50,5 +50,16 @@ namespace gra1
         {
             return int.Parse(conf.AppSettings.Settings["coins"].Value);
         }
+
+        public static string ModeGet()
+        {
+            return conf.AppSettings.Settings["mode"].Value;
+        }
+
+        public static void ModeSet(string mode)
+        {
+            conf.AppSettings.Settings["mode"].Value = mode;
+            Refresh();
+        }
     }
 }

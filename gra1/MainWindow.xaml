@@ -57,6 +57,11 @@
             </Ellipse.Fill>
         </Ellipse>
         <Label Content="Unikaj" Grid.Column="2" HorizontalAlignment="Left" Margin="19,386,0,31" Grid.Row="1" Foreground="White" FontSize="25" Width="95"/>
+        <ComboBox x:Name="mode" Grid.Column="1" HorizontalAlignment="Left" Margin="10,14,0,0" VerticalAlignment="Top" Foreground="Black" Background="Black" FontSize="25" Width="146" Height="47" BorderBrush="White">
+            <ListBoxItem Content="Easy" Foreground="Black"/>
+            <ListBoxItem Content="Hard" Foreground="Black"/>
+            <ListBoxItem Content="Insane" Foreground="Black"/>
+        </ComboBox>
 
     </Grid>
 </Window>
