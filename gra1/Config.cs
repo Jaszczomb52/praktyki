@@ -10,25 +10,25 @@ namespace gra1
     class Config
     {
         static readonly Configuration conf = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-        
+
         private static void Refresh()
         {
             conf.Save(ConfigurationSaveMode.Modified);
             ConfigurationManager.RefreshSection("appSettings");
         }
-
+        #region nazwa 
         public static void UpdateScore(int score)
         {
             conf.AppSettings.Settings["points"].Value = score.ToString();
             Refresh();
         }
-
+        #endregion
         public static void UpdateCoins(int coins)
         {
             conf.AppSettings.Settings["coins"].Value = coins.ToString();
             Refresh();
         }
-        
+
         public static bool ChceckScore(int score)
         {
             if (GetScore() >= score)
