@@ -125,7 +125,7 @@ namespace gra1
             };
             ImageBrush img = new ImageBrush
             {
-                ImageSource = new BitmapImage(new Uri("C:/Users/xopero/source/repos/Hello_world/gra1/OIP.jpg"))
+                ImageSource = new BitmapImage(new Uri("pack://application:,,,/gra1;component/OIP.jpg"))
             };
             el.Fill = img;
 
