@@ -7,6 +7,13 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <Border BorderThickness="3" BorderBrush="Black" Margin="0,0,0,170">
+            <Image Source="trasa.png" HorizontalAlignment="Left" Height="229" Margin="5,5,0,-4" VerticalAlignment="Top" Width="772" OpacityMask="{x:Null}" Stretch="Fill"/>
+        </Border>
+        <Image Source="york.png"  HorizontalAlignment="Left" Height="53" Margin="10,187,0,0" VerticalAlignment="Top" Width="112" Stretch="Fill"/>
+        <Image Source="york.png" HorizontalAlignment="Left" Height="53" Margin="10,126,0,0" VerticalAlignment="Top" Width="112" Stretch="Fill"/>
+        <Image Source="york.png" HorizontalAlignment="Left" Height="53" Margin="10,65,0,0" VerticalAlignment="Top" Width="112" Stretch="Fill"/>
+        <Image Source="york.png" HorizontalAlignment="Left" Height="53" Margin="10,0,0,0" VerticalAlignment="Top" Width="112" Stretch="Fill"/>
+
     </Grid>
 </Window>

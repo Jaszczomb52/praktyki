@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hello_world", "Hello_world\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "gra1", "gra1\gra1.csproj", "{B9FEE4F0-0568-458A-BC97-66469560B3FF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zaklady", "Zaklady\Zaklady.csproj", "{0D409218-6DA9-4958-96A4-F89898BE5CAE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,6 +63,26 @@ Global
 		{B9FEE4F0-0568-458A-BC97-66469560B3FF}.Release|x64.Build.0 = Release|Any CPU
 		{B9FEE4F0-0568-458A-BC97-66469560B3FF}.Release|x86.ActiveCfg = Release|Any CPU
 		{B9FEE4F0-0568-458A-BC97-66469560B3FF}.Release|x86.Build.0 = Release|Any CPU
+		{0D409218-6DA9-4958-96A4-F89898BE5CAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D409218-6DA9-4958-96A4-F89898BE5CAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D409218-6DA9-4958-96A4-F89898BE5CAE}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{0D409218-6DA9-4958-96A4-F89898BE5CAE}.Debug|ARM.Build.0 = Debug|Any CPU
+		{0D409218-6DA9-4958-96A4-F89898BE5CAE}.Debug|ARM64.ActiveCfg = Debug|Any CPU
+		{0D409218-6DA9-4958-96A4-F89898BE5CAE}.Debug|ARM64.Build.0 = Debug|Any CPU
+		{0D409218-6DA9-4958-96A4-F89898BE5CAE}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{0D409218-6DA9-4958-96A4-F89898BE5CAE}.Debug|x64.Build.0 = Debug|Any CPU
+		{0D409218-6DA9-4958-96A4-F89898BE5CAE}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{0D409218-6DA9-4958-96A4-F89898BE5CAE}.Debug|x86.Build.0 = Debug|Any CPU
+		{0D409218-6DA9-4958-96A4-F89898BE5CAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D409218-6DA9-4958-96A4-F89898BE5CAE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D409218-6DA9-4958-96A4-F89898BE5CAE}.Release|ARM.ActiveCfg = Release|Any CPU
+		{0D409218-6DA9-4958-96A4-F89898BE5CAE}.Release|ARM.Build.0 = Release|Any CPU
+		{0D409218-6DA9-4958-96A4-F89898BE5CAE}.Release|ARM64.ActiveCfg = Release|Any CPU
+		{0D409218-6DA9-4958-96A4-F89898BE5CAE}.Release|ARM64.Build.0 = Release|Any CPU
+		{0D409218-6DA9-4958-96A4-F89898BE5CAE}.Release|x64.ActiveCfg = Release|Any CPU
+		{0D409218-6DA9-4958-96A4-F89898BE5CAE}.Release|x64.Build.0 = Release|Any CPU
+		{0D409218-6DA9-4958-96A4-F89898BE5CAE}.Release|x86.ActiveCfg = Release|Any CPU
+		{0D409218-6DA9-4958-96A4-F89898BE5CAE}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
