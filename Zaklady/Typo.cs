@@ -11,7 +11,7 @@ namespace Zaklady
         public int money;
         public string name;
 
-        public Typo(int money, string name)
+        public Typo(int money, string name) // constructor adding data to the vars in the instance of this class
         {
             this.money = money;
             this.name = name;
