@@ -8,12 +8,22 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <Border BorderThickness="3" BorderBrush="Black" Margin="0,0,0,170">
-            <Image Source="trasa.png" HorizontalAlignment="Left" Height="229" Margin="5,5,0,-4" VerticalAlignment="Top" Width="772" OpacityMask="{x:Null}" Stretch="Fill"/>
+            <Image x:Name="track" Source="trasa.png" HorizontalAlignment="Left" Height="229" Margin="5,5,0,-4" VerticalAlignment="Top" Width="772" OpacityMask="{x:Null}" Stretch="Fill"/>
         </Border>
-        <Image Source="york.png"  HorizontalAlignment="Left" Height="53" Margin="10,187,0,0" VerticalAlignment="Top" Width="112" Stretch="Fill"/>
-        <Image Source="york.png" HorizontalAlignment="Left" Height="53" Margin="10,126,0,0" VerticalAlignment="Top" Width="112" Stretch="Fill"/>
-        <Image Source="york.png" HorizontalAlignment="Left" Height="53" Margin="10,65,0,0" VerticalAlignment="Top" Width="112" Stretch="Fill"/>
-        <Image Source="york.png" HorizontalAlignment="Left" Height="53" Margin="10,0,0,0" VerticalAlignment="Top" Width="112" Stretch="Fill"/>
+        <Canvas x:Name="canv">
+            <ContentControl x:Name="d4">
+                <Image x:Name="imgDog" Source="york.png" HorizontalAlignment="Left" Height="53" Margin="10,187,0,0" VerticalAlignment="Top" Width="112" Stretch="Fill"/>
+            </ContentControl>
+            <ContentControl x:Name="d3">
+                <Image Source="york.png" HorizontalAlignment="Left" Height="53" Margin="10,126,0,0" VerticalAlignment="Top" Width="112" Stretch="Fill"/>
+            </ContentControl>
+            <ContentControl x:Name="d2">
+                <Image Source="york.png" HorizontalAlignment="Left" Height="53" Margin="10,65,0,0" VerticalAlignment="Top" Width="112" Stretch="Fill"/>
+            </ContentControl>
+            <ContentControl x:Name="d1">
+                <Image Source="york.png" HorizontalAlignment="Left" Height="53" Margin="10,0,0,0" VerticalAlignment="Top" Width="112" Stretch="Fill"/>
+            </ContentControl>
+        </Canvas>
         <Label Content="Musisz wrzucić minimum 5zł" HorizontalAlignment="Left" Margin="10,285,0,0" VerticalAlignment="Top" Width="164"/>
         <Label Content="Zakłady" HorizontalAlignment="Left" Margin="244,285,0,0" VerticalAlignment="Top" Width="112"/>
         <Label Content="Symulator przewalania oszczędności na wyścigi ledwo biegnących yorków" HorizontalAlignment="Left" Margin="10,254,0,0" VerticalAlignment="Top" Width="434"/>
@@ -24,11 +34,11 @@
         <TextBox x:Name="ZbychuBet" HorizontalAlignment="Left" Height="23" Margin="244,314,0,0" TextWrapping="Wrap" Text="Zbychu" VerticalAlignment="Top" Width="120" IsEnabled="False"/>
         <TextBox x:Name="StachuBet" HorizontalAlignment="Left" Height="23" Margin="244,337,0,0" TextWrapping="Wrap" Text="Stachu" VerticalAlignment="Top" Width="120" IsEnabled="False"/>
         <TextBox x:Name="MirekBet" HorizontalAlignment="Left" Height="23" Margin="244,356,0,0" TextWrapping="Wrap" Text="Mirek" VerticalAlignment="Top" Width="120" IsEnabled="False"/>
-        <Button Content="wrzuca" HorizontalAlignment="Left" Margin="95,380,0,0" VerticalAlignment="Top" Width="75"/>
-        <TextBox x:Name="Bet" HorizontalAlignment="Left" Height="23" Margin="175,379,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="64"/>
+        <Button Content="wrzuca" HorizontalAlignment="Left" Margin="95,380,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+        <TextBox x:Name="Bet" HorizontalAlignment="Left" Height="23" Margin="175,379,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="64"/>
         <Label Content="zł na yorka numer" HorizontalAlignment="Left" Margin="244,377,0,0" VerticalAlignment="Top" Width="112"/>
-        <TextBox x:Name="DogNumber" HorizontalAlignment="Left" Height="23" Margin="386,380,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="58"/>
-        <Button Content="Wypuść psy" HorizontalAlignment="Left" Margin="511,285,0,0" VerticalAlignment="Top" Width="271" Height="115" FontSize="50"/>
+        <TextBox x:Name="DogNumber" HorizontalAlignment="Left" Height="23" Margin="386,380,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="58"/>
+        <Button Content="Wypuść psy" HorizontalAlignment="Left" Margin="511,285,0,0" VerticalAlignment="Top" Width="271" Height="115" FontSize="50" Click="Button_Click_1"/>
 
     </Grid>
 </Window>
