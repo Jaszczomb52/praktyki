@@ -24,21 +24,34 @@
                 <Image Source="york.png" HorizontalAlignment="Left" Height="53" Margin="10,0,0,0" VerticalAlignment="Top" Width="112" Stretch="Fill"/>
             </ContentControl>
         </Canvas>
-        <Label Content="Musisz wrzucić minimum 5zł" HorizontalAlignment="Left" Margin="10,285,0,0" VerticalAlignment="Top" Width="164"/>
+        <Label Content="4" HorizontalAlignment="Left" Margin="156,195,0,0" VerticalAlignment="Top" Width="59" FontSize="24"/>
         <Label Content="Zakłady" HorizontalAlignment="Left" Margin="244,285,0,0" VerticalAlignment="Top" Width="112"/>
-        <Label Content="Symulator przewalania oszczędności na wyścigi ledwo biegnących yorków" HorizontalAlignment="Left" Margin="10,254,0,0" VerticalAlignment="Top" Width="434"/>
-        <RadioButton x:Name="ZbychuRad" Content="" HorizontalAlignment="Left" Margin="10,316,0,0" VerticalAlignment="Top"/>
-        <RadioButton x:Name="StachuRad" Content="" HorizontalAlignment="Left" Margin="10,336,0,0" VerticalAlignment="Top"/>
-        <RadioButton x:Name="MirekRad" Content="" HorizontalAlignment="Left" Margin="10,356,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="BetName" Content="Name" HorizontalAlignment="Left" Margin="10,376,0,10" Width="85"/>
-        <TextBox x:Name="ZbychuBet" HorizontalAlignment="Left" Height="23" Margin="244,314,0,0" TextWrapping="Wrap" Text="Zbychu" VerticalAlignment="Top" Width="120" IsEnabled="False"/>
-        <TextBox x:Name="StachuBet" HorizontalAlignment="Left" Height="23" Margin="244,337,0,0" TextWrapping="Wrap" Text="Stachu" VerticalAlignment="Top" Width="120" IsEnabled="False"/>
-        <TextBox x:Name="MirekBet" HorizontalAlignment="Left" Height="23" Margin="244,356,0,0" TextWrapping="Wrap" Text="Mirek" VerticalAlignment="Top" Width="120" IsEnabled="False"/>
-        <Button Content="wrzuca" HorizontalAlignment="Left" Margin="95,380,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+        <Label Content="Symulator przewalania oszczędności na wyścigi ledwo biegnące yorki" HorizontalAlignment="Left" Margin="10,254,0,0" VerticalAlignment="Top" Width="434"/>
+        <RadioButton x:Name="Zbychu" Content="" HorizontalAlignment="Left" Margin="10,316,0,0" VerticalAlignment="Top" GroupName="Radio" Checked="ChangeName"/>
+        <RadioButton x:Name="Stachu" Content="" HorizontalAlignment="Left" Margin="10,336,0,0" VerticalAlignment="Top" GroupName="Radio" Checked="ChangeName"/>
+        <RadioButton x:Name="Mirek" Content="" HorizontalAlignment="Left" Margin="10,356,0,0" VerticalAlignment="Top" GroupName="Radio" Checked="ChangeName"/>
+        <Label x:Name="BetName" Content="" HorizontalAlignment="Left" Margin="10,376,0,10" Width="85"/>
+        <TextBox x:Name="ZbychuBet" HorizontalAlignment="Left" Height="23" Margin="244,311,0,0" TextWrapping="Wrap" Text="Zbychu" VerticalAlignment="Top" Width="200" IsEnabled="False"/>
+        <TextBox x:Name="StachuBet" HorizontalAlignment="Left" Height="23" Margin="244,334,0,0" TextWrapping="Wrap" Text="Stachu" VerticalAlignment="Top" Width="200" IsEnabled="False"/>
+        <TextBox x:Name="MirekBet" HorizontalAlignment="Left" Height="23" Margin="244,356,0,0" TextWrapping="Wrap" Text="Mirek" VerticalAlignment="Top" Width="200" IsEnabled="False"/>
+        <Button x:Name="BetButton" Content="wrzuca" HorizontalAlignment="Left" Margin="95,380,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
         <TextBox x:Name="Bet" HorizontalAlignment="Left" Height="23" Margin="175,379,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="64"/>
         <Label Content="zł na yorka numer" HorizontalAlignment="Left" Margin="244,377,0,0" VerticalAlignment="Top" Width="112"/>
         <TextBox x:Name="DogNumber" HorizontalAlignment="Left" Height="23" Margin="386,380,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="58"/>
-        <Button Content="Wypuść psy" HorizontalAlignment="Left" Margin="511,285,0,0" VerticalAlignment="Top" Width="271" Height="115" FontSize="50" Click="Button_Click_1"/>
+        <Button x:Name="LetTheDogs" Content="Wypuść psy" HorizontalAlignment="Left" Margin="511,285,0,0" VerticalAlignment="Top" Width="271" Height="115" FontSize="50" Click="Button_Click_1"/>
+        <Label Content="1" HorizontalAlignment="Left" Margin="156,5,0,0" VerticalAlignment="Top" Width="59" FontSize="24"/>
+        <Label Content="2" HorizontalAlignment="Left" Margin="156,68,0,0" VerticalAlignment="Top" Width="59" FontSize="24"/>
+        <Label Content="3" HorizontalAlignment="Left" Margin="156,132,0,0" VerticalAlignment="Top" Width="59" FontSize="24"/>
+        <Label x:Name="WinnerLabel" Content="" HorizontalAlignment="Left" Margin="470,254,0,0" VerticalAlignment="Top" Width="260" RenderTransformOrigin="0.5,0.5">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0.038"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
 
     </Grid>
 </Window>

@@ -16,5 +16,6 @@ namespace Zaklady
             this.money = money;
             this.name = name;
         }
+
     }
 }
