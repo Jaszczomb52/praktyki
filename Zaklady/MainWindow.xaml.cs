@@ -24,6 +24,7 @@ namespace Zaklady
         Typo[] typy = {new Typo(50, "Zbychu"), new Typo(50, "Stachu"), new Typo(50, "Mirek")};
         Random rand = new Random();
         List<ContentControl> dogs;
+        int winner = 0;
         public MainWindow()
         {
             InitializeComponent();
@@ -52,6 +53,7 @@ namespace Zaklady
                 To = track.Width-imgDog.Width,
                 Duration = new Duration(TimeSpan.FromSeconds(rand.Next(4, 15)))
             };
+            animation.Completed += (s, a) => EndOfAnimation(dog);
             story.Children.Add(animation);
             Storyboard.SetTarget(animation, dog);
             Storyboard.SetTargetProperty(animation, new PropertyPath("(Canvas.Left)"));
@@ -75,6 +77,16 @@ namespace Zaklady
                     }
                 }
                 times[i] = temp;
+            }
+        }
+        bool win = false;
+        private void EndOfAnimation(ContentControl name)
+        {
+            if(!win)
+            {
+                MessageBox.Show("York numer " + name.Name.Substring(1) + " wygrywa!");
+                win = true;
+                winner = int.Parse(name.Name.Substring(1));
             }
         }
     }
