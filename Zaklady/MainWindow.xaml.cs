@@ -18,6 +18,7 @@ namespace Zaklady
         private Random rand = new Random();
         private List<ContentControl> dogs;
         private int winner = 0;
+        private List<double> timings = new List<double>();
         #endregion
 
         public MainWindow()
@@ -43,9 +44,18 @@ namespace Zaklady
             DoubleAnimation animation = new DoubleAnimation()
             {
                 From = 0,
-                To = track.Width-imgDog.Width,
-                Duration = new Duration(TimeSpan.FromSeconds(rand.Next(4, 10)))
+                To = track.Width-imgDog.Width
             };
+            animation.Duration = new Duration(TimeSpan.FromSeconds(0));
+        repeat:
+            double temp = rand.Next(3, 7);
+            
+            if (timings.Contains(temp))
+                goto repeat;
+            else
+                animation.Duration = new Duration(TimeSpan.FromSeconds(temp));
+            timings.Add(temp);
+            animation.Duration = new Duration(TimeSpan.FromSeconds(temp));
             animation.Completed += (s, a) => EndOfAnimation(dog);
             Storyboard.SetTarget(animation, dog);
             Storyboard.SetTargetProperty(animation, new PropertyPath("(Canvas.Left)"));
@@ -61,6 +71,7 @@ namespace Zaklady
         {
             // method to handle end of animation of the dogs
             temp++;
+            timings.Clear();
             if(temp == 4)
             {
                 // what to do if every dog is at the end of the track
@@ -213,13 +224,13 @@ namespace Zaklady
             double[] times = { 0, 0, 0, 0 };
             for (int i = 0; i < 4; i++)
             {
-            repeat: 
+            //repeat: 
                 double temp = Start(dogs[i]);
                 for (int j = 0; j < 4; j++)
                 {
                     if (times[j] == temp)
                     {
-                        goto repeat;
+                        //goto repeat;
                     }
                 }
                 times[i] = temp;
