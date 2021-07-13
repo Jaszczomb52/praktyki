@@ -47,7 +47,6 @@ namespace Zaklady
                 Duration = new Duration(TimeSpan.FromSeconds(rand.Next(4, 10)))
             };
             animation.Completed += (s, a) => EndOfAnimation(dog);
-            story.Children.Add(animation);
             Storyboard.SetTarget(animation, dog);
             Storyboard.SetTargetProperty(animation, new PropertyPath("(Canvas.Left)"));
             story.Children.Add(animation);
@@ -62,7 +61,7 @@ namespace Zaklady
         {
             // method to handle end of animation of the dogs
             temp++;
-            if(temp == 8)
+            if(temp == 4)
             {
                 // what to do if every dog is at the end of the track
                 LetTheDogs.IsEnabled = true;
