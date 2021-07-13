@@ -16,7 +16,6 @@
                     <Label Content="Podaj liczbe osob" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="135,7,0,0" Width="107"/>
                     <Label Content="Koszt" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,78,0,0" Width="43"/>
                     <TextBox HorizontalAlignment="Left" Height="23" Margin="58,78,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="94"/>
-                    <GroupBox Header="" HorizontalAlignment="Left" Height="54" VerticalAlignment="Top" Width="152" Margin="0,24,0,0"/>
                 </Grid>
             </TabItem>
             <TabItem Header="TabItem">
