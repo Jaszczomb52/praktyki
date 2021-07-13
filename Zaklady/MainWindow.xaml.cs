@@ -133,6 +133,7 @@ namespace Zaklady
                             if (bets[i].name == (string)BetName.Content) // check if there is already bet of cetrain guy
                             {
                                 bets[i].amount += bet; // add money to the bet
+                                bets[i].york = int.Parse(DogNumber.Text);
                                 break;
                             }
                             else if(i+1 == bets.Count) // check if the loop is at the end of the list and still no existing bet of this person
