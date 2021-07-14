@@ -16,12 +16,18 @@ namespace SystemUla
             this.workers = workers;
         }
 
-        private void AssignWork()
+        public void AssignWork(string job, int shift)
         {
-
+            for(int i=0;i<4;i++)
+            {
+                if (workers[i].DoThisJob(job,shift))
+                {
+                    break;
+                }
+            }
         }
 
-        private void WorkTheNextShift()
+        public void WorkTheNextShift()
         {
 
         }

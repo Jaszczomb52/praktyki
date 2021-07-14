@@ -8,24 +8,33 @@ namespace SystemUla
 {
     class Worker
     {
-        public string CurrentJob { get; }
-        public int ShiftLefts { get; }
+        public string CurrentJob { set; get; }
+        public int ShiftLefts { set; get; }
 
         private string[] jobsICanDo;
         private int shiftsToWork;
-        private int shiftsWorked;
+        private int shiftsWorked = 0;
         
         public Worker(string[] jobs)
         {
             jobsICanDo = jobs;
         }
 
-        private void DoThisJob()
+        public bool DoThisJob(string job, int shift)
         {
-
+            for(int i = 0;i<2;i++)
+            {
+                if(jobsICanDo[i] == job)
+                {
+                    shiftsToWork = shift;
+                    CurrentJob = job;
+                    return true;
+                }
+            }
+            return false;
         }
 
-        private void WorkOneShift()
+        public void WorkOneShift()
         {
 
         }
