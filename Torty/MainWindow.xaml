@@ -10,12 +10,12 @@
         <TabControl HorizontalAlignment="Left" Height="141" VerticalAlignment="Top" Width="269">
             <TabItem Header="TabItem">
                 <Grid Background="#FFE5E5E5" Margin="0,0,-1,-2">
-                    <TextBox HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-                    <CheckBox Content="Opcja zdrowa" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,58,0,0"/>
-                    <CheckBox Content="Fantazyjne dekoracje" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,38,0,0"/>
+                    <TextBox x:Name="Text"  HorizontalAlignment="Left" Height="23" Margin="12,13,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextChanged="Changed"/>
+                    <CheckBox x:Name="check1" Content="Opcja zdrowa" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,58,0,0" Click="ChangedCheck"/>
+                    <CheckBox x:Name="check2" Content="Fantazyjne dekoracje" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,38,0,0" Click="ChangedCheck"/>
                     <Label Content="Podaj liczbe osob" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="135,7,0,0" Width="107"/>
                     <Label Content="Koszt" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,78,0,0" Width="43"/>
-                    <TextBox HorizontalAlignment="Left" Height="23" Margin="58,78,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="94"/>
+                    <TextBox x:Name="Price"  HorizontalAlignment="Left" Height="23" Margin="58,78,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="94" IsEnabled="False"/>
                 </Grid>
             </TabItem>
             <TabItem Header="TabItem">
