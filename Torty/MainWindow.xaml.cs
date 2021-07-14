@@ -27,7 +27,7 @@ namespace Torty
         {
             InitializeComponent();
         }
-
+        #region metody obslugujace liczenie zwyklej imprezy
         private void Changed(object sender, TextChangedEventArgs e)
         {
             Changing();
@@ -60,7 +60,8 @@ namespace Torty
                 MessageBox.Show("Wprowadź liczbę");
             }
         }
-
+        #endregion
+        #region metody obslugujace liczenie urodzin
         private void BDChanged(object sender, TextChangedEventArgs e)
         {
             BDChanging();
@@ -150,6 +151,7 @@ namespace Torty
                 }
             }
         }
+        #endregion
 
     }
 }
