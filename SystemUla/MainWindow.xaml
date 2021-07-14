@@ -5,8 +5,31 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SystemUla"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="587.295">
     <Grid>
-        
+        <GroupBox Header="Przydział pracy robotnicom" HorizontalAlignment="Left" Height="107" Margin="10,10,0,0" VerticalAlignment="Top" Width="364">
+            <Grid HorizontalAlignment="Left" Height="99" Margin="0,-11,-2,0" VerticalAlignment="Top" Width="354">
+                <ComboBox x:Name="Combo" HorizontalAlignment="Left" Margin="10,40,0,0" VerticalAlignment="Top" Width="192">
+                    <ComboBoxItem></ComboBoxItem>
+                </ComboBox>
+                <Label Content="Zadanie robotnicy" HorizontalAlignment="Left" Margin="10,14,0,0" VerticalAlignment="Top" Width="192"/>
+                <Button Content="Przypisz tę pracę pszczole" HorizontalAlignment="Left" Margin="10,67,0,0" VerticalAlignment="Top" Width="334"/>
+                <TextBox x:Name="" HorizontalAlignment="Left" Height="23" Margin="207,39,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="137"/>
+                <Label Content="Zmiany" HorizontalAlignment="Left" Margin="207,14,0,0" VerticalAlignment="Top" Width="137"/>
+            </Grid>
+        </GroupBox>
+        <Button HorizontalAlignment="Left" Margin="379,20,0,0" VerticalAlignment="Top" Width="190" Height="97" FontSize="23">
+            <TextBlock TextWrapping="Wrap" Text="Przepracuj następną zmianę" HorizontalAlignment="Left" VerticalAlignment="Center" Width="116" TextAlignment="Center"/>
+        </Button>
+        <RichTextBox x:Name="Rich" HorizontalAlignment="Left" Height="287" Margin="10,122,0,0" VerticalAlignment="Top" Width="559">
+            <FlowDocument>
+                <Paragraph>
+                    <Run Text="RichTextBox"/>
+                    <LineBreak/>
+                    <Run Text="druga linijka"/>
+                </Paragraph>
+            </FlowDocument>
+        </RichTextBox>
+
     </Grid>
 </Window>
