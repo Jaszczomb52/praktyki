@@ -13,7 +13,7 @@ namespace SystemUla
 
         private string[] jobsICanDo;
         private int shiftsToWork;
-        private int shiftsWorked = 0;
+        private int shiftsWorked;
         
         public Worker(string[] jobs)
         {
@@ -22,12 +22,32 @@ namespace SystemUla
 
         public bool DoThisJob(string job, int shift)
         {
-            for(int i = 0;i<2;i++)
+            if(!String.IsNullOrEmpty(job))
             {
-                if(jobsICanDo[i] == job)
+                for(int i = 0;i<jobsICanDo.Length;i++)
                 {
-                    shiftsToWork = shift;
-                    CurrentJob = job;
+                    if(jobsICanDo[i] == job)
+                    {
+                        shiftsToWork = shift;
+                        CurrentJob = job;
+                        shiftsWorked = 0;
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+        public bool DidYouFinish()
+        {
+            if(!String.IsNullOrEmpty(CurrentJob ))
+            {
+                shiftsWorked++;
+                if(shiftsWorked>shiftsToWork)
+                {
+                    shiftsWorked = 0;
+                    shiftsToWork = 0;
+                    CurrentJob = "";
                     return true;
                 }
             }

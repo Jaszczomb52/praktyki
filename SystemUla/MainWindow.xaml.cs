@@ -32,5 +32,22 @@ namespace SystemUla
                 "Pielęgnacja jaj", "Nauczanie pszczółek", "Utrzymywanie ula", "Patrol" });
             queen = new Queen(workers);
         }
+        
+        private void NexShiftButton(object sender, RoutedEventArgs e)
+        {
+            queen.WorkTheNextShift(int.Parse(Shift.Text));
+        }
+
+        private void AssignJobClick(object sender, RoutedEventArgs e)
+        {
+            if (queen.AssignWork(Combo.SelectedItem.ToString(), int.Parse(Shift.Text)) == false)
+            {
+                MessageBox.Show("Brak robotnic mogacych wykonac zadanie");
+            }
+            else
+            {
+                MessageBox.Show("Zadanie zlecone");
+            }
+        }
     }
 }
