@@ -14,6 +14,11 @@ namespace SystemUla
         private string[] jobsICanDo;
         private int shiftsToWork;
         private int shiftsWorked;
+        
+        public Worker(string[] jobs)
+        {
+            jobsICanDo = jobs;
+        }
 
         private void DoThisJob()
         {

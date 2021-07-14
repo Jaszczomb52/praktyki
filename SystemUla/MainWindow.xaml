@@ -9,8 +9,13 @@
     <Grid>
         <GroupBox Header="Przydział pracy robotnicom" HorizontalAlignment="Left" Height="107" Margin="10,10,0,0" VerticalAlignment="Top" Width="364">
             <Grid HorizontalAlignment="Left" Height="99" Margin="0,-11,-2,0" VerticalAlignment="Top" Width="354">
-                <ComboBox x:Name="Combo" HorizontalAlignment="Left" Margin="10,40,0,0" VerticalAlignment="Top" Width="192">
-                    <ComboBoxItem></ComboBoxItem>
+                <ComboBox x:Name="Combo" HorizontalAlignment="Left" Margin="10,40,0,0" VerticalAlignment="Top" Width="192" SelectedIndex="0">
+                    <ComboBoxItem>Zbieranie nektaru</ComboBoxItem>
+                    <ComboBoxItem>Wytwarzanie miodu</ComboBoxItem>
+                    <ComboBoxItem>Pielęgnacja jaj</ComboBoxItem>
+                    <ComboBoxItem>Nauczanie pszczółek</ComboBoxItem>
+                    <ComboBoxItem>Utrzymywanie ula</ComboBoxItem>
+                    <ComboBoxItem>Patrol</ComboBoxItem>
                 </ComboBox>
                 <Label Content="Zadanie robotnicy" HorizontalAlignment="Left" Margin="10,14,0,0" VerticalAlignment="Top" Width="192"/>
                 <Button Content="Przypisz tę pracę pszczole" HorizontalAlignment="Left" Margin="10,67,0,0" VerticalAlignment="Top" Width="334"/>
