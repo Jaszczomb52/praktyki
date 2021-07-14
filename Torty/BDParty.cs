@@ -29,7 +29,7 @@ namespace Torty
 
         private void HowMuch()
         {
-            Cost = (NumberOfPeople * costOfFood) + Decorations;
+            Cost = (NumberOfPeople * costOfFood) + Decorations + Over12;
             if(NumberOfPeople <= 4)
             {
                 CakeSize = 20;

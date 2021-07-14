@@ -12,6 +12,7 @@ namespace Torty
         protected decimal Decorations { get; set; }
         protected decimal FoodPricePerPerson = 25.00M;
         protected decimal Cost { get; set; }
+        protected decimal Over12 { get; set; }
         public AnyParty(int NumberOfPeople, bool Decorations)
         {
             this.NumberOfPeople = NumberOfPeople;
@@ -26,6 +27,14 @@ namespace Torty
             else
             {
                 Decorations = (NumberOfPeople * 7.50M) + 30M;
+            }
+            if(NumberOfPeople > 12)
+            {
+                Over12 = 100.00M;
+            }
+            else
+            {
+                Over12 = 0;
             }
         }
         public decimal GetThePrice()
