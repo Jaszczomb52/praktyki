@@ -10,9 +10,9 @@ namespace Torty
     {
         private const int foodPerPerson = 25;
         private int numberOfPeople = 0;
-        private decimal drinksPerPerson = 0;
-        private decimal decorations = 0;
-        private decimal cost = 0;
+        private decimal drinksPerPerson = 0.00M;
+        private decimal decorations = 0.00M;
+        private decimal cost = 0.00M;
         
 
         public Party(int NumberOfPeople, bool Decorations, bool Health)
@@ -32,7 +32,7 @@ namespace Torty
         {
             if(fancy)
             {
-                decorations = (this.numberOfPeople * 15.00M) + 50M;
+                decorations = (numberOfPeople * 15.00M) + 50M;
             }
             else
             {
@@ -57,7 +57,7 @@ namespace Torty
             cost = decorations + ((drinksPerPerson + foodPerPerson) * numberOfPeople);
             if(health)
             {
-                cost *= .95M;
+                Math.Round(cost * 0.95M,2);
             }
         }
 
