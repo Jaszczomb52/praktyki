@@ -6,38 +6,23 @@ using System.Threading.Tasks;
 
 namespace Torty
 {
-    class Party
+    class Party : AnyParty
     {
-        private const int foodPerPerson = 25;
-        private int numberOfPeople = 0;
+        protected const int foodPerPerson = 25;
         private decimal drinksPerPerson = 0.00M;
-        private decimal decorations = 0.00M;
-        private decimal cost = 0.00M;
         
 
-        public Party(int NumberOfPeople, bool Decorations, bool Health)
+        public Party(int NumberOfPeople, bool Decorations, bool Health):base(NumberOfPeople,Decorations)
         {
             Refresh(NumberOfPeople, Decorations, Health);
         }
 
         public void Refresh(int NumberOfPeople, bool Decorations, bool Health)
         {
-            numberOfPeople = NumberOfPeople;
+            this.NumberOfPeople = NumberOfPeople;
             CalculateDecorations(Decorations);
             CalculateCostPerPerson(Health);
             HowMuch(Health);
-        }
-
-        private void CalculateDecorations(bool fancy)
-        {
-            if(fancy)
-            {
-                decorations = (numberOfPeople * 15.00M) + 50M;
-            }
-            else
-            {
-                decorations = (numberOfPeople * 7.50M) + 30M;
-            }
         }
 
         private void CalculateCostPerPerson(bool health)
@@ -54,16 +39,11 @@ namespace Torty
 
         private void HowMuch(bool health)
         {
-            cost = decorations + ((drinksPerPerson + foodPerPerson) * numberOfPeople);
+            Cost = Decorations + ((drinksPerPerson + foodPerPerson) * NumberOfPeople);
             if(health)
             {
-                Math.Round(cost * 0.95M,2);
+                Cost *= .95M;
             }
-        }
-
-        public decimal GetThePrice()
-        {
-            return cost;
         }
     }
 }

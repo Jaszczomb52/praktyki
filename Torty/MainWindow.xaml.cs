@@ -21,6 +21,7 @@ namespace Torty
     public partial class MainWindow : Window
     {
         Party party;
+        BDParty BDparty;
 
         public MainWindow()
         {
@@ -42,15 +43,15 @@ namespace Torty
             try
             {
                 int numberOfPeople = int.Parse(Text.Text);
-                bool DecorCheck = check2.IsChecked.Value;
-                bool HealthCheck = check1.IsChecked.Value;
+                bool decorCheck = check2.IsChecked.Value;
+                bool healthCheck = check1.IsChecked.Value;
                 if (party == null)
                 {
-                    party = new Party(numberOfPeople, DecorCheck, HealthCheck);
+                    party = new Party(numberOfPeople, decorCheck, healthCheck);
                 }
                 else
                 {
-                    party.Refresh(numberOfPeople, DecorCheck, HealthCheck);
+                    party.Refresh(numberOfPeople, decorCheck, healthCheck);
                 }
                 Price.Text = party.GetThePrice().ToString();
             }
@@ -59,5 +60,96 @@ namespace Torty
                 MessageBox.Show("Wprowadź liczbę");
             }
         }
+
+        private void BDChanged(object sender, TextChangedEventArgs e)
+        {
+            BDChanging();
+        }
+
+        private void BDChangedCheck(object sender, RoutedEventArgs e)
+        {
+            BDChanging();
+        }
+
+        private void BDCake(object sender, TextChangedEventArgs e)
+        {
+            TextForCake();
+            if ((string)CakeText.Content != "ZBYT DŁUGI")
+                BDChanging();
+        }
+
+        private void BDChanging()
+        {
+            try
+            {
+                int numberOfPeople = int.Parse(NumberOfPersons.Text);
+                bool decorCheck = Check3.IsChecked.Value;
+                string cakeText = CakeTextBox.Text;
+                if(BDparty == null)
+                {
+                    BDparty = new BDParty(numberOfPeople, decorCheck, cakeText, BDParty.CakeTextCheck(numberOfPeople));
+                }
+                else
+                {
+                    BDparty.Refresh(numberOfPeople, decorCheck, cakeText, BDParty.CakeTextCheck(numberOfPeople));
+                }
+                BDPrice.Text = BDparty.GetThePrice().ToString();
+                
+            }
+            catch(Exception)
+            {
+                MessageBox.Show("Najpierw wprowadz poprawna ilosc osob");
+            }
+        }
+
+        private void TextForCake()
+        {
+            if(BDparty == null)
+            {
+                MessageBox.Show("Najpierw wpisz liczbe osob");
+            }
+            else
+            {
+                try
+                {
+                TextParse();
+                }
+                catch(Exception)
+                {
+                    MessageBox.Show("Błąd podczas zapisywania tekstu");
+                }
+            }
+        }
+
+        private void TextParse()
+        {
+            if(BDparty.ReturnCakeSize() == 20)
+            {
+                if(CakeTextBox.Text.Length <= 16)
+                {
+                    CakeText.Background = Brushes.Transparent;
+                    CakeText.Content = CakeTextBox.Text;
+                }
+                else
+                {
+                    CakeText.Background = Brushes.Red;
+                    CakeText.Content = "ZBYT DŁUGI";
+                }
+            }
+            else
+            {
+                if(CakeTextBox.Text.Length <= 40)
+                {
+                    CakeText.Background = Brushes.Transparent;
+                    CakeText.Content = CakeTextBox.Text;
+                }
+                else
+                {
+                    CakeText.Background = Brushes.Red;
+                    CakeText.Content = "ZBYT DŁUGI";
+                }
+            }
+        }
+
     }
 }

@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Torty"
         mc:Ignorable="d"
-        Title="MainWindow" Height="172.131" Width="277.459">
-    <Grid>
-        <TabControl HorizontalAlignment="Left" Height="141" VerticalAlignment="Top" Width="269">
+        Title="MainWindow" Height="172.131" Width="392.459">
+    <Grid Margin="0,0,2,1">
+        <TabControl HorizontalAlignment="Left" Height="141" VerticalAlignment="Top" Width="382" Margin="0,0,0,-1">
             <TabItem Header="Obiad" Margin="-2,-2,-58,0">
                 <Grid Background="#FFE5E5E5" Margin="0,0,-1,-2">
                     <TextBox x:Name="Text"  HorizontalAlignment="Left" Height="23" Margin="12,13,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextChanged="Changed"/>
@@ -19,7 +19,16 @@
                 </Grid>
             </TabItem>
             <TabItem Header="Urodziny" Margin="58,0,-97,-2">
-                <Grid Background="#FFE5E5E5"/>
+                <Grid Background="#FFE5E5E5">
+                    <Label Content="Liczba osob" HorizontalAlignment="Left" VerticalAlignment="Top" Height="26" Width="74"/>
+                    <TextBox x:Name="NumberOfPersons" HorizontalAlignment="Left" Height="23" Margin="0,26,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="74" TextChanged="BDChanged"/>
+                    <CheckBox x:Name="Check3" Content="Fantazyjne dekoracje" HorizontalAlignment="Left" Margin="0,54,0,0" VerticalAlignment="Top" Click="BDChangedCheck"/>
+                    <Label Content="Napis na torcie:" HorizontalAlignment="Left" VerticalAlignment="Top" Height="26" Width="137" Margin="126,0,0,0"/>
+                    <TextBox x:Name="CakeTextBox" HorizontalAlignment="Left" Height="23" Margin="135,49,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="197" TextChanged="BDCake"/>
+                    <TextBox x:Name="BDPrice" HorizontalAlignment="Left" Height="23" Margin="179,80,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="74" IsEnabled="False"/>
+                    <Label Content="Koszt:" HorizontalAlignment="Left" VerticalAlignment="Top" Height="26" Width="48" Margin="126,77,0,0"/>
+                    <Label x:Name="CakeText" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Height="26" Width="250" Margin="126,23,0,0" Foreground="Black" Background="{x:Null}"/>
+                </Grid>
             </TabItem>
         </TabControl>
 
