@@ -9,7 +9,7 @@ namespace SystemUla
     class Worker
     {
         public string CurrentJob { set; get; }
-        public int ShiftLefts { set; get; }
+        public int ShiftsLeft { set; get; }
 
         private string[] jobsICanDo;
         private int shiftsToWork;
@@ -43,6 +43,7 @@ namespace SystemUla
             if(!String.IsNullOrEmpty(CurrentJob ))
             {
                 shiftsWorked++;
+                ShiftsLeft = shiftsToWork - shiftsWorked;
                 if(shiftsWorked>shiftsToWork)
                 {
                     shiftsWorked = 0;
@@ -52,11 +53,6 @@ namespace SystemUla
                 }
             }
             return false;
-        }
-
-        public void WorkOneShift()
-        {
-
         }
     }
 }

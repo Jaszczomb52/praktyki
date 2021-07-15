@@ -9,12 +9,12 @@ namespace SystemUla
     class Queen
     {
         private Worker[] workers = new Worker[4];
-        private int shiftNumber = 0;
+        private int shiftNumber;
 
         public Queen(Worker[] workers)
         {
             this.workers = workers;
-            shiftNumber = 1;
+            shiftNumber = 0;
         }
 
         public bool AssignWork(string job, int shift)
@@ -29,10 +29,10 @@ namespace SystemUla
             return false;
         }
 
-        public string WorkTheNextShift(int shift)
+        public string WorkTheNextShift()
         {
             shiftNumber++;
-            string report = "Raport zmiany nr " + shift + "\r\n";
+            string report = "Raport zmiany nr " + shiftNumber + "\r\n";
             for(int i=0;i<workers.Length;i++)
             {
                 if (workers[i].DidYouFinish())
@@ -40,9 +40,9 @@ namespace SystemUla
                 if (String.IsNullOrEmpty(workers[i].CurrentJob)) 
                     report += "Robotnica nr " + (i + 1) + " nie pracuje \r\n";
                 else
-                    if (workers[i].ShiftLefts > 0)
-                    report += "Robotnica nr " + (i + 1) + " robi " + workers[i].CurrentJob + " przez jeszcze " + workers[i].ShiftLefts + " zmian/y\r\n";
-                else
+                    if (workers[i].ShiftsLeft > 0)
+                    report += "Robotnica nr " + (i + 1) + " robi " + workers[i].CurrentJob + " przez jeszcze " + workers[i].ShiftsLeft + " zmian/y\r\n";
+                    else
                     report += "Robotnica nr " + (i + 1) + " zakończy " + workers[i].CurrentJob + " po tej zmianie \r\n";
             }
             return report;

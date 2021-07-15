@@ -26,13 +26,7 @@
         <Button HorizontalAlignment="Left" Margin="379,20,0,0" VerticalAlignment="Top" Width="190" Height="97" FontSize="23" Click="NexShiftButton">
             <TextBlock TextWrapping="Wrap" Text="Przepracuj następną zmianę" HorizontalAlignment="Left" VerticalAlignment="Center" Width="116" TextAlignment="Center"/>
         </Button>
-        <RichTextBox x:Name="Rich" HorizontalAlignment="Left" Height="287" Margin="10,122,0,0" VerticalAlignment="Top" Width="559">
-            <FlowDocument>
-                <Paragraph>
-                    <Run Text="RichTextBox"/>
-                </Paragraph>
-            </FlowDocument>
-        </RichTextBox>
+        <TextBox x:Name="Rich" HorizontalAlignment="Left" Height="287" Margin="10,122,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="559"/>
 
     </Grid>
 </Window>

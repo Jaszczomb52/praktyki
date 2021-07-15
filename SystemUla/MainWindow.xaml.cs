@@ -35,18 +35,29 @@ namespace SystemUla
         
         private void NexShiftButton(object sender, RoutedEventArgs e)
         {
-            queen.WorkTheNextShift(int.Parse(Shift.Text));
+            string raport = queen.WorkTheNextShift();
+            Rich.Text = raport;
         }
 
         private void AssignJobClick(object sender, RoutedEventArgs e)
         {
-            if (queen.AssignWork(Combo.SelectedItem.ToString(), int.Parse(Shift.Text)) == false)
+            if (Shift.Text != "")
             {
-                MessageBox.Show("Brak robotnic mogacych wykonac zadanie");
-            }
-            else
-            {
-                MessageBox.Show("Zadanie zlecone");
+                try
+                {
+                    if (queen.AssignWork(Combo.Text, int.Parse(Shift.Text)) == false)
+                    {
+                        MessageBox.Show("Brak robotnic mogacych wykonac zadanie");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Zadanie zlecone");
+                    }
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Wprowadz liczbe w pole zmiany");
+                }
             }
         }
     }
