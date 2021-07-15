@@ -20,17 +20,17 @@ namespace SystemUla
     /// </summary>
     public partial class MainWindow : Window
     {
-        Queen queen;
+        readonly Queen queen;
         public MainWindow()
         {
             InitializeComponent();
             Worker[] workers = new Worker[4];
-            workers[0] = new Worker(new string[] { "Zbieranie nektaru", "Wytwarzanie miodu" });
-            workers[1] = new Worker(new string[] { "Pielęgnacja jaj", "Nauczanie pszczółek" });
-            workers[2] = new Worker(new string[] { "Utrzymywanie ula", "Patrol" });
+            workers[0] = new Worker(new string[] { "Zbieranie nektaru", "Wytwarzanie miodu" }, 175);
+            workers[1] = new Worker(new string[] { "Pielęgnacja jaj", "Nauczanie pszczółek" }, 114);
+            workers[2] = new Worker(new string[] { "Utrzymywanie ula", "Patrol" }, 149);
             workers[3] = new Worker(new string[] { "Zbieranie nektaru", "Wytwarzanie miodu", 
-                "Pielęgnacja jaj", "Nauczanie pszczółek", "Utrzymywanie ula", "Patrol" });
-            queen = new Queen(workers);
+                "Pielęgnacja jaj", "Nauczanie pszczółek", "Utrzymywanie ula", "Patrol" }, 155);
+            queen = new Queen(workers, 275);
         }
         
         private void NexShiftButton(object sender, RoutedEventArgs e)

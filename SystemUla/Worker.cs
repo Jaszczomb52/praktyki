@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 
 namespace SystemUla
 {
-    class Worker
+    class Worker : Bee
     {
-        public string CurrentJob { set; get; }
-        public int ShiftsLeft { set; get; }
+        public string CurrentJob { private set; get; }
+        public int ShiftsLeft { private set; get; }
 
-        private string[] jobsICanDo;
+        readonly private string[] jobsICanDo;
         private int shiftsToWork;
         private int shiftsWorked;
         
-        public Worker(string[] jobs)
+        public Worker(string[] jobs, double weightMg):base(weightMg)
         {
             jobsICanDo = jobs;
         }
@@ -53,6 +53,14 @@ namespace SystemUla
                 }
             }
             return false;
+        }
+
+        public override double HoneyConsumptionRate()
+        {
+            if (shiftsToWork > 0)
+                return base.HoneyConsumptionRate() + 0.65 * shiftsWorked;
+            else
+                return base.HoneyConsumptionRate();
         }
     }
 }
