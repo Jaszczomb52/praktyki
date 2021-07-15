@@ -49,7 +49,11 @@ namespace SystemUla
             }
             honeyConsumption += HoneyPerMg;
             report += "Całkowite spożycie miodu: " + honeyConsumption + " jednostek\r\n";
-            return report;
+            return report;   
+        }
+        private void DefendTheHive(IStingPatrol patroller)
+        {
+
         }
     }
 }

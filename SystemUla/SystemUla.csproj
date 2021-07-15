@@ -56,7 +56,12 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Bee.cs" />
+    <Compile Include="INectarCollector.cs" />
+    <Compile Include="IStingPatrol.cs" />
+    <Compile Include="NectarCollector.cs" />
+    <Compile Include="NectarStinger.cs" />
     <Compile Include="Queen.cs" />
+    <Compile Include="Patrol.cs" />
     <Compile Include="Worker.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
