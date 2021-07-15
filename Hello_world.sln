@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Przyjecia", "Torty\Przyjeci
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SystemUla", "SystemUla\SystemUla.csproj", "{C2A9F158-B00D-42B6-AC97-760483930D7F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClownApp", "ClownApp\ClownApp.csproj", "{E4440151-ED28-4C34-9492-4971FFFAA499}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -127,6 +129,26 @@ Global
 		{C2A9F158-B00D-42B6-AC97-760483930D7F}.Release|x64.Build.0 = Release|Any CPU
 		{C2A9F158-B00D-42B6-AC97-760483930D7F}.Release|x86.ActiveCfg = Release|Any CPU
 		{C2A9F158-B00D-42B6-AC97-760483930D7F}.Release|x86.Build.0 = Release|Any CPU
+		{E4440151-ED28-4C34-9492-4971FFFAA499}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4440151-ED28-4C34-9492-4971FFFAA499}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4440151-ED28-4C34-9492-4971FFFAA499}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{E4440151-ED28-4C34-9492-4971FFFAA499}.Debug|ARM.Build.0 = Debug|Any CPU
+		{E4440151-ED28-4C34-9492-4971FFFAA499}.Debug|ARM64.ActiveCfg = Debug|Any CPU
+		{E4440151-ED28-4C34-9492-4971FFFAA499}.Debug|ARM64.Build.0 = Debug|Any CPU
+		{E4440151-ED28-4C34-9492-4971FFFAA499}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{E4440151-ED28-4C34-9492-4971FFFAA499}.Debug|x64.Build.0 = Debug|Any CPU
+		{E4440151-ED28-4C34-9492-4971FFFAA499}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{E4440151-ED28-4C34-9492-4971FFFAA499}.Debug|x86.Build.0 = Debug|Any CPU
+		{E4440151-ED28-4C34-9492-4971FFFAA499}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4440151-ED28-4C34-9492-4971FFFAA499}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E4440151-ED28-4C34-9492-4971FFFAA499}.Release|ARM.ActiveCfg = Release|Any CPU
+		{E4440151-ED28-4C34-9492-4971FFFAA499}.Release|ARM.Build.0 = Release|Any CPU
+		{E4440151-ED28-4C34-9492-4971FFFAA499}.Release|ARM64.ActiveCfg = Release|Any CPU
+		{E4440151-ED28-4C34-9492-4971FFFAA499}.Release|ARM64.Build.0 = Release|Any CPU
+		{E4440151-ED28-4C34-9492-4971FFFAA499}.Release|x64.ActiveCfg = Release|Any CPU
+		{E4440151-ED28-4C34-9492-4971FFFAA499}.Release|x64.Build.0 = Release|Any CPU
+		{E4440151-ED28-4C34-9492-4971FFFAA499}.Release|x86.ActiveCfg = Release|Any CPU
+		{E4440151-ED28-4C34-9492-4971FFFAA499}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

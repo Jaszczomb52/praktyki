@@ -19,9 +19,9 @@ namespace SystemUla
         {
             return true;
         }
-        public int SharpenStinger(int Length)
+        public bool SharpenStinger(int Length)
         {
-            return 0;
+            return true;
         }
         public void FindFlowers()
         {
