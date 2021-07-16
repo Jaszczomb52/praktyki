@@ -22,12 +22,6 @@ namespace Dom
         public Map()
         {
             InitializeComponent();
-            Ellipse[] waypoints = {garageWaypoint,diningWaypoint,kitchenWaypoint,livingRoomWaypoint,betweenWaypoint,
-                shedWaypoint,stashWaypoint,westWaypoint,eastWaypoint,gardenWaypoint };
-            for(int i=0;i<waypoints.Length;i++)
-            {
-                waypoints[i].Visibility = Visibility.Hidden;
-            }
         }
     }
 }

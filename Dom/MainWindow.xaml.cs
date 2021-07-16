@@ -21,8 +21,7 @@ namespace Dom
     /// </summary>
     public partial class MainWindow : Window
     {
-        Map map = new Map();
-
+       
         Location currentLocation;
 
         RoomWithDoor livingRoom;
@@ -44,22 +43,29 @@ namespace Dom
             InitializeComponent();
             CreateObjects();
             MoveToANewLocation(livingRoom);
+
+            Ellipse[] waypoints = {garageWaypoint, diningWaypoint,kitchenWaypoint,betweenWaypoint,
+                shedWaypoint,stashWaypoint,westWaypoint,eastWaypoint,gardenWaypoint };
+            for (int i = 0; i < waypoints.Length; i++)
+            {
+                waypoints[i].Visibility = Visibility.Hidden;
+            }
         }
 
         private void CreateObjects()
         {
-            livingRoom = new RoomWithDoor("Salon", "dywan", "dębowe drzwi z mosiężną klamką",map.livingRoomWaypoint);
-            diningRoom = new Room("Jadalnia", "stół z krzesłami",map.diningWaypoint);
-            kitchen = new RoomWithDoor("Kuchnia", "sztućce", "rozsuwane drzwi",map.kitchenWaypoint);
-            garage = new RoomWithTunel("Garaż", "narzędzia","studzienka kanalizacyjna",map.garageWaypoint);
+            livingRoom = new RoomWithDoor("Salon", "dywan", "dębowe drzwi z mosiężną klamką",livingRoomWaypoint);
+            diningRoom = new Room("Jadalnia", "stół z krzesłami",diningWaypoint);
+            kitchen = new RoomWithDoor("Kuchnia", "sztućce", "rozsuwane drzwi",kitchenWaypoint);
+            garage = new RoomWithTunel("Garaż", "narzędzia","studzienka kanalizacyjna",garageWaypoint);
 
-            westYard = new OutsideWithDoor("Podworko przed domem", true, "dębowe drzwi z mosiężną klamką",map.westWaypoint);
-            eastYard = new Outside("Podwórko między ogrodem a szopą", true,map.eastWaypoint);
-            betweenYard = new OutsideWithDoor("Podwórko za domem", true, "rozsuwane drzwi",map.betweenWaypoint);
-            garden = new OutsideWithTunel("Ogród", true, "Między krzakami żywopłotu widać dziurę",map.gardenWaypoint);
+            westYard = new OutsideWithDoor("Podworko przed domem", true, "dębowe drzwi z mosiężną klamką",westWaypoint);
+            eastYard = new Outside("Podwórko między ogrodem a szopą", true,eastWaypoint);
+            betweenYard = new OutsideWithDoor("Podwórko za domem", true, "rozsuwane drzwi",betweenWaypoint);
+            garden = new OutsideWithTunel("Ogród", true, "Między krzakami żywopłotu widać dziurę",gardenWaypoint);
 
-            shed = new RoomWithDoor("Szopa", "na podłodze leżą rozrzucone narzędzia", "drewniane drzwi z kłódką",map.shedWaypoint);
-            stashRoom = new RoomWithTunel("Składzik", "miotły w rogu", "W podłodze wybita jest dziura",map.stashWaypoint);
+            shed = new RoomWithDoor("Szopa", "na podłodze leżą rozrzucone narzędzia", "drewniane drzwi z kłódką",shedWaypoint);
+            stashRoom = new RoomWithTunel("Składzik", "miotły w rogu", "W podłodze wybita jest dziura",stashWaypoint);
 
             diningRoom.Exits = new Location[] { livingRoom, kitchen };
             livingRoom.Exits = new Location[] { diningRoom, garage };
@@ -114,6 +120,7 @@ namespace Dom
             if (currentLocation is IHasHole)
             {
                 tunelGoTo.Visibility = Visibility.Visible;
+                tunels.Visibility = Visibility.Visible;
                 for (int i = 0; i < currentLocation.Tunels.Length; i++)
                 {
                     tunels.Items.Add(currentLocation.Tunels[i].Name);
@@ -122,6 +129,7 @@ namespace Dom
             }
             else
             {
+                tunels.Visibility = Visibility.Hidden;
                 tunelGoTo.Visibility = Visibility.Hidden;
             }
         }
@@ -129,18 +137,12 @@ namespace Dom
         private void goHereClick(object sender, RoutedEventArgs e)
         {
             MoveToANewLocation(currentLocation.Exits[exits.SelectedIndex]);
-            Thread.Sleep(500);
         }
 
         private void goThroughClick(object sender, RoutedEventArgs e)
         {
             IHasExteriorDoor hasDoor = currentLocation as IHasExteriorDoor;
             MoveToANewLocation(hasDoor.DoorLocation);
-        }
-
-        private void showMapClick(object sender, RoutedEventArgs e)
-        {
-            map.Visibility = Visibility.Visible;
         }
 
         private void goHereTunelClick(object sender, RoutedEventArgs e)

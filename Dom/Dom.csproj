@@ -59,9 +59,6 @@
     <Compile Include="IHasHideout.cs" />
     <Compile Include="IHasHole.cs" />
     <Compile Include="IHasTwoDoors.cs" />
-    <Compile Include="Map.xaml.cs">
-      <DependentUpon>Map.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Outside.cs" />
     <Compile Include="OutsideWithDoor.cs" />
     <Compile Include="OutsideWithTunel.cs" />
@@ -81,10 +78,6 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Map.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
