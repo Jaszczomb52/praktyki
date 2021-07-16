@@ -1,0 +1,16 @@
+﻿<Window x:Class="Dom.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Dom"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="400" Width="463">
+    <Grid Margin="0,0,0,-3">
+        <TextBox x:Name="description" HorizontalAlignment="Left" Height="293" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="435"/>
+        <Button Content="Idź tutaj:" HorizontalAlignment="Left" Margin="10,308,0,0" VerticalAlignment="Top" Width="112" Height="22" Click="goHereClick"/>
+        <ComboBox x:Name="exits" HorizontalAlignment="Left" Margin="127,308,0,0" VerticalAlignment="Top" Width="318"/>
+        <Button x:Name="goThrough" Content="Przejdź przez drzwi" HorizontalAlignment="Left" Margin="10,335,0,0" VerticalAlignment="Top" Width="435" Height="23" Click="goThroughClick"/>
+
+    </Grid>
+</Window>

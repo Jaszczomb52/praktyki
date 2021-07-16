@@ -27,7 +27,7 @@ namespace ClownApp
             {
                 this.funnyThings = funnyThings;
             }
-            private string funnyThings;
+            protected string funnyThings;
             public string FunnyThings
             {
                 get { return "cześć, mam " + funnyThings; }
@@ -52,7 +52,7 @@ namespace ClownApp
             }
             public void Scare()
             {
-                Console.WriteLine("Bu.");
+                Console.WriteLine("BNie możesz ,oeć mojego " + base.funnyThings);
             }
         }
 
