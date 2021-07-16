@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Shapes;
 
 namespace Dom
 {
     class Outside : Location
     {
         private bool hot;
-        public Outside(string name, bool hot):base(name)
+        public Outside(string name, bool hot, Ellipse waypoint):base(name, waypoint)
         {
             this.hot = hot;
         }

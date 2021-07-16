@@ -3,18 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Shapes;
 
 namespace Dom
 {
     abstract class Location
     {
         public string Name { get; private set; }
+        public Ellipse waypoint { get; private set; }
         public Location[] Exits;
+        public Location[] Tunels;
 
 
-        public Location(string name)
+        public Location(string name, Ellipse waypoint)
         {
             Name = name;
+            this.waypoint = waypoint;
         }
 
         public virtual string Description

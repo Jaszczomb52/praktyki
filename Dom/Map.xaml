@@ -1,0 +1,23 @@
+﻿<Window x:Class="Dom.Map"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Dom"
+        mc:Ignorable="d"
+        Title="Map" Height="450" Width="800" ResizeMode="NoResize">
+    <Grid>
+        <Image HorizontalAlignment="Left" Height="399" Margin="10,10,0,0" VerticalAlignment="Top" Width="772" Source="mapa.png"/>
+        <Ellipse x:Name="livingRoomWaypoint" Fill="Red" HorizontalAlignment="Left" Height="11" Margin="213,114,0,0" Stroke="Black" VerticalAlignment="Top" Width="11"/>
+        <Ellipse x:Name="kitchenWaypoint" Fill="Red" HorizontalAlignment="Left" Height="11" Margin="252,167,0,0" Stroke="Black" VerticalAlignment="Top" Width="11"/>
+        <Ellipse x:Name="garageWaypoint" Fill="Red" HorizontalAlignment="Left" Height="11" Margin="252,55,0,0" Stroke="Black" VerticalAlignment="Top" Width="11"/>
+        <Ellipse x:Name="diningWaypoint" Fill="Red" HorizontalAlignment="Left" Height="11" Margin="286,128,0,0" Stroke="Black" VerticalAlignment="Top" Width="11"/>
+        <Ellipse x:Name="westWaypoint" Fill="Red" HorizontalAlignment="Left" Height="11" Margin="110,320,0,0" Stroke="Black" VerticalAlignment="Top" Width="11"/>
+        <Ellipse x:Name="gardenWaypoint" Fill="Red" HorizontalAlignment="Left" Height="11" Margin="307,339,0,0" Stroke="Black" VerticalAlignment="Top" Width="11"/>
+        <Ellipse x:Name="eastWaypoint" Fill="Red" HorizontalAlignment="Left" Height="11" Margin="591,310,0,0" Stroke="Black" VerticalAlignment="Top" Width="11"/>
+        <Ellipse x:Name="betweenWaypoint" Fill="Red" HorizontalAlignment="Left" Height="11" Margin="421,114,0,0" Stroke="Black" VerticalAlignment="Top" Width="11"/>
+        <Ellipse x:Name="shedWaypoint" Fill="Red" HorizontalAlignment="Left" Height="11" Margin="624,75,0,0" Stroke="Black" VerticalAlignment="Top" Width="11"/>
+        <Ellipse x:Name="stashWaypoint" Fill="Red" HorizontalAlignment="Left" Height="11" Margin="647,156,0,0" Stroke="Black" VerticalAlignment="Top" Width="11"/>
+
+    </Grid>
+</Window>
