@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Dom
 {
-    interface IHasHideout
+    interface IHasHidingSpot
     {
-        string hideoutDescription { get; }
+        string hidingSpotDescription { get; }
     }
 }

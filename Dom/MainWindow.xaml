@@ -13,7 +13,7 @@
         <Button x:Name="goThrough" Content="Przejdź przez drzwi" HorizontalAlignment="Left" Margin="10,335,0,0" VerticalAlignment="Top" Width="435" Height="23" Click="goThroughClick"/>
         <Button x:Name="tunelGoTo" Content="Przeskocz tu:" HorizontalAlignment="Left" Margin="10,363,0,0" VerticalAlignment="Top" Width="112" Height="22" Click="goHereTunelClick"/>
         <ComboBox x:Name="tunels" HorizontalAlignment="Left" Margin="127,363,0,0" VerticalAlignment="Top" Width="318"/>
-        <Image HorizontalAlignment="Left" Height="403" Margin="450,10,-94,0" VerticalAlignment="Top" Width="772" Source="mapa.png"/>
+        <Image HorizontalAlignment="Left" Height="403" Margin="450,10,0,0" VerticalAlignment="Top" Width="720" Source="mapa.png"/>
         <Ellipse x:Name="livingRoomWaypoint" Fill="Red" HorizontalAlignment="Left" Height="11" Margin="656,116,0,0" Stroke="Black" VerticalAlignment="Top" Width="11"/>
         <Ellipse x:Name="kitchenWaypoint" Fill="Red" HorizontalAlignment="Left" Height="11" Margin="695,169,0,0" Stroke="Black" VerticalAlignment="Top" Width="11"/>
         <Ellipse x:Name="garageWaypoint" Fill="Red" HorizontalAlignment="Left" Height="11" Margin="695,57,0,0" Stroke="Black" VerticalAlignment="Top" Width="11"/>
@@ -24,6 +24,8 @@
         <Ellipse x:Name="betweenWaypoint" Fill="Red" HorizontalAlignment="Left" Height="11" Margin="864,116,0,0" Stroke="Black" VerticalAlignment="Top" Width="11"/>
         <Ellipse x:Name="shedWaypoint" Fill="Red" HorizontalAlignment="Left" Height="11" Margin="1067,77,0,0" Stroke="Black" VerticalAlignment="Top" Width="11"/>
         <Ellipse x:Name="stashWaypoint" Fill="Red" HorizontalAlignment="Left" Height="11" Margin="1090,158,0,0" Stroke="Black" VerticalAlignment="Top" Width="11"/>
+        <Button x:Name="hide" Content="Ukryj się" HorizontalAlignment="Left" Margin="10,391,0,0" VerticalAlignment="Top" Width="220" Height="22" Click="HideClick"/>
+        <Button x:Name="unhide" Content="Wyjdź z ukrycia" HorizontalAlignment="Left" Margin="235,391,0,0" VerticalAlignment="Top" Width="210" Height="22" Click="UnhideClick"/>
 
     </Grid>
 </Window>

@@ -21,7 +21,7 @@ namespace Dom
     /// </summary>
     public partial class MainWindow : Window
     {
-       
+        bool hidden = false;
         Location currentLocation;
 
         RoomWithDoor livingRoom;
@@ -60,7 +60,7 @@ namespace Dom
             garage = new RoomWithTunel("Garaż", "narzędzia","studzienka kanalizacyjna",garageWaypoint);
 
             westYard = new OutsideWithDoor("Podworko przed domem", true, "dębowe drzwi z mosiężną klamką",westWaypoint);
-            eastYard = new Outside("Podwórko między ogrodem a szopą", true,eastWaypoint);
+            eastYard = new OutsideWithHidingSpot("Podwórko między ogrodem a szopą", true, "Szafka z narzędziami",eastWaypoint);
             betweenYard = new OutsideWithDoor("Podwórko za domem", true, "rozsuwane drzwi",betweenWaypoint);
             garden = new OutsideWithTunel("Ogród", true, "Między krzakami żywopłotu widać dziurę",gardenWaypoint);
 
@@ -94,44 +94,11 @@ namespace Dom
 
         private void MoveToANewLocation(Location newLocation)
         {
-            mapWaypoints(currentLocation, newLocation);
-            currentLocation = newLocation;
-            exits.Items.Clear();
-            for( int i = 0; i<currentLocation.Exits.Length;i++)
-            {
-                exits.Items.Add(currentLocation.Exits[i].Name);
-            }
-            exits.SelectedIndex = 0;
+            LoadLocations(newLocation);
 
-            tunels.Items.Clear();
-            
-
-            description.Text = currentLocation.Description;
-
-            if(currentLocation is IHasExteriorDoor)
-            {
-                goThrough.Visibility = Visibility.Visible;
-            }
-            else
-            {
-                goThrough.Visibility = Visibility.Hidden;
-            }
-
-            if (currentLocation is IHasHole)
-            {
-                tunelGoTo.Visibility = Visibility.Visible;
-                tunels.Visibility = Visibility.Visible;
-                for (int i = 0; i < currentLocation.Tunels.Length; i++)
-                {
-                    tunels.Items.Add(currentLocation.Tunels[i].Name);
-                }
-                tunels.SelectedIndex = 0;
-            }
-            else
-            {
-                tunels.Visibility = Visibility.Hidden;
-                tunelGoTo.Visibility = Visibility.Hidden;
-            }
+            hasExtDoor();
+            hasHole();
+            hasHidingSpot();
         }
 
         private void goHereClick(object sender, RoutedEventArgs e)
@@ -156,6 +123,78 @@ namespace Dom
                 currentLocation.waypoint.Visibility = Visibility.Hidden;
             currentLocation = newLocation;
             currentLocation.waypoint.Visibility = Visibility.Visible;
+        }
+
+        private void LoadLocations(Location newLocation)
+        {
+            mapWaypoints(currentLocation, newLocation);
+            currentLocation = newLocation;
+            exits.Items.Clear();
+            for (int i = 0; i < currentLocation.Exits.Length; i++)
+            {
+                exits.Items.Add(currentLocation.Exits[i].Name);
+            }
+            exits.SelectedIndex = 0;
+
+            tunels.Items.Clear();
+
+
+            description.Text = currentLocation.Description;
+        }
+
+        private void hasExtDoor()
+        {
+            if (currentLocation is IHasExteriorDoor)
+            {
+                goThrough.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                goThrough.Visibility = Visibility.Hidden;
+            }
+        }
+
+        private void hasHole()
+        {
+            if (currentLocation is IHasHole)
+            {
+                tunelGoTo.Visibility = Visibility.Visible;
+                tunels.Visibility = Visibility.Visible;
+                for (int i = 0; i < currentLocation.Tunels.Length; i++)
+                {
+                    tunels.Items.Add(currentLocation.Tunels[i].Name);
+                }
+                tunels.SelectedIndex = 0;
+            }
+            else
+            {
+                tunels.Visibility = Visibility.Hidden;
+                tunelGoTo.Visibility = Visibility.Hidden;
+            }
+        }
+
+        private void hasHidingSpot()
+        {
+            if(currentLocation is IHasHidingSpot)
+            {
+                hide.Visibility = Visibility.Visible;
+                unhide.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                hide.Visibility = Visibility.Hidden;
+                unhide.Visibility = Visibility.Hidden;
+            }
+        }
+
+        private void HideClick(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void UnhideClick(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

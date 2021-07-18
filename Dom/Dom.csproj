@@ -56,14 +56,16 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="IHasExteriorDoor.cs" />
-    <Compile Include="IHasHideout.cs" />
+    <Compile Include="IHasHideSpot.cs" />
     <Compile Include="IHasHole.cs" />
     <Compile Include="IHasTwoDoors.cs" />
     <Compile Include="Outside.cs" />
     <Compile Include="OutsideWithDoor.cs" />
+    <Compile Include="OutsideWithHidingSpot.cs" />
     <Compile Include="OutsideWithTunel.cs" />
     <Compile Include="Room.cs" />
     <Compile Include="RoomWithDoor.cs" />
+    <Compile Include="RoomWithHidingSpot.cs" />
     <Compile Include="RoomWithTunel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
