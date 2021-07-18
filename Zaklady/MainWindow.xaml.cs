@@ -30,7 +30,7 @@ namespace Zaklady
 
         private void Load()
         {
-            // method for loading RadioButton contents
+            // method for loading RadioButton content
             RadioButton[] typyRad = { Zbychu, Stachu, Mirek };
             for(int i = 0;i<3;i++)
             typyRad[i].Content =typy[i].name + " ma " + typy[i].money + "zł";
