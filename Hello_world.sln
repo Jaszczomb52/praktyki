@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClownApp", "ClownApp\ClownA
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dom", "Dom\Dom.csproj", "{CC8C45A1-917F-44A2-9314-0B340076B12F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ducks", "Ducks\Ducks.csproj", "{B695AAF8-B85C-4A89-A2A2-0F9785DC1C49}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -171,6 +173,26 @@ Global
 		{CC8C45A1-917F-44A2-9314-0B340076B12F}.Release|x64.Build.0 = Release|Any CPU
 		{CC8C45A1-917F-44A2-9314-0B340076B12F}.Release|x86.ActiveCfg = Release|Any CPU
 		{CC8C45A1-917F-44A2-9314-0B340076B12F}.Release|x86.Build.0 = Release|Any CPU
+		{B695AAF8-B85C-4A89-A2A2-0F9785DC1C49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B695AAF8-B85C-4A89-A2A2-0F9785DC1C49}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B695AAF8-B85C-4A89-A2A2-0F9785DC1C49}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{B695AAF8-B85C-4A89-A2A2-0F9785DC1C49}.Debug|ARM.Build.0 = Debug|Any CPU
+		{B695AAF8-B85C-4A89-A2A2-0F9785DC1C49}.Debug|ARM64.ActiveCfg = Debug|Any CPU
+		{B695AAF8-B85C-4A89-A2A2-0F9785DC1C49}.Debug|ARM64.Build.0 = Debug|Any CPU
+		{B695AAF8-B85C-4A89-A2A2-0F9785DC1C49}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{B695AAF8-B85C-4A89-A2A2-0F9785DC1C49}.Debug|x64.Build.0 = Debug|Any CPU
+		{B695AAF8-B85C-4A89-A2A2-0F9785DC1C49}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B695AAF8-B85C-4A89-A2A2-0F9785DC1C49}.Debug|x86.Build.0 = Debug|Any CPU
+		{B695AAF8-B85C-4A89-A2A2-0F9785DC1C49}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B695AAF8-B85C-4A89-A2A2-0F9785DC1C49}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B695AAF8-B85C-4A89-A2A2-0F9785DC1C49}.Release|ARM.ActiveCfg = Release|Any CPU
+		{B695AAF8-B85C-4A89-A2A2-0F9785DC1C49}.Release|ARM.Build.0 = Release|Any CPU
+		{B695AAF8-B85C-4A89-A2A2-0F9785DC1C49}.Release|ARM64.ActiveCfg = Release|Any CPU
+		{B695AAF8-B85C-4A89-A2A2-0F9785DC1C49}.Release|ARM64.Build.0 = Release|Any CPU
+		{B695AAF8-B85C-4A89-A2A2-0F9785DC1C49}.Release|x64.ActiveCfg = Release|Any CPU
+		{B695AAF8-B85C-4A89-A2A2-0F9785DC1C49}.Release|x64.Build.0 = Release|Any CPU
+		{B695AAF8-B85C-4A89-A2A2-0F9785DC1C49}.Release|x86.ActiveCfg = Release|Any CPU
+		{B695AAF8-B85C-4A89-A2A2-0F9785DC1C49}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

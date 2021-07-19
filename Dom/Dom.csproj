@@ -61,6 +61,7 @@
     <Compile Include="IHasHole.cs" />
     <Compile Include="IHasTwoDoors.cs" />
     <Compile Include="IHidingSpot.cs" />
+    <Compile Include="Opponent.cs" />
     <Compile Include="Outside.cs" />
     <Compile Include="OutsideWithDoor.cs" />
     <Compile Include="OutsideWithHidingSpot.cs" />

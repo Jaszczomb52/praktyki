@@ -22,6 +22,7 @@ namespace Dom
     public partial class MainWindow : Window
     {
         Location currentLocation;
+        Opponent opponent;
 
         RoomWithExtDoorAndSpot livingRoom;
         RoomWithHidingSpot diningRoom;
@@ -47,7 +48,9 @@ namespace Dom
         {
             InitializeComponent();
             CreateObjects();
-            MoveToANewLocation(livingRoom);
+
+            NewGame();
+            
 
             Ellipse[] waypoints = {garageWaypoint, diningWaypoint,kitchenWaypoint,betweenWaypoint,
                 shedWaypoint,stashWaypoint,westWaypoint,eastWaypoint,gardenWaypoint, diningSpotWaypoint,
@@ -56,7 +59,7 @@ namespace Dom
             {
                 waypoints[i].Visibility = Visibility.Hidden;
             }
-
+            
         }
 
         private void CreateObjects()
@@ -120,6 +123,7 @@ namespace Dom
             hasExtDoor();
             hasHole();
             hasHidingSpot();
+            CheckForOpponent();
         }
 
         private void goHereClick(object sender, RoutedEventArgs e)
@@ -232,14 +236,12 @@ namespace Dom
             {
                 if (currentLocation is RoomWithHidingSpot)
                 {
-                    RoomWithHidingSpot temp = currentLocation as RoomWithHidingSpot;
-                    temp = (RoomWithHidingSpot)currentLocation;
+                    RoomWithHidingSpot temp = (RoomWithHidingSpot)currentLocation;
                     MoveToANewLocation(temp.HidingLocation);
                 }
                 if (currentLocation is OutsideWithHidingSpot)
                 {
-                    OutsideWithHidingSpot temp = currentLocation as OutsideWithHidingSpot;
-                    temp = (OutsideWithHidingSpot)currentLocation;
+                    OutsideWithHidingSpot temp = (OutsideWithHidingSpot)currentLocation;
                     MoveToANewLocation(temp.HidingLocation);
                 }
             }
@@ -249,14 +251,7 @@ namespace Dom
 
         private void UnhideClick(object sender, RoutedEventArgs e)
         {
-            if(currentLocation is IHidingSpot)
-            {
-                HidingSpot temp = currentLocation as HidingSpot;
-                temp = (HidingSpot)currentLocation;
-                MoveToANewLocation(temp.GetOut);
-            }
-            hide.Visibility = Visibility.Visible;
-            unhide.Visibility = Visibility.Hidden;
+            unhideHandler();   
         }
 
         private void Door2Click(object sender, RoutedEventArgs e)
@@ -276,6 +271,43 @@ namespace Dom
             MoveToANewLocation(temp.DoorLocation[i]);
             DoorBtn1.Visibility = Visibility.Hidden;
             DoorBtn2.Visibility = Visibility.Hidden;
+        }
+
+        private void CheckForOpponent()
+        {
+            if(currentLocation == opponent.Spot)
+            {
+                MessageBox.Show("Znalazłeś oponenta!");
+                NewGame();
+            }
+        }
+
+        private void NewGame()
+        {
+            Location[] spawnLoc = { garage, kitchen, betweenYard, shed };
+            opponent = new Opponent(spawnLoc[new Random().Next(0,3)]);
+            SpawnTheOpponent();
+            MoveToANewLocation(livingRoom);
+        }
+
+        private void SpawnTheOpponent()
+        {
+            
+            while (!opponent.hidden)
+            {
+                opponent.Hide();
+            }
+        }
+
+        private void unhideHandler()
+        {
+            if (currentLocation is IHidingSpot)
+            {
+                HidingSpot temp = (HidingSpot)currentLocation;
+                MoveToANewLocation(temp.GetOut);
+            }
+            hide.Visibility = Visibility.Visible;
+            unhide.Visibility = Visibility.Hidden;
         }
     }
 }

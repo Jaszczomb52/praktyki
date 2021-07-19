@@ -4,12 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Dom
+namespace Ducks
 {
-    interface IHasExteriorDoor
+    class Duck
     {
-        string DoorDescription { get; }
-        Location DoorLocation { get; set; }
-
     }
 }

@@ -24,7 +24,7 @@
         <Ellipse x:Name="betweenWaypoint" Fill="Red" HorizontalAlignment="Left" Height="11" Margin="864,116,0,0" Stroke="Black" VerticalAlignment="Top" Width="11"/>
         <Ellipse x:Name="shedWaypoint" Fill="Red" HorizontalAlignment="Left" Height="11" Margin="1067,77,0,0" Stroke="Black" VerticalAlignment="Top" Width="11"/>
         <Ellipse x:Name="stashWaypoint" Fill="Red" HorizontalAlignment="Left" Height="11" Margin="1090,158,0,0" Stroke="Black" VerticalAlignment="Top" Width="11"/>
-        <Button x:Name="hide" Content="Ukryj się" HorizontalAlignment="Left" Margin="10,391,0,0" VerticalAlignment="Top" Width="220" Height="22" Click="HideClick"/>
+        <Button x:Name="hide" Content="Ukryj się/sprawdź kryjówkę" HorizontalAlignment="Left" Margin="10,391,0,0" VerticalAlignment="Top" Width="220" Height="22" Click="HideClick"/>
         <Button x:Name="unhide" Content="Wyjdź z ukrycia" HorizontalAlignment="Left" Margin="235,391,0,0" VerticalAlignment="Top" Width="210" Height="22" Click="UnhideClick"/>
         <Ellipse x:Name="diningSpotWaypoint" Fill="Red" HorizontalAlignment="Left" Height="11" Margin="750,96,0,0" Stroke="Black" VerticalAlignment="Top" Width="11"/>
         <Ellipse x:Name="eastSpotWaypoint" Fill="Red" HorizontalAlignment="Left" Height="11" Margin="1006,339,0,0" Stroke="Black" VerticalAlignment="Top" Width="11"/>
