@@ -9,10 +9,12 @@ namespace Dom
 {
     class OutsideWithHidingSpot : Outside, IHasHidingSpot
     {
-        public string hidingSpotDescription { get; }
-        public OutsideWithHidingSpot(string name, bool hot, string hidingSpotDescription, Ellipse waypoint) : base(name, hot, waypoint)
+        public string HidingSpotDescription { get; }
+        public HidingSpot HidingLocation { get; }
+        public OutsideWithHidingSpot(string name, bool hot, string hidingSpotDescription, Ellipse waypoint, HidingSpot HidingLocation) : base(name, hot, waypoint)
         {
-            this.hidingSpotDescription = hidingSpotDescription;
+            this.HidingSpotDescription = hidingSpotDescription;
+            this.HidingLocation = HidingLocation;
         }
     }
 }

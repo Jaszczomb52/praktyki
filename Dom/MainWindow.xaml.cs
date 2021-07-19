@@ -21,22 +21,27 @@ namespace Dom
     /// </summary>
     public partial class MainWindow : Window
     {
-        bool hidden = false;
         Location currentLocation;
 
-        RoomWithDoor livingRoom;
-        Room diningRoom;
+        RoomWithExtDoorAndSpot livingRoom;
+        RoomWithHidingSpot diningRoom;
         RoomWithDoor kitchen;
-        RoomWithTunel garage;
+        RoomWithTunelAndSpot garage;
 
         RoomWithDoor shed;
-        RoomWithTunel stashRoom;
+        RoomWithTunelAndSpot stashRoom;
 
         OutsideWithDoor westYard;
-        OutsideWithTunel garden;
-        Outside eastYard;
-        OutsideWithDoor betweenYard;
+        OutsideWithTunelAndSpot garden;
+        OutsideWithHidingSpot eastYard;
+        OutsideWithTwoDoors betweenYard;
 
+        HidingSpot diningSpot;
+        HidingSpot eastSpot;
+        HidingSpot garageSpot;
+        HidingSpot livingSpot;
+        HidingSpot gardenSpot;
+        HidingSpot stashSpot;
 
         public MainWindow()
         {
@@ -45,27 +50,43 @@ namespace Dom
             MoveToANewLocation(livingRoom);
 
             Ellipse[] waypoints = {garageWaypoint, diningWaypoint,kitchenWaypoint,betweenWaypoint,
-                shedWaypoint,stashWaypoint,westWaypoint,eastWaypoint,gardenWaypoint };
+                shedWaypoint,stashWaypoint,westWaypoint,eastWaypoint,gardenWaypoint, diningSpotWaypoint,
+                garageSpotWaypoint,livingSpotWaypoint,stashSpotWaypoint,gardenSpotWaypoint,eastSpotWaypoint};
             for (int i = 0; i < waypoints.Length; i++)
             {
                 waypoints[i].Visibility = Visibility.Hidden;
             }
+
         }
 
         private void CreateObjects()
         {
-            livingRoom = new RoomWithDoor("Salon", "dywan", "dębowe drzwi z mosiężną klamką",livingRoomWaypoint);
-            diningRoom = new Room("Jadalnia", "stół z krzesłami",diningWaypoint);
+            diningSpot = new HidingSpot("Szafa", diningSpotWaypoint);
+            eastSpot = new HidingSpot("Gęste krzaki", eastSpotWaypoint);
+            garageSpot = new HidingSpot("Stół zawalony narzędziami", garageSpotWaypoint);
+            livingSpot = new HidingSpot("Szafa na ubrania", livingSpotWaypoint);
+            gardenSpot = new HidingSpot("Gęsty zakręcony żywopłot", gardenSpotWaypoint);
+            stashSpot = new HidingSpot("Beczka", stashSpotWaypoint);
+
+            livingRoom = new RoomWithExtDoorAndSpot("Salon", "dywan", "dębowe drzwi z mosiężną klamką","Widzisz dużą szafę",livingRoomWaypoint,livingSpot);
+            diningRoom = new RoomWithHidingSpot("Jadalnia", "stół z krzesłami","pusta szafka na naczynia",diningWaypoint,diningSpot);
             kitchen = new RoomWithDoor("Kuchnia", "sztućce", "rozsuwane drzwi",kitchenWaypoint);
-            garage = new RoomWithTunel("Garaż", "narzędzia","studzienka kanalizacyjna",garageWaypoint);
+            garage = new RoomWithTunelAndSpot("Garaż", "narzędzia","studzienka kanalizacyjna","Szafka na narzędzia",garageWaypoint,garageSpot);
 
             westYard = new OutsideWithDoor("Podworko przed domem", true, "dębowe drzwi z mosiężną klamką",westWaypoint);
-            eastYard = new OutsideWithHidingSpot("Podwórko między ogrodem a szopą", true, "Szafka z narzędziami",eastWaypoint);
-            betweenYard = new OutsideWithDoor("Podwórko za domem", true, "rozsuwane drzwi",betweenWaypoint);
-            garden = new OutsideWithTunel("Ogród", true, "Między krzakami żywopłotu widać dziurę",gardenWaypoint);
+            eastYard = new OutsideWithHidingSpot("Podwórko między ogrodem a szopą", true, "Szafka z narzędziami",eastWaypoint,eastSpot);
+            betweenYard = new OutsideWithTwoDoors("Podwórko za domem", true, new string[]{ "rozsuwane drzwi","duże drewniane drzwi"},betweenWaypoint);
+            garden = new OutsideWithTunelAndSpot("Ogród", true, "Między krzakami żywopłotu widać dziurę","Zakręcony żywopłot",gardenWaypoint,gardenSpot);
 
             shed = new RoomWithDoor("Szopa", "na podłodze leżą rozrzucone narzędzia", "drewniane drzwi z kłódką",shedWaypoint);
-            stashRoom = new RoomWithTunel("Składzik", "miotły w rogu", "W podłodze wybita jest dziura",stashWaypoint);
+            stashRoom = new RoomWithTunelAndSpot("Składzik", "miotły w rogu", "W podłodze wybita jest dziura","Pusta beczka",stashWaypoint,stashSpot);
+
+            diningSpot.GetOut = diningRoom;
+            eastSpot.GetOut = eastYard;
+            garageSpot.GetOut = garage;
+            livingSpot.GetOut = livingRoom;
+            gardenSpot.GetOut = garden;
+            stashSpot.GetOut = stashRoom;
 
             diningRoom.Exits = new Location[] { livingRoom, kitchen };
             livingRoom.Exits = new Location[] { diningRoom, garage };
@@ -87,7 +108,7 @@ namespace Dom
             westYard.DoorLocation = livingRoom;
 
             kitchen.DoorLocation = betweenYard;
-            betweenYard.DoorLocation = kitchen;
+            betweenYard.DoorLocation = new Location[] { kitchen, shed};
 
             shed.DoorLocation = betweenYard;
         }
@@ -127,19 +148,36 @@ namespace Dom
 
         private void LoadLocations(Location newLocation)
         {
-            mapWaypoints(currentLocation, newLocation);
-            currentLocation = newLocation;
-            exits.Items.Clear();
-            for (int i = 0; i < currentLocation.Exits.Length; i++)
+            if(newLocation is IHasTwoDoors)
             {
-                exits.Items.Add(currentLocation.Exits[i].Name);
+                mapWaypoints(currentLocation, newLocation);
+                currentLocation = newLocation;
+                description.Text = currentLocation.Description;
+                DoorBtn1.Visibility = Visibility.Visible;
+                DoorBtn2.Visibility = Visibility.Visible;
             }
-            exits.SelectedIndex = 0;
+            if (!(newLocation is IHidingSpot))
+            {
+                mapWaypoints(currentLocation, newLocation);
+                currentLocation = newLocation;
+                exits.Items.Clear();
+                for (int i = 0; i < currentLocation.Exits.Length; i++)
+                {
+                    exits.Items.Add(currentLocation.Exits[i].Name);
+                }
+                exits.SelectedIndex = 0;
 
-            tunels.Items.Clear();
+                tunels.Items.Clear();
 
 
-            description.Text = currentLocation.Description;
+                description.Text = currentLocation.Description;
+            }
+            else
+            {
+                mapWaypoints(currentLocation, newLocation);
+                currentLocation = newLocation;
+                description.Text = currentLocation.Description;
+            }
         }
 
         private void hasExtDoor()
@@ -190,11 +228,54 @@ namespace Dom
         private void HideClick(object sender, RoutedEventArgs e)
         {
 
+            if (currentLocation is IHasHidingSpot)
+            {
+                if (currentLocation is RoomWithHidingSpot)
+                {
+                    RoomWithHidingSpot temp = currentLocation as RoomWithHidingSpot;
+                    temp = (RoomWithHidingSpot)currentLocation;
+                    MoveToANewLocation(temp.HidingLocation);
+                }
+                if (currentLocation is OutsideWithHidingSpot)
+                {
+                    OutsideWithHidingSpot temp = currentLocation as OutsideWithHidingSpot;
+                    temp = (OutsideWithHidingSpot)currentLocation;
+                    MoveToANewLocation(temp.HidingLocation);
+                }
+            }
+            hide.Visibility = Visibility.Hidden;
+            unhide.Visibility = Visibility.Visible;
         }
 
         private void UnhideClick(object sender, RoutedEventArgs e)
         {
+            if(currentLocation is IHidingSpot)
+            {
+                HidingSpot temp = currentLocation as HidingSpot;
+                temp = (HidingSpot)currentLocation;
+                MoveToANewLocation(temp.GetOut);
+            }
+            hide.Visibility = Visibility.Visible;
+            unhide.Visibility = Visibility.Hidden;
+        }
 
+        private void Door2Click(object sender, RoutedEventArgs e)
+        {
+            MultiDoorHandler(1);
+        }
+
+        private void Door1Click(object sender, RoutedEventArgs e)
+        {
+            MultiDoorHandler(0);
+        }
+
+        private void MultiDoorHandler(int i)
+        {
+            OutsideWithTwoDoors temp = currentLocation as OutsideWithTwoDoors;
+            temp = (OutsideWithTwoDoors)currentLocation;
+            MoveToANewLocation(temp.DoorLocation[i]);
+            DoorBtn1.Visibility = Visibility.Hidden;
+            DoorBtn2.Visibility = Visibility.Hidden;
         }
     }
 }

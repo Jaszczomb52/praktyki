@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace Dom
 {
-    interface IHasTwoDoors
+    interface IHidingSpot
     {
-        string[] DoorDescription { get; }
-        Location[] DoorLocation { get; set; }
+        string Description { get; }
     }
 }

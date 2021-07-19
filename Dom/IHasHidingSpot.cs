@@ -8,6 +8,7 @@ namespace Dom
 {
     interface IHasHidingSpot
     {
-        string hidingSpotDescription { get; }
+        string HidingSpotDescription { get; }
+        HidingSpot HidingLocation { get; }
     }
 }

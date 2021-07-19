@@ -9,10 +9,14 @@ namespace Dom
 {
     class RoomWithHidingSpot : Room , IHasHidingSpot
     {
-        public string hidingSpotDescription { get; }
-        public RoomWithHidingSpot(string name, string decoration, string hidingSpotDescription, Ellipse waypoint) : base(name, decoration, waypoint)
+        public string HidingSpotDescription { get; }
+
+        public HidingSpot HidingLocation { get; set; }
+        public RoomWithHidingSpot(string name, string decoration, string hidingSpotDescription, Ellipse waypoint, HidingSpot HidingLocation) : base(name, decoration, waypoint)
         {
-            this.hidingSpotDescription = hidingSpotDescription;
+            this.HidingSpotDescription = hidingSpotDescription;
+            this.HidingLocation = HidingLocation;
+
         }
     }
 }

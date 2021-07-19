@@ -26,6 +26,14 @@
         <Ellipse x:Name="stashWaypoint" Fill="Red" HorizontalAlignment="Left" Height="11" Margin="1090,158,0,0" Stroke="Black" VerticalAlignment="Top" Width="11"/>
         <Button x:Name="hide" Content="Ukryj się" HorizontalAlignment="Left" Margin="10,391,0,0" VerticalAlignment="Top" Width="220" Height="22" Click="HideClick"/>
         <Button x:Name="unhide" Content="Wyjdź z ukrycia" HorizontalAlignment="Left" Margin="235,391,0,0" VerticalAlignment="Top" Width="210" Height="22" Click="UnhideClick"/>
+        <Ellipse x:Name="diningSpotWaypoint" Fill="Red" HorizontalAlignment="Left" Height="11" Margin="750,96,0,0" Stroke="Black" VerticalAlignment="Top" Width="11"/>
+        <Ellipse x:Name="eastSpotWaypoint" Fill="Red" HorizontalAlignment="Left" Height="11" Margin="1006,339,0,0" Stroke="Black" VerticalAlignment="Top" Width="11"/>
+        <Ellipse x:Name="stashSpotWaypoint" Fill="Red" HorizontalAlignment="Left" Height="11" Margin="1114,163,0,0" Stroke="Black" VerticalAlignment="Top" Width="11"/>
+        <Ellipse x:Name="gardenSpotWaypoint" Fill="Red" HorizontalAlignment="Left" Height="11" Margin="754,303,0,0" Stroke="Black" VerticalAlignment="Top" Width="11"/>
+        <Ellipse x:Name="garageSpotWaypoint" Fill="Red" HorizontalAlignment="Left" Height="11" Margin="612,32,0,0" Stroke="Black" VerticalAlignment="Top" Width="11"/>
+        <Ellipse x:Name="livingSpotWaypoint" Fill="Red" HorizontalAlignment="Left" Height="11" Margin="638,141,0,0" Stroke="Black" VerticalAlignment="Top" Width="11"/>
+        <Button x:Name="DoorBtn1" Content="Przejdź przez drzwi nr 1" HorizontalAlignment="Left" Margin="10,335,0,0" VerticalAlignment="Top" Width="220" Height="24" Visibility="Hidden" Click="Door1Click"/>
+        <Button x:Name="DoorBtn2" Content="Przejdź przez drzwi nr 2" HorizontalAlignment="Left" Margin="235,334,0,0" VerticalAlignment="Top" Width="210" Height="24" Visibility="Hidden" Click="Door2Click"/>
 
     </Grid>
 </Window>
