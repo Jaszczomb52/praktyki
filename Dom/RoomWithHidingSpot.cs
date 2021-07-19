@@ -18,5 +18,13 @@ namespace Dom
             this.HidingLocation = HidingLocation;
 
         }
+
+        public override string Description
+        {
+            get
+            {
+                return base.Description + " W tym pomieszczeniu można się ukryć - widzisz " + HidingSpotDescription + ".";
+            }
+        }
     }
 }

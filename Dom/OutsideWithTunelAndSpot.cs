@@ -13,5 +13,13 @@ namespace Dom
         public OutsideWithTunelAndSpot(string name, bool hot, string holeDescription,string HidingSpotDescription, Ellipse waypoint, HidingSpot HidingLocation) : base(name, hot,HidingSpotDescription, waypoint,HidingLocation)
         {
         }
+
+        public override string Description
+        {
+            get
+            {
+                return base.Description + " Przy krzakach widzisz " + HoleDescription + ". To wejście do tunelu!";
+            }
+        }
     }
 }

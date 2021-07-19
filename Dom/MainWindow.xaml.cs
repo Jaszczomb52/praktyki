@@ -68,18 +68,18 @@ namespace Dom
             gardenSpot = new HidingSpot("Gęsty zakręcony żywopłot", gardenSpotWaypoint);
             stashSpot = new HidingSpot("Beczka", stashSpotWaypoint);
 
-            livingRoom = new RoomWithExtDoorAndSpot("Salon", "dywan", "dębowe drzwi z mosiężną klamką","Widzisz dużą szafę",livingRoomWaypoint,livingSpot);
-            diningRoom = new RoomWithHidingSpot("Jadalnia", "stół z krzesłami","pusta szafka na naczynia",diningWaypoint,diningSpot);
+            livingRoom = new RoomWithExtDoorAndSpot("Salon", "dywan", "dębowe drzwi z mosiężną klamką","dużą szafę",livingRoomWaypoint,livingSpot);
+            diningRoom = new RoomWithHidingSpot("Jadalnia", "stół z krzesłami","pustą szafkę na naczynia",diningWaypoint,diningSpot);
             kitchen = new RoomWithDoor("Kuchnia", "sztućce", "rozsuwane drzwi",kitchenWaypoint);
-            garage = new RoomWithTunelAndSpot("Garaż", "narzędzia","studzienka kanalizacyjna","Szafka na narzędzia",garageWaypoint,garageSpot);
+            garage = new RoomWithTunelAndSpot("Garaż", "narzędzia","studzienkę kanalizacyjną","pustą szafkę na narzędzia",garageWaypoint,garageSpot);
 
             westYard = new OutsideWithDoor("Podworko przed domem", true, "dębowe drzwi z mosiężną klamką",westWaypoint);
-            eastYard = new OutsideWithHidingSpot("Podwórko między ogrodem a szopą", true, "Szafka z narzędziami",eastWaypoint,eastSpot);
+            eastYard = new OutsideWithHidingSpot("Podwórko między ogrodem a szopą", true,"duże, gęste krzaki" ,eastWaypoint,eastSpot);
             betweenYard = new OutsideWithTwoDoors("Podwórko za domem", true, new string[]{ "rozsuwane drzwi","duże drewniane drzwi"},betweenWaypoint);
-            garden = new OutsideWithTunelAndSpot("Ogród", true, "Między krzakami żywopłotu widać dziurę","Zakręcony żywopłot",gardenWaypoint,gardenSpot);
+            garden = new OutsideWithTunelAndSpot("Ogród", true, "dziurę w ziemi między krzakami","zakręcony żywopłot",gardenWaypoint,gardenSpot);
 
             shed = new RoomWithDoor("Szopa", "na podłodze leżą rozrzucone narzędzia", "drewniane drzwi z kłódką",shedWaypoint);
-            stashRoom = new RoomWithTunelAndSpot("Składzik", "miotły w rogu", "W podłodze wybita jest dziura","Pusta beczka",stashWaypoint,stashSpot);
+            stashRoom = new RoomWithTunelAndSpot("Składzik", "miotły w rogu", "dziurę wybitą w podłodze","pustą beczkę",stashWaypoint,stashSpot);
 
             diningSpot.GetOut = diningRoom;
             eastSpot.GetOut = eastYard;

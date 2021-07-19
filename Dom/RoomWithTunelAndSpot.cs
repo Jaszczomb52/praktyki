@@ -15,5 +15,13 @@ namespace Dom
             this.HidingLocation = HidingLocation;
             this.HoleDescription = HoleDescription;
         }
+
+        public override string Description
+        {
+            get
+            {
+                return base.Description + " W rogu widzisz " + HoleDescription + ". To wejście do tunelu!";
+            }
+        }
     }
 }

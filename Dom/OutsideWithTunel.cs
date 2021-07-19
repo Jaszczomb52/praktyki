@@ -15,5 +15,13 @@ namespace Dom
         {
             HoleDescription = holeDescription;
         }
+
+        public override string Description
+        {
+            get
+            {
+                return base.Description + " W krzakach widzisz " + HoleDescription + ". To wejście do tunelu!";
+            }
+        }
     }
 }

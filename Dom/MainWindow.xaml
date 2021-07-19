@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Dom"
         mc:Ignorable="d"
-        Title="MainWindow" Height="461" Width="1188">
+        Title="MainWindow" Height="461" Width="1188" ResizeMode="NoResize">
     <Grid Margin="0,0,0,-3">
         <TextBox x:Name="description" HorizontalAlignment="Left" Height="293" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="435"/>
         <Button Content="Idź tutaj:" HorizontalAlignment="Left" Margin="10,308,0,0" VerticalAlignment="Top" Width="112" Height="22" Click="goHereClick"/>
@@ -33,7 +33,7 @@
         <Ellipse x:Name="garageSpotWaypoint" Fill="Red" HorizontalAlignment="Left" Height="11" Margin="612,32,0,0" Stroke="Black" VerticalAlignment="Top" Width="11"/>
         <Ellipse x:Name="livingSpotWaypoint" Fill="Red" HorizontalAlignment="Left" Height="11" Margin="638,141,0,0" Stroke="Black" VerticalAlignment="Top" Width="11"/>
         <Button x:Name="DoorBtn1" Content="Przejdź przez drzwi nr 1" HorizontalAlignment="Left" Margin="10,335,0,0" VerticalAlignment="Top" Width="220" Height="24" Visibility="Hidden" Click="Door1Click"/>
-        <Button x:Name="DoorBtn2" Content="Przejdź przez drzwi nr 2" HorizontalAlignment="Left" Margin="235,334,0,0" VerticalAlignment="Top" Width="210" Height="24" Visibility="Hidden" Click="Door2Click"/>
+        <Button x:Name="DoorBtn2" Content="Przejdź przez drzwi nr 2" HorizontalAlignment="Left" Margin="235,335,0,0" VerticalAlignment="Top" Width="210" Height="24" Visibility="Hidden" Click="Door2Click"/>
 
     </Grid>
 </Window>
