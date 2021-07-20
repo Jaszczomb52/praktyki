@@ -6,11 +6,21 @@ using System.Threading.Tasks;
 
 namespace Deck
 {
-    class Card
+    public class Card : IComparable<Card>
     {
         public Suits Suit { get; set; }
         public Values Value { get; set; }
         
+        public int CompareTo(Card compare)
+        {
+            if (this.Value > compare.Value)
+                return 1;
+            else if (this.Value < compare.Value)
+                return -1;
+            else
+                return 0;
+        }
+
         public Card(Suits Suit, Values Value)
         {
             this.Suit = Suit;
@@ -25,15 +35,47 @@ namespace Deck
         }
     }
 
+    public class CardComparer : IComparer<Card>
+    {
+        public SortCriteria SortBy = SortCriteria.Value;
+        public int Compare(Card x, Card y)
+        {
+            if(SortBy == SortCriteria.Value)
+            {
+                if (x.Value > y.Value)
+                    return 1;
+                else if (x.Value < y.Value)
+                    return -1;
+                else
+                    return 0;
+            }
+            else
+            {
+                if (x.Suit > y.Suit)
+                    return 1;
+                else if (x.Suit < y.Suit)
+                    return -1;
+                else
+                    return 0;
+            }
+        }
+    }
 
-    enum Suits
+    public enum SortCriteria
+    {
+        Value,
+        Suit,
+    }
+
+
+    public enum Suits
     {
         Spades,
         Clubs,
         Diamonds,
         Hearts,
     }
-    enum Values
+    public enum Values
     {
         Ace = 1,
         Two = 2,

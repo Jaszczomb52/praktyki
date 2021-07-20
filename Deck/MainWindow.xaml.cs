@@ -54,7 +54,9 @@ namespace Deck
                 getCard(),
                 getCard(),
             };
-
+            CardComparer card = new CardComparer();
+            card.SortBy = SortCriteria.Suit;
+            table.Sort(card);
             string report = "Ręka kasyna: \n";
             for(int i = 0;i<5;i++)
             {
