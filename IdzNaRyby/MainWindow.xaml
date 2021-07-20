@@ -9,12 +9,12 @@
     <Grid>
         <TextBox x:Name="nameBox" HorizontalAlignment="Left" Height="22" Margin="10,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="260"/>
         <Label Content="Wpisz se imie byku" HorizontalAlignment="Left" Margin="10,18,0,0" VerticalAlignment="Top" Width="260"/>
-        <ListBox HorizontalAlignment="Left" Height="562" Margin="596,44,0,0" VerticalAlignment="Top" Width="206"/>
+        <ListBox x:Name="hand" HorizontalAlignment="Left" Height="562" Margin="596,44,0,0" VerticalAlignment="Top" Width="206"/>
         <Button x:Name="startButton" Content="Rozpocznij gre" HorizontalAlignment="Left" Margin="290,44,0,0" VerticalAlignment="Top" Width="288" Click="Start_Click"/>
         <Label Content="Ręka" HorizontalAlignment="Left" Margin="596,18,0,0" VerticalAlignment="Top" Width="206"/>
         <Label Content="Postęp" HorizontalAlignment="Left" Margin="10,71,0,0" VerticalAlignment="Top" Width="260"/>
-        <TextBox HorizontalAlignment="Left" Height="378" Margin="10,102,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="568" IsEnabled="False"/>
-        <Button x:Name="gibCard" Content="Dej karte" HorizontalAlignment="Left" Margin="596,611,0,0" VerticalAlignment="Top" Width="206" Height="26" IsEnabled="False"/>
+        <TextBox x:Name="gameWindow" HorizontalAlignment="Left" Height="378" Margin="10,102,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="568" IsEnabled="False"/>
+        <Button x:Name="gibCard" Content="Dej karte" HorizontalAlignment="Left" Margin="596,611,0,0" VerticalAlignment="Top" Width="206" Height="26" IsEnabled="False" Click="gibCard_Click"/>
         <TextBox HorizontalAlignment="Left" Height="125" Margin="10,526,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="568" IsEnabled="False"/>
         <Label Content="Grupy" HorizontalAlignment="Left" Margin="10,495,0,0" VerticalAlignment="Top" Width="260"/>
 

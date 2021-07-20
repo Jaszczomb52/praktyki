@@ -8,7 +8,7 @@ namespace IdzNaRyby
 {
     class Deck
     {
-        private List<Card> cards;
+        public List<Card> cards;
         private Random rand = new Random();
 
         public int Count { get { return cards.Count; } }
@@ -68,6 +68,18 @@ namespace IdzNaRyby
             CardComparer sort = new CardComparer();
             sort.SortBy = SortCriteria.SuitValue;
             cards.Sort(sort);
+        }
+
+        public bool Check(Card toCheck)
+        {
+            foreach(Card card in cards)
+            {
+                if(Card.DoesCardMatch(card,toCheck.Value))
+                {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }
