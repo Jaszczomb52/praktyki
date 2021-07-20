@@ -16,8 +16,19 @@ namespace Ducks
                 return 1;
             return 0;
         }
+    }
 
-        
+    public class DuckComparerByKind :IComparer<Duck>
+    {
+        public int Compare(Duck x, Duck y)
+        {
+            if (x.Kind < y.Kind)
+                return -1;
+            if (x.Kind > y.Kind)
+                return 1;
+            else
+                return 0;
+        }
     }
 
     public class Duck : IComparable<Duck>
@@ -56,6 +67,11 @@ namespace Ducks
                 new Duck() {Kind = KindOfDuck.Decoy, Size = 23},
                 new Duck() {Kind = KindOfDuck.Mallard, Size = 18}
             };
+            PrintDucks(ducks);
+            ducks.Sort();
+            PrintDucks(ducks);
+            DuckComparerByKind kindComparer = new DuckComparerByKind();
+            ducks.Sort(kindComparer);
             PrintDucks(ducks);
             Console.ReadKey();
         }
