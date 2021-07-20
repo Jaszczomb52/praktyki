@@ -30,7 +30,7 @@ namespace Deck
         private void randomCard(object sender, RoutedEventArgs e)
         {
             Card card = getCard();
-            MessageBox.Show(card.Name);
+            MessageBox.Show(card.ToString());
         }
 
         private Card getCard()
@@ -54,18 +54,18 @@ namespace Deck
                 getCard(),
                 getCard(),
             };
-            CardComparer card = new CardComparer();
-            card.SortBy = SortCriteria.Suit;
-            table.Sort(card);
+            CardComparer cardComp = new CardComparer();
+            cardComp.SortBy = SortCriteria.Suit;
+            table.Sort(cardComp);
             string report = "Ręka kasyna: \n";
-            for(int i = 0;i<5;i++)
+            foreach(Card card in table)
             {
-                report += table[i].Name + " \n";   
+                report += card + " \n";   
             }
             report += "\n\nTwoja ręka: \n";
-            for(int i = 0;i<2;i++)
+            foreach(Card card in hand)
             {
-                report += hand[i].Name + " \n";
+                report += card + " \n";
             }
             MessageBox.Show(report);
         }

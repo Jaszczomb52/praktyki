@@ -45,6 +45,11 @@ namespace Ducks
             else
                 return 0;
         }
+
+        public override string ToString()
+        {
+            return Size + "-centrymetrowa kaczka " + Kind.ToString();
+        }
     }
 
     public enum KindOfDuck
@@ -79,9 +84,11 @@ namespace Ducks
         {
             foreach (Duck duck in ducks)
             {
-                Console.WriteLine(duck.Size.ToString() + "-centymetrowa kaczka " + duck.Kind.ToString());
+                Console.WriteLine(duck);
             }
             Console.WriteLine("Koniec kaczek!");
         }
+
+        
     }
 }

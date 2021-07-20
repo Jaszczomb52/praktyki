@@ -33,6 +33,11 @@ namespace Deck
                 return Value.ToString() + " of " + Suit.ToString();
             }
         }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 
     public class CardComparer : IComparer<Card>
