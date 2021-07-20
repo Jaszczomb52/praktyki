@@ -16,6 +16,18 @@ namespace IdzNaRyby
             Name = name;
         }
 
+        // sprawdzic czy dziala i sprawdzicy czy jest wgl w stanie dodac kilka kart na raz
+        public int CheckForCard(Card card)
+        {
+            foreach(Card x in deckOfPlayer.cards)
+            {
+                if(x.Value == card.Value)
+                {
+                    return deckOfPlayer.cards.IndexOf(x);
+                }
+            }
+            return -1;
+        }
 
     }
 }

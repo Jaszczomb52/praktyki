@@ -45,6 +45,7 @@ namespace IdzNaRyby
             players.Add(GenerateOpponent(nameBox.Text));
         }
 
+        // zrobic tylko dla gracza
         private void RefreshHand(int i)
         {
             hand.Items.Clear();
@@ -52,7 +53,6 @@ namespace IdzNaRyby
             {
                 hand.Items.Add(card);
             }
-
         }
 
         private Deck startCards(Deck playersDeck)
@@ -72,6 +72,7 @@ namespace IdzNaRyby
             return player;
         }
 
+        // przeniesc metode zeby dzialala po stronie Player'a
         private void AskForCards(Player player, Card card)
         { 
             for(int j = 0; j < 2; j ++)
