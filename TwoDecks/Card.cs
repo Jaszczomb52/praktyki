@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Deck
+namespace TwoDecks
 {
     public class Card : IComparable<Card>
     {
@@ -72,7 +72,7 @@ namespace Deck
                 else
                     return 0;
             }
-            else
+            else if(SortBy == SortCriteria.Suit)
             {
                 if (x.Suit > y.Suit)
                     return 1;
@@ -81,6 +81,20 @@ namespace Deck
                 else
                     return 0;
             }
+            else
+            {
+                if (x.Suit > y.Suit)
+                    return 1;
+                else if (x.Suit < y.Suit)
+                    return -1;
+                else
+                    if (x.Value > y.Value)
+                        return 1;
+                    else if (x.Value < y.Value)
+                        return -1;
+                    else
+                        return 0;
+            }
         }
     }
 
@@ -88,6 +102,7 @@ namespace Deck
     {
         Value,
         Suit,
+        SuitValue,
     }
 
 

@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ducks", "Ducks\Ducks.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Deck", "Deck\Deck.csproj", "{768D86B7-F187-4875-B28B-65DF48528F09}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwoDecks", "TwoDecks\TwoDecks.csproj", "{88040D1D-3E9F-4568-88EB-7C5CFE1BC435}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -215,6 +217,26 @@ Global
 		{768D86B7-F187-4875-B28B-65DF48528F09}.Release|x64.Build.0 = Release|Any CPU
 		{768D86B7-F187-4875-B28B-65DF48528F09}.Release|x86.ActiveCfg = Release|Any CPU
 		{768D86B7-F187-4875-B28B-65DF48528F09}.Release|x86.Build.0 = Release|Any CPU
+		{88040D1D-3E9F-4568-88EB-7C5CFE1BC435}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88040D1D-3E9F-4568-88EB-7C5CFE1BC435}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88040D1D-3E9F-4568-88EB-7C5CFE1BC435}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{88040D1D-3E9F-4568-88EB-7C5CFE1BC435}.Debug|ARM.Build.0 = Debug|Any CPU
+		{88040D1D-3E9F-4568-88EB-7C5CFE1BC435}.Debug|ARM64.ActiveCfg = Debug|Any CPU
+		{88040D1D-3E9F-4568-88EB-7C5CFE1BC435}.Debug|ARM64.Build.0 = Debug|Any CPU
+		{88040D1D-3E9F-4568-88EB-7C5CFE1BC435}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{88040D1D-3E9F-4568-88EB-7C5CFE1BC435}.Debug|x64.Build.0 = Debug|Any CPU
+		{88040D1D-3E9F-4568-88EB-7C5CFE1BC435}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{88040D1D-3E9F-4568-88EB-7C5CFE1BC435}.Debug|x86.Build.0 = Debug|Any CPU
+		{88040D1D-3E9F-4568-88EB-7C5CFE1BC435}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88040D1D-3E9F-4568-88EB-7C5CFE1BC435}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88040D1D-3E9F-4568-88EB-7C5CFE1BC435}.Release|ARM.ActiveCfg = Release|Any CPU
+		{88040D1D-3E9F-4568-88EB-7C5CFE1BC435}.Release|ARM.Build.0 = Release|Any CPU
+		{88040D1D-3E9F-4568-88EB-7C5CFE1BC435}.Release|ARM64.ActiveCfg = Release|Any CPU
+		{88040D1D-3E9F-4568-88EB-7C5CFE1BC435}.Release|ARM64.Build.0 = Release|Any CPU
+		{88040D1D-3E9F-4568-88EB-7C5CFE1BC435}.Release|x64.ActiveCfg = Release|Any CPU
+		{88040D1D-3E9F-4568-88EB-7C5CFE1BC435}.Release|x64.Build.0 = Release|Any CPU
+		{88040D1D-3E9F-4568-88EB-7C5CFE1BC435}.Release|x86.ActiveCfg = Release|Any CPU
+		{88040D1D-3E9F-4568-88EB-7C5CFE1BC435}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

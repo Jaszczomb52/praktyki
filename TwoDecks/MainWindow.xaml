@@ -1,0 +1,22 @@
+﻿<Window x:Class="TwoDecks.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TwoDecks"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="593.281" Width="619.628">
+    <Grid>
+        <Button Content="&gt;&gt;" HorizontalAlignment="Left" Margin="269,212,0,0" VerticalAlignment="Top" Width="74" Height="44" FontSize="25" Click="moveToDeck2_Click"/>
+        <Button Content="&lt;&lt;" HorizontalAlignment="Left" Margin="269,288,0,0" VerticalAlignment="Top" Width="74" Height="44" FontSize="25" Click="moveToDeck1_Click"/>
+        <Label x:Name="firstDeck" Content="Zestaw 1" HorizontalAlignment="Left" Margin="10,12,0,0" VerticalAlignment="Top" Width="254"/>
+        <Label x:Name="secondDeck" Content="Zestaw 2" HorizontalAlignment="Left" Margin="348,12,0,0" VerticalAlignment="Top" Width="254"/>
+        <Button Content="Przywróć zestaw 1" HorizontalAlignment="Left" Margin="10,502,0,0" VerticalAlignment="Top" Width="254" Click="reset1_Click"/>
+        <Button Content="Wymieszaj zestaw 1" HorizontalAlignment="Left" Margin="10,528,0,0" VerticalAlignment="Top" Width="254" Click="shuffle1_Click"/>
+        <Button Content="Przywróć zestaw 2" HorizontalAlignment="Left" Margin="348,502,0,0" VerticalAlignment="Top" Width="254" Click="reset2_Click"/>
+        <Button Content="Wymieszaj zestaw 2" HorizontalAlignment="Left" Margin="348,528,0,0" VerticalAlignment="Top" Width="254" Click="shuffle2_Click"/>
+        <ListBox x:Name="List1" HorizontalAlignment="Left" Height="454" Margin="10,43,0,0" VerticalAlignment="Top" Width="254"/>
+        <ListBox x:Name="List2" HorizontalAlignment="Left" Height="454" Margin="348,43,0,0" VerticalAlignment="Top" Width="254"/>
+
+    </Grid>
+</Window>

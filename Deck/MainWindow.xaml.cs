@@ -69,5 +69,24 @@ namespace Deck
             }
             MessageBox.Show(report);
         }
+
+        private void SuitClick(object sender, RoutedEventArgs e)
+        {
+            Card card = getCard();
+            if (Card.DoesCardMatch(card, Suits.Hearts))
+                MessageBox.Show("Wylosowana przez Ciebie karta - " + card + " jest typu serce!");
+            else
+                MessageBox.Show("Wylosowana przez Ciebie karta - " + card + " nies jest typu serce.");
+
+        }
+
+        private void ValueClick(object sender, RoutedEventArgs e)
+        {
+            Card card = getCard();
+            if (Card.DoesCardMatch(card, Values.Ace))
+                MessageBox.Show("Wylosowana przez Ciebie karta - " + card + " to as!");
+            else
+                MessageBox.Show("Wylosowana przez Ciebie karta - " + card + " to nie as");
+        }
     }
 }
