@@ -43,15 +43,6 @@ namespace IdzNaRyby
             players.Add(GenerateOpponent("Zbychu"));
             players.Add(GenerateOpponent("Jacek"));
             players.Add(GenerateOpponent(nameBox.Text));
-
-            foreach (string card in players[0].deckOfPlayer.GetCardNames())
-            {
-                gameWindow.Text += card + "\n";
-            }
-            foreach (string card in players[1].deckOfPlayer.GetCardNames())
-            {
-                gameWindow.Text += card + "\n";
-            }
         }
 
         private void RefreshHand(int i)
@@ -102,15 +93,6 @@ namespace IdzNaRyby
         {
             AskForCards(players[2], players[2].deckOfPlayer.cards[hand.SelectedIndex]);
             RefreshHand(2);
-            gameWindow.Text = "";
-            foreach (string card in players[0].deckOfPlayer.GetCardNames())
-            {
-                gameWindow.Text += card + "\n";
-            }
-            foreach (string card in players[1].deckOfPlayer.GetCardNames())
-            {
-                gameWindow.Text += card + "\n";
-            }
         }
     }
 }
