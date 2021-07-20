@@ -24,5 +24,17 @@ namespace IdzNaRyby
         {
             InitializeComponent();
         }
+
+        private void Start_Click(object sender, RoutedEventArgs e)
+        {
+            Start();
+        }
+
+        private void Start()
+        {
+            gibCard.IsEnabled = true;
+            startButton.IsEnabled = false;
+            nameBox.IsEnabled = false;
+        }
     }
 }
