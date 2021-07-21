@@ -51,7 +51,7 @@ namespace IdzNaRyby
 
         private Deck startCards(Deck playersDeck)
         {
-            for(int i = 0; i<17;i++)
+            for(int i = 0; i<5;i++)
             {
                 deck.Shuffle();
                 playersDeck.Add(deck.Deal(rand.Next(deck.Count)));
@@ -88,7 +88,7 @@ namespace IdzNaRyby
                         if(temp!=0)
                         {
                             // dodac w przyszlosci wyswietlanie ile kart (liuczba z tempa) ma dany gracz
-                            player.GiveCards(players, hand.SelectedIndex);
+                            player.GiveCards(players, hand.SelectedIndex, deck);
                             player.RefreshHand(hand);
                             CheckGroups();
                         }

@@ -16,9 +16,10 @@ namespace IdzNaRyby
             Name = name;
         }
 
-        public void GiveCards(List<Player> players, int cardIndex)
+        public void GiveCards(List<Player> players, int cardIndex, Deck deck)
         {
             Card card = deckOfPlayer.cards[cardIndex];
+            bool deal = false;
             for (int j = 0; j < 2; j++)
             {
                 if (players.IndexOf(new Player(this.deckOfPlayer, Name)) == j) { }
@@ -32,11 +33,18 @@ namespace IdzNaRyby
                             if (players[j].deckOfPlayer.cards[i].Value == card.Value)
                             {
                                 deckOfPlayer.Add(players[j].deckOfPlayer.Deal(i));
+                                deal = true;
                                 goto repeat;
                             }
                         }
                     }
                 }
+            }
+            if(deal == false)
+            {
+                deck.Shuffle();
+                Random rand = new Random();
+                deckOfPlayer.Add(deck.Deal(rand.Next(deck.Count)));
             }
         }
 
