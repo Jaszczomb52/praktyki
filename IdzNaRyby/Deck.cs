@@ -9,7 +9,7 @@ namespace IdzNaRyby
     class Deck
     {
         public List<Card> cards;
-        private Random rand = new Random();
+        private readonly Random rand = new Random();
 
         public int Count { get { return cards.Count; } }
         public Deck()
@@ -65,8 +65,10 @@ namespace IdzNaRyby
 
         public void Sort()
         {
-            CardComparer sort = new CardComparer();
-            sort.SortBy = SortCriteria.SuitValue;
+            CardComparer sort = new CardComparer
+            {
+                SortBy = SortCriteria.SuitValue
+            };
             cards.Sort(sort);
         }
 

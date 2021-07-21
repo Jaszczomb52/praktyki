@@ -20,9 +20,9 @@ namespace IdzNaRyby
     /// </summary>
     public partial class MainWindow : Window
     {
-        Deck deck = new Deck();
-        Random rand = new Random();
-        List<Player> players = new List<Player>();
+        readonly Deck deck = new Deck();
+        readonly Random rand = new Random();
+        readonly List<Player> players = new List<Player>();
 
         public MainWindow()
         {
@@ -40,15 +40,15 @@ namespace IdzNaRyby
             gibCard.IsEnabled = true;
             startButton.IsEnabled = false;
             nameBox.IsEnabled = false;
-            players.Add(GenerateOpponent("Zbychu", true));
-            players.Add(GenerateOpponent("Jacek", true));
-            players.Add(GenerateOpponent(nameBox.Text,false));
+            players.Add(GenerateOpponent("Zbychu"));
+            players.Add(GenerateOpponent("Jacek"));
+            players.Add(GenerateOpponent(nameBox.Text));
 
             //showOpCards();
         }
 
 
-        private Deck startCards(Deck playersDeck)
+        private Deck StartCards(Deck playersDeck)
         {
             for(int i = 0; i<17;i++)
             {
@@ -58,16 +58,16 @@ namespace IdzNaRyby
             return playersDeck;
         }
 
-        private Player GenerateOpponent(string name, bool opponent)
+        private Player GenerateOpponent(string name)
         {
-            Deck deck = startCards(new Deck(new List<Card>()));
+            Deck deck = StartCards(new Deck(new List<Card>()));
             Player player;
             player = new Player(deck, name);
             
             return player;
         }
 
-        private void gibCard_Click(object sender, RoutedEventArgs e)
+        private void GibCard_Click(object sender, RoutedEventArgs e)
         {
             Player main = GetPlayer();
             Checker(main, hand.SelectedIndex) ;
@@ -89,11 +89,10 @@ namespace IdzNaRyby
                     
                     if (opponent.Name != checker.Name)
                     {
-                        int temp = opponent.CheckForCards(checker.deckOfPlayer.cards[selectedIndex]);
+                        int temp = opponent.CheckForCards(checker.DeckOfPlayer.cards[selectedIndex]);
                         if (temp != 0)
                         {
-                            // dodac w przyszlosci wyswietlanie ile kart (liuczba z tempa) ma dany gracz
-                            gameWindow.Text += opponent.Name + " ma " + temp + " kart \n";
+                            gameWindow.Text += opponent.Name + " oddał " + temp + " kart \n";
                             checker.GiveCards(opponent, selectedIndex, deck);
                         }
                     }
@@ -105,7 +104,7 @@ namespace IdzNaRyby
 
         private void CheckGroups(Player player)
         {
-            Card[] group = player.checkForGroups();
+            Card[] group = player.CheckForGroups();
             if(group[3] != null)
             {
                 groups.Text += player.Name + " ma grupę " + group[0].Value + " \n";
@@ -117,8 +116,8 @@ namespace IdzNaRyby
         {
 
             hand.Items.Clear();
-            player.deckOfPlayer.Sort();
-            foreach (string card in player.deckOfPlayer.GetCardNames())
+            player.DeckOfPlayer.Sort();
+            foreach (string card in player.DeckOfPlayer.GetCardNames())
             {
                 hand.Items.Add(card);
             }
@@ -126,14 +125,14 @@ namespace IdzNaRyby
 
         // metoda debugowa
 
-        private void showOpCards()
+        private void ShowOpCards()
         {
             gameWindow.Text = "";
-            foreach (Card card in players[0].deckOfPlayer.cards)
+            foreach (Card card in players[0].DeckOfPlayer.cards)
             {
                 gameWindow.Text += card.ToString() + "\n";
             }
-            foreach (Card card in players[1].deckOfPlayer.cards)
+            foreach (Card card in players[1].DeckOfPlayer.cards)
             {
                 gameWindow.Text += card.ToString() + "\n";
             }

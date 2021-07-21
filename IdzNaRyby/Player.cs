@@ -8,26 +8,26 @@ namespace IdzNaRyby
 {
     class Player
     {
-        public Deck deckOfPlayer { get; set; }
+        public Deck DeckOfPlayer { get; set; }
         public string Name { get; private set; }
         public Player(Deck deck, string name)
         {
-            deckOfPlayer = deck;
+            DeckOfPlayer = deck;
             Name = name;
         }
-
+        
         public void GiveCards(Player players, int cardIndex, Deck deck)
         {
-            Card card = deckOfPlayer.cards[cardIndex];
+            Card card = DeckOfPlayer.cards[cardIndex];
             bool deal = false;
-            for (int i = 0; i < players.deckOfPlayer.Count; i++)
+            for (int i = 0; i < players.DeckOfPlayer.Count; i++)
             {
             repeat:
-                if (players.deckOfPlayer.Check(card))
+                if (players.DeckOfPlayer.Check(card))
                 {
-                    if (players.deckOfPlayer.cards[i].Value == card.Value)
+                    if (players.DeckOfPlayer.cards[i].Value == card.Value)
                     {
-                        deckOfPlayer.Add(players.deckOfPlayer.Deal(i));
+                        DeckOfPlayer.Add(players.DeckOfPlayer.Deal(i));
                         deal = true;
                         goto repeat;
                     }
@@ -38,15 +38,15 @@ namespace IdzNaRyby
             {
                 deck.Shuffle();
                 Random rand = new Random();
-                deckOfPlayer.Add(deck.Deal(rand.Next(deck.Count)));
+                DeckOfPlayer.Add(deck.Deal(rand.Next(deck.Count)));
             }
         }
 
         private int ReturnIndex(Card card)
         {
-            for(int i = 0; i<deckOfPlayer.Count; i++)
+            for(int i = 0; i<DeckOfPlayer.Count; i++)
             {
-                if(card.ToString() == deckOfPlayer.cards[i].ToString())
+                if(card.ToString() == DeckOfPlayer.cards[i].ToString())
                 {
                     return i;
                 }
@@ -58,9 +58,9 @@ namespace IdzNaRyby
         {
             int number = 0;
             
-            for(int i = 0; i < deckOfPlayer.Count;i++)
+            for(int i = 0; i < DeckOfPlayer.Count;i++)
             {
-                Card card = deckOfPlayer.cards[i];
+                Card card = DeckOfPlayer.cards[i];
                 if (cardToCheck.Value == card.Value)
                 {
                     number++;
@@ -69,16 +69,16 @@ namespace IdzNaRyby
             return number;
         }
 
-        public Card[] checkForGroups()
+        public Card[] CheckForGroups()
         {
             Card[] group = new Card[4];
             Card recentCard;
             int temp = 1;
-            deckOfPlayer.Sort();
-            group[0] = deckOfPlayer.cards[0];
-            for(int i = 1; i<deckOfPlayer.Count;i++)
+            DeckOfPlayer.Sort();
+            group[0] = DeckOfPlayer.cards[0];
+            for(int i = 1; i<DeckOfPlayer.Count;i++)
             {
-                recentCard = deckOfPlayer.cards[i];
+                recentCard = DeckOfPlayer.cards[i];
                 if (recentCard.Value == group[0].Value)
                 {
                     group[temp] = recentCard;
@@ -87,7 +87,7 @@ namespace IdzNaRyby
                         for(int j = 0; j < 4; j++)
                         {
                             if(ReturnIndex(group[0+j]) != -1)
-                            deckOfPlayer.Deal(ReturnIndex(group[0+j]));
+                            DeckOfPlayer.Deal(ReturnIndex(group[0+j]));
                         }
                         return group;
                     }
