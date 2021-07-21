@@ -45,21 +45,13 @@ namespace IdzNaRyby
             players.Add(GenerateOpponent("Jacek", true));
             players.Add((MainPlayer)GenerateOpponent(nameBox.Text,false));
 
-            gameWindow.Text = "";
-            foreach (string card in players[0].deckOfPlayer.GetCardNames())
-            {
-                gameWindow.Text += card + "\n";
-            }
-            foreach (string card in players[1].deckOfPlayer.GetCardNames())
-            {
-                gameWindow.Text += card + "\n";
-            }
+            showOpCards();
         }
 
 
         private Deck startCards(Deck playersDeck)
         {
-            for(int i = 0; i<5;i++)
+            for(int i = 0; i<17;i++)
             {
                 deck.Shuffle();
                 playersDeck.Add(deck.Deal(rand.Next(deck.Count)));
@@ -84,18 +76,52 @@ namespace IdzNaRyby
 
         private void gibCard_Click(object sender, RoutedEventArgs e)
         {
-            MainPlayer player = players[2] as MainPlayer;
-            player.GiveCards(players, hand.SelectedIndex);
-            player.RefreshHand(hand);
-
-            gameWindow.Text = "";
-            foreach (string card in players[0].deckOfPlayer.GetCardNames())
+            if(hand.SelectedIndex >= 0)
             {
-                gameWindow.Text += card + "\n";
+                MainPlayer player = players[2] as MainPlayer;
+            
+                foreach(Player opponent in players)
+                {
+                    if(opponent is Player)
+                    {
+                        int temp = opponent.CheckForCards(player.deckOfPlayer.cards[hand.SelectedIndex]);
+                        if(temp!=0)
+                        {
+                            // dodac w przyszlosci wyswietlanie ile kart (liuczba z tempa) ma dany gracz
+                            player.GiveCards(players, hand.SelectedIndex);
+                            player.RefreshHand(hand);
+                            CheckGroups();
+                        }
+                    }
+                }
+                showOpCards();
             }
-            foreach (string card in players[1].deckOfPlayer.GetCardNames())
+        }
+
+        private void CheckGroups()
+        {
+            MainPlayer player = players[2] as MainPlayer;
+            Card[] group = player.checkForGroups();
+            if(group[3] != null)
             {
-                gameWindow.Text += card + "\n";
+                groups.Text += player.Name + " ma grupę " + group[0].Value + " \n";
+            }
+            player.RefreshHand(hand);
+        }
+
+
+        // metoda debugowa
+
+        private void showOpCards()
+        {
+            gameWindow.Text = "";
+            foreach (Card card in players[0].deckOfPlayer.cards)
+            {
+                gameWindow.Text += card.ToString() + "\n";
+            }
+            foreach (Card card in players[1].deckOfPlayer.cards)
+            {
+                gameWindow.Text += card.ToString() + "\n";
             }
         }
     }

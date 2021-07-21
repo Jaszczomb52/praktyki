@@ -28,7 +28,7 @@ namespace IdzNaRyby
         }
 
         
-        public string Name
+        private string Name
         {
             get
             {

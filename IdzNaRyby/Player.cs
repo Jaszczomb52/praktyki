@@ -40,9 +40,67 @@ namespace IdzNaRyby
             }
         }
 
-        public void CheckForCards()
+        private int ReturnIndex(Card card)
         {
+            for(int i = 0; i<deckOfPlayer.Count; i++)
+            {
+                if(card.ToString() == deckOfPlayer.cards[i].ToString())
+                {
+                    return i;
+                }
+            }
+            return -1;
+        }
+
+        public int CheckForCards(Card cardToCheck)
+        {
+            int number = 0;
             
+            for(int i = 0; i < deckOfPlayer.Count;i++)
+            {
+                Card card = deckOfPlayer.cards[i];
+                if (cardToCheck == card)
+                {
+                    number++;
+                }
+            }
+            return number;
+        }
+
+        public Card[] checkForGroups()
+        {
+            Card[] group = new Card[4];
+            Card recentCard;
+            int temp = 1;
+            group[0] = deckOfPlayer.cards[0];
+            for(int i = 1; i<deckOfPlayer.Count;i++)
+            {
+                recentCard = deckOfPlayer.cards[i];
+                if (recentCard.Value == group[0].Value)
+                {
+                    group[temp] = recentCard;
+                    if(temp == 3)
+                    {
+                        for(int j = 0; j < 4; j++)
+                        {
+                            if(ReturnIndex(group[0+j]) != -1)
+                            deckOfPlayer.Deal(ReturnIndex(group[0+j]));
+                        }
+                        return group;
+                    }
+                    temp++;
+                }
+                else
+                {
+                    temp = 1;
+                    group[0] = recentCard;
+                    for (int j = 1; j < 4; j++)
+                    {
+                        group[j] = null;
+                    }
+                }
+            }
+            return group;
         }
 
     }

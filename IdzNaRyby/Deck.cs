@@ -58,7 +58,7 @@ namespace IdzNaRyby
             string[] CardNames = new string[cards.Count];
             for(int i = 0; i<cards.Count;i++)
             {
-                CardNames[i] = cards[i].Name;
+                CardNames[i] = cards[i].ToString();
             }
             return CardNames;
         }
