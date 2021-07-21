@@ -51,7 +51,7 @@ namespace IdzNaRyby
 
         private Deck startCards(Deck playersDeck)
         {
-            for(int i = 0; i<5;i++)
+            for(int i = 0; i<17;i++)
             {
                 deck.Shuffle();
                 playersDeck.Add(deck.Deal(rand.Next(deck.Count)));
