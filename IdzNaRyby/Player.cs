@@ -16,17 +16,33 @@ namespace IdzNaRyby
             Name = name;
         }
 
-        // sprawdzic czy dziala i sprawdzicy czy jest wgl w stanie dodac kilka kart na raz
-        public int CheckForCard(Card card)
+        public void GiveCards(List<Player> players, int cardIndex)
         {
-            foreach(Card x in deckOfPlayer.cards)
+            Card card = deckOfPlayer.cards[cardIndex];
+            for (int j = 0; j < 2; j++)
             {
-                if(x.Value == card.Value)
+                if (players.IndexOf(new Player(this.deckOfPlayer, Name)) == j) { }
+                else
                 {
-                    return deckOfPlayer.cards.IndexOf(x);
+                    for (int i = 0; i < players[j].deckOfPlayer.Count; i++)
+                    {
+                    repeat:
+                        if (players[j].deckOfPlayer.Check(card))
+                        {
+                            if (players[j].deckOfPlayer.cards[i].Value == card.Value)
+                            {
+                                deckOfPlayer.Add(players[j].deckOfPlayer.Deal(i));
+                                goto repeat;
+                            }
+                        }
+                    }
                 }
             }
-            return -1;
+        }
+
+        public void CheckForCards()
+        {
+            
         }
 
     }

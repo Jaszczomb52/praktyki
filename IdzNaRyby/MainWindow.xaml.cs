@@ -32,7 +32,8 @@ namespace IdzNaRyby
         private void Start_Click(object sender, RoutedEventArgs e)
         {
             Start();
-            RefreshHand(2);
+            MainPlayer player = players[2] as MainPlayer;
+            player.RefreshHand(hand);
         }
         
         private void Start()
@@ -40,20 +41,21 @@ namespace IdzNaRyby
             gibCard.IsEnabled = true;
             startButton.IsEnabled = false;
             nameBox.IsEnabled = false;
-            players.Add(GenerateOpponent("Zbychu"));
-            players.Add(GenerateOpponent("Jacek"));
-            players.Add(GenerateOpponent(nameBox.Text));
-        }
+            players.Add(GenerateOpponent("Zbychu", true));
+            players.Add(GenerateOpponent("Jacek", true));
+            players.Add((MainPlayer)GenerateOpponent(nameBox.Text,false));
 
-        // zrobic tylko dla gracza
-        private void RefreshHand(int i)
-        {
-            hand.Items.Clear();
-            foreach (string card in players[i].deckOfPlayer.GetCardNames())
+            gameWindow.Text = "";
+            foreach (string card in players[0].deckOfPlayer.GetCardNames())
             {
-                hand.Items.Add(card);
+                gameWindow.Text += card + "\n";
+            }
+            foreach (string card in players[1].deckOfPlayer.GetCardNames())
+            {
+                gameWindow.Text += card + "\n";
             }
         }
+
 
         private Deck startCards(Deck playersDeck)
         {
@@ -65,35 +67,36 @@ namespace IdzNaRyby
             return playersDeck;
         }
 
-        private Player GenerateOpponent(string name)
+        private Player GenerateOpponent(string name, bool opponent)
         {
             Deck deck = startCards(new Deck(new List<Card>()));
-            Player player = new Player(deck, name);
-            return player;
-        }
-
-        // przeniesc metode zeby dzialala po stronie Player'a
-        private void AskForCards(Player player, Card card)
-        { 
-            for(int j = 0; j < 2; j ++)
+            Player player;
+            if (opponent)
             {
-                for(int i = 0; i < players[j].deckOfPlayer.Count;i++)
-                {
-                    if (players[j].deckOfPlayer.Check(card))
-                    {
-                        if(players[j].deckOfPlayer.cards[i].Value == card.Value)
-                        {
-                            player.deckOfPlayer.Add(players[j].deckOfPlayer.Deal(i));
-                        }
-                    }
-                }
+                player = new Player(deck, name);
             }
+            else
+            {
+                player = new MainPlayer(deck, name);
+            }
+            return player;
         }
 
         private void gibCard_Click(object sender, RoutedEventArgs e)
         {
-            AskForCards(players[2], players[2].deckOfPlayer.cards[hand.SelectedIndex]);
-            RefreshHand(2);
+            MainPlayer player = players[2] as MainPlayer;
+            player.GiveCards(players, hand.SelectedIndex);
+            player.RefreshHand(hand);
+
+            gameWindow.Text = "";
+            foreach (string card in players[0].deckOfPlayer.GetCardNames())
+            {
+                gameWindow.Text += card + "\n";
+            }
+            foreach (string card in players[1].deckOfPlayer.GetCardNames())
+            {
+                gameWindow.Text += card + "\n";
+            }
         }
     }
 }
