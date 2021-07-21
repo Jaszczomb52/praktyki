@@ -32,8 +32,7 @@ namespace IdzNaRyby
         private void Start_Click(object sender, RoutedEventArgs e)
         {
             Start();
-            Player player = players[2];
-            RefreshHand(hand,player);
+            RefreshHand(hand, players.Last());
         }
         
         private void Start()
@@ -45,7 +44,7 @@ namespace IdzNaRyby
             players.Add(GenerateOpponent("Jacek", true));
             players.Add(GenerateOpponent(nameBox.Text,false));
 
-            showOpCards();
+            //showOpCards();
         }
 
 
@@ -71,7 +70,7 @@ namespace IdzNaRyby
         private void gibCard_Click(object sender, RoutedEventArgs e)
         {
             Player main = GetPlayer();
-            Checker(main);
+            Checker(main, hand.SelectedIndex) ;
             RefreshHand(hand, main);
         }
 
@@ -80,9 +79,9 @@ namespace IdzNaRyby
             return players.Last();
         }
 
-        private void Checker(Player checker)
+        private void Checker(Player checker, int selectedIndex)
         {
-            if (hand.SelectedIndex >= 0)
+            if (selectedIndex >= 0)
             {
 
                 foreach (Player opponent in players)
@@ -90,19 +89,17 @@ namespace IdzNaRyby
                     
                     if (opponent.Name != checker.Name)
                     {
-                    repeat:
-                        int temp = opponent.CheckForCards(checker.deckOfPlayer.cards[hand.SelectedIndex]);
+                        int temp = opponent.CheckForCards(checker.deckOfPlayer.cards[selectedIndex]);
                         if (temp != 0)
                         {
                             // dodac w przyszlosci wyswietlanie ile kart (liuczba z tempa) ma dany gracz
-                            gameWindow.Text += checker.Name + " ma " + temp + " kart \n";
-                            checker.GiveCards(players, hand.SelectedIndex, deck);
-                            goto repeat;
+                            gameWindow.Text += opponent.Name + " ma " + temp + " kart \n";
+                            checker.GiveCards(opponent, selectedIndex, deck);
                         }
                     }
                 }
                 CheckGroups(checker);
-                showOpCards();
+                //showOpCards();
             }
         }
 

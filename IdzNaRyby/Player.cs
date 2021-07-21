@@ -16,30 +16,24 @@ namespace IdzNaRyby
             Name = name;
         }
 
-        public void GiveCards(List<Player> players, int cardIndex, Deck deck)
+        public void GiveCards(Player players, int cardIndex, Deck deck)
         {
             Card card = deckOfPlayer.cards[cardIndex];
             bool deal = false;
-            for (int j = 0; j < 2; j++)
+            for (int i = 0; i < players.deckOfPlayer.Count; i++)
             {
-                if (players.IndexOf(new Player(deckOfPlayer, Name)) == j) { }
-                else
+            repeat:
+                if (players.deckOfPlayer.Check(card))
                 {
-                    for (int i = 0; i < players[j].deckOfPlayer.Count; i++)
+                    if (players.deckOfPlayer.cards[i].Value == card.Value)
                     {
-                    repeat:
-                        if (players[j].deckOfPlayer.Check(card))
-                        {
-                            if (players[j].deckOfPlayer.cards[i].Value == card.Value)
-                            {
-                                deckOfPlayer.Add(players[j].deckOfPlayer.Deal(i));
-                                deal = true;
-                                goto repeat;
-                            }
-                        }
+                        deckOfPlayer.Add(players.deckOfPlayer.Deal(i));
+                        deal = true;
+                        goto repeat;
                     }
                 }
             }
+            
             if(deal == false)
             {
                 deck.Shuffle();
