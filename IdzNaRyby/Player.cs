@@ -22,7 +22,7 @@ namespace IdzNaRyby
             bool deal = false;
             for (int j = 0; j < 2; j++)
             {
-                if (players.IndexOf(new Player(this.deckOfPlayer, Name)) == j) { }
+                if (players.IndexOf(new Player(deckOfPlayer, Name)) == j) { }
                 else
                 {
                     for (int i = 0; i < players[j].deckOfPlayer.Count; i++)
@@ -67,7 +67,7 @@ namespace IdzNaRyby
             for(int i = 0; i < deckOfPlayer.Count;i++)
             {
                 Card card = deckOfPlayer.cards[i];
-                if (cardToCheck == card)
+                if (cardToCheck.Value == card.Value)
                 {
                     number++;
                 }
@@ -80,6 +80,7 @@ namespace IdzNaRyby
             Card[] group = new Card[4];
             Card recentCard;
             int temp = 1;
+            deckOfPlayer.Sort();
             group[0] = deckOfPlayer.cards[0];
             for(int i = 1; i<deckOfPlayer.Count;i++)
             {
