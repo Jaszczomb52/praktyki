@@ -21,43 +21,39 @@ namespace IdzNaRyby
     public partial class MainWindow : Window
     {
 
-        Game game = new Game();
+        readonly Game game;
 
         public MainWindow()
         {
             InitializeComponent();
+            game = new Game(gameWindow, groups, gibCard);
         }
 
         private void Start_Click(object sender, RoutedEventArgs e)
         {
-            game.Start(nameBox.Text);
             gibCard.IsEnabled = true;
+            game.Start(nameBox.Text);
             startButton.IsEnabled = false;
             nameBox.IsEnabled = false;
-            RefreshHand(hand, game.GetPlayer());
+            game.GetPlayer().CheckForGroups();
+            game.RefreshHand(hand, game.GetPlayer());
+            game.tcs?.TrySetResult(true);
+            game.GameLoop(hand);
         }
         
         private void GibCard_Click(object sender, RoutedEventArgs e)
         {
-            if(game.CheckForTheEmptyDeck())
+            /*if(game.CheckForTheEmptyDeck())
             {
                 MessageBox.Show("Koniec gry!");
-            }
+            }*/
             Player main = game.GetPlayer();
-            game.Checker(main, hand.SelectedIndex,gameWindow,groups);
-            RefreshHand(hand, main);
+            game.Checker(main, hand.SelectedIndex);
+            game.RefreshHand(hand, main);
+            game.tcs?.TrySetResult(true);
         }
 
-        private void RefreshHand(ListBox hand, Player player)
-        {
-
-            hand.Items.Clear();
-            player.DeckOfPlayer.Sort();
-            foreach (string card in player.DeckOfPlayer.GetCardNames())
-            {
-                hand.Items.Add(card);
-            }
-        } 
+        
         
     }
 }

@@ -10,6 +10,7 @@ namespace IdzNaRyby
     {
         public Deck DeckOfPlayer { get; set; }
         public string Name { get; private set; }
+        public int groupsOfThisPlayer = 0;
         public Player(Deck deck, string name)
         {
             DeckOfPlayer = deck;

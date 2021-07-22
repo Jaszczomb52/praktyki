@@ -13,54 +13,124 @@ namespace IdzNaRyby
         readonly Deck deck = new Deck();
         readonly Random rand = new Random();
         readonly List<Player> players = new List<Player>();
+        readonly TextBox gameWindow;
+        readonly TextBox groups;
+        readonly Button gibCardButton;
+        public TaskCompletionSource<bool> tcs = null;
+        
 
-        public Game()
+        public Game(TextBox GameWindow, TextBox Groups, Button GibCardButton)
         {
-
+            gameWindow = GameWindow;
+            groups = Groups;
+            gibCardButton = GibCardButton;
         }
 
         public Player GetPlayer()
         {
-            return players.Last();
+            return players.First();
         }
 
-        public void Checker(Player checker, int selectedIndex, TextBox gameWindow, TextBox groups)
+        public void Checker(Player checker, int selectedIndex)
         {
-            bool hasCards = false;
+            bool hasDeal = false;
             if (selectedIndex >= 0)
             {
-
-                foreach (Player opponent in players)
+                gameWindow.Text += checker.Name + " chce dostać karty o nominale" + checker.DeckOfPlayer.cards[selectedIndex].Value + "! \n";
+                if (CheckForTheEmptyDeck()) { }
+                //GameOver();
+                else
                 {
-
-                    if (opponent.Name != checker.Name)
+                    foreach (Player opponent in players)
                     {
-                        int temp = opponent.CheckForCards(checker.DeckOfPlayer.cards[selectedIndex]);
-                        if (temp != 0)
+
+                        if (opponent.Name != checker.Name)
                         {
-                            hasCards = true;
-                            gameWindow.Text += opponent.Name + " oddał " + temp + " kart \n";
-                            checker.GiveCards(opponent, selectedIndex, deck);
+                            int temp = opponent.CheckForCards(checker.DeckOfPlayer.cards[selectedIndex]);
+                            if (temp != 0)
+                            {
+                                hasDeal = true;
+                                gameWindow.Text += opponent.Name + " oddał " + temp + " kart \n";
+                                checker.GiveCards(opponent, selectedIndex, deck);
+                                if (opponent.DeckOfPlayer.Count == 0)
+                                {
+                                    gameWindow.Text += opponent.Name + " ma 0 kart, musi dobrać! \n";
+                                    StartCards(opponent.DeckOfPlayer);
+                                }
+                            }
                         }
                     }
                 }
-                if(!hasCards)
+                if (!hasDeal)
                 {
-                    checker.GiveCards(checker, rand.Next(deck.Count), deck);
+                    gameWindow.Text += " nikt nie miał takiej karty! \n";
+                    GibCardFromMainDeck(checker);
                 }
+                
                 CheckGroups(checker, groups);
                 //showOpCards();
             }
         }
 
+        private void GameOver()
+        {
+            gibCardButton.IsEnabled = false;
+            int temp = 0;
+            string winner = "";
+            foreach(Player player in players)
+            {
+                if (player.groupsOfThisPlayer > temp)
+                {
+                    temp = player.groupsOfThisPlayer;
+                    winner = player.Name;
+                }
+            }
+            MessageBox.Show("Koniec gry! Wygrywa - " + winner);
+        }
+
+        private void GibCardFromMainDeck(Player player)
+        {
+            int temp = rand.Next(deck.Count);
+            player.DeckOfPlayer.Add(deck.cards[temp]);
+            deck.cards.RemoveAt(temp);
+        }
+
         public void Start(string name)
         {
-
+            players.Add(GenerateOpponent(name));
             players.Add(GenerateOpponent("Zbychu"));
             players.Add(GenerateOpponent("Jacek"));
-            players.Add(GenerateOpponent(name));
-
             //showOpCards();
+        }
+
+        public async void GameLoop(ListBox hand)
+        {
+            tcs = new TaskCompletionSource<bool>();
+            await tcs.Task;
+            while (gibCardButton.IsEnabled)
+            {
+                foreach (Player player in players)
+                {
+                    if (player.Name != GetPlayer().Name && player.DeckOfPlayer.Count != 0)
+                    {
+                        
+                        Checker(player, rand.Next(player.DeckOfPlayer.Count));
+                        player.DeckOfPlayer.Sort();
+                    }
+                    else if(player.DeckOfPlayer.Count == 0)
+                    {
+                        GameOver();
+                    }
+                    else
+                    {
+                        player.DeckOfPlayer.Sort();
+                        RefreshHand(hand, player);
+                        tcs = new TaskCompletionSource<bool>();
+                        await tcs.Task;
+                    }
+                }
+            }
+            
         }
 
         public bool CheckForTheEmptyDeck()
@@ -70,6 +140,17 @@ namespace IdzNaRyby
                 return true;
             }
             return false;
+        }
+
+        public void RefreshHand(ListBox hand, Player player)
+        {
+
+            hand.Items.Clear();
+            player.DeckOfPlayer.Sort();
+            foreach (string card in player.DeckOfPlayer.GetCardNames())
+            {
+                hand.Items.Add(card);
+            }
         }
 
         private void ShowOpCards(TextBox gameWindow)
@@ -91,6 +172,11 @@ namespace IdzNaRyby
             if (group[3] != null)
             {
                 groups.Text += player.Name + " ma grupę " + group[0].Value + " \n";
+                player.groupsOfThisPlayer++;
+            }
+            if(player.DeckOfPlayer.Count == 0)
+            {
+                gameWindow.Text += player.Name + " ma 0 kart, musi dobrać! \n";
             }
         }
 
@@ -106,10 +192,15 @@ namespace IdzNaRyby
 
         private Deck StartCards(Deck playersDeck)
         {
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < 5; i++)
             {
-                deck.Shuffle();
-                playersDeck.Add(deck.Deal(rand.Next(deck.Count)));
+                if (deck.Count != 0)
+                {
+                    deck.Shuffle();
+                    playersDeck.Add(deck.Deal(rand.Next(deck.Count)));
+                }
+                else
+                    break;
             }
             return playersDeck;
         }
