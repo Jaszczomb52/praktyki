@@ -44,14 +44,12 @@ namespace IdzNaRyby
         
         private void GibCard_Click(object sender, RoutedEventArgs e)
         {
-            /*if(game.CheckForTheEmptyDeck())
-            {
-                MessageBox.Show("Koniec gry!");
-            }*/
+            bool temp = false;
             Player main = game.GetPlayer();
-            game.Checker(main, hand.SelectedIndex);
+            temp = game.Checker(main, hand.SelectedIndex);
             game.RefreshHand(hand, main);
-            game.tcs?.TrySetResult(true);
+            if(temp)
+                game.tcs?.TrySetResult(true);
         }
 
         

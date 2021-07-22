@@ -31,32 +31,26 @@ namespace IdzNaRyby
             return players.First();
         }
 
-        public void Checker(Player checker, int selectedIndex)
+        public bool Checker(Player checker, int selectedIndex)
         {
             bool hasDeal = false;
             if (selectedIndex >= 0)
             {
-                gameWindow.Text += checker.Name + " chce dostać karty o nominale " + checker.DeckOfPlayer.cards[selectedIndex].Value + "! \n";
-                if (CheckForTheEmptyDeck()) { }
-                //GameOver();
-                else
+                gameWindow.Text += checker.Name + " chce dostać karty o wartości " + checker.DeckOfPlayer.cards[selectedIndex].Value + "! \n";
+                foreach (Player opponent in players)
                 {
-                    foreach (Player opponent in players)
+                    if (opponent.Name != checker.Name)
                     {
-
-                        if (opponent.Name != checker.Name)
+                        int temp = opponent.CheckForCards(checker.DeckOfPlayer.cards[selectedIndex]);
+                        if (temp != 0)
                         {
-                            int temp = opponent.CheckForCards(checker.DeckOfPlayer.cards[selectedIndex]);
-                            if (temp != 0)
+                            hasDeal = true;
+                            gameWindow.Text += opponent.Name + " oddał " + temp + " kartę/y \n";
+                            checker.GiveCards(opponent, selectedIndex, deck);
+                            if (opponent.DeckOfPlayer.Count == 0)
                             {
-                                hasDeal = true;
-                                gameWindow.Text += opponent.Name + " oddał " + temp + " kart \n";
-                                checker.GiveCards(opponent, selectedIndex, deck);
-                                if (opponent.DeckOfPlayer.Count == 0)
-                                {
-                                    gameWindow.Text += opponent.Name + " ma 0 kart, musi dobrać! \n";
-                                    StartCards(opponent.DeckOfPlayer);
-                                }
+                                gameWindow.Text += opponent.Name + " ma 0 kart, musi dobrać! \n";
+                                StartCards(opponent.DeckOfPlayer);
                             }
                         }
                     }
@@ -66,9 +60,13 @@ namespace IdzNaRyby
                     gameWindow.Text += "Nikt nie miał takiej karty! \n";
                     GibCardFromMainDeck(checker);
                 }
-                
                 CheckGroups(checker, groups);
-                //showOpCards();
+                return true;
+            }
+            else
+            {
+                MessageBox.Show("Wybierz kartę z listy!");
+                return false;
             }
         }
 
@@ -112,7 +110,6 @@ namespace IdzNaRyby
                 players.Add(GenerateOpponent("Maniek"));
                 players.Add(GenerateOpponent("Rychu"));
             }
-                //showOpCards();
         }
 
         public async void GameLoop(ListBox hand)
@@ -159,7 +156,6 @@ namespace IdzNaRyby
 
         public void RefreshHand(ListBox hand, Player player)
         {
-
             hand.Items.Clear();
             player.DeckOfPlayer.Sort();
             foreach (string card in player.DeckOfPlayer.GetCardNames())
@@ -186,7 +182,7 @@ namespace IdzNaRyby
             Card[] group = player.CheckForGroups();
             if (group[3] != null)
             {
-                groups.Text += player.Name + " ma grupę " + group[0].Value + " \n";
+                groups.Text += player.Name + " ma grupę o wartości " + group[0].Value + " \n";
                 player.groupsOfThisPlayer++;
             }
             if(player.DeckOfPlayer.Count == 0)
@@ -201,7 +197,6 @@ namespace IdzNaRyby
             Deck deck = StartCards(new Deck(new List<Card>()));
             Player player;
             player = new Player(deck, name);
-
             return player;
         }
 
