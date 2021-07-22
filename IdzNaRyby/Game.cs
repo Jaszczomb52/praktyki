@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace IdzNaRyby
@@ -25,6 +26,7 @@ namespace IdzNaRyby
 
         public void Checker(Player checker, int selectedIndex, TextBox gameWindow, TextBox groups)
         {
+            bool hasCards = false;
             if (selectedIndex >= 0)
             {
 
@@ -36,10 +38,15 @@ namespace IdzNaRyby
                         int temp = opponent.CheckForCards(checker.DeckOfPlayer.cards[selectedIndex]);
                         if (temp != 0)
                         {
+                            hasCards = true;
                             gameWindow.Text += opponent.Name + " oddał " + temp + " kart \n";
                             checker.GiveCards(opponent, selectedIndex, deck);
                         }
                     }
+                }
+                if(!hasCards)
+                {
+                    checker.GiveCards(checker, rand.Next(deck.Count), deck);
                 }
                 CheckGroups(checker, groups);
                 //showOpCards();
@@ -54,6 +61,15 @@ namespace IdzNaRyby
             players.Add(GenerateOpponent(name));
 
             //showOpCards();
+        }
+
+        public bool CheckForTheEmptyDeck()
+        {
+            if(deck.Count == 0)
+            {
+                return true;
+            }
+            return false;
         }
 
         private void ShowOpCards(TextBox gameWindow)

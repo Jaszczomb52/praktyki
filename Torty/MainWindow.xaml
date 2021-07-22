@@ -13,14 +13,14 @@
                     <TextBox x:Name="Text"  HorizontalAlignment="Left" Height="23" Margin="12,13,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextChanged="Changed"/>
                     <CheckBox x:Name="check1" Content="Opcja zdrowa" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,58,0,0" Click="ChangedCheck"/>
                     <CheckBox x:Name="check2" Content="Fantazyjne dekoracje" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,38,0,0" Click="ChangedCheck"/>
-                    <Label Content="Podaj liczbe osob" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="135,7,0,0" Width="107"/>
+                    <Label Content="Podaj liczbe osob(max 1mln)" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="135,7,0,0" Width="164"/>
                     <Label Content="Koszt" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,78,0,0" Width="43"/>
                     <TextBox x:Name="Price"  HorizontalAlignment="Left" Height="23" Margin="58,78,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="94" IsEnabled="False"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Urodziny" Margin="58,0,-97,-2">
                 <Grid Background="#FFE5E5E5">
-                    <Label Content="Liczba osob" HorizontalAlignment="Left" VerticalAlignment="Top" Height="26" Width="74"/>
+                    <Label Content="Liczba osob(max 1mln)" HorizontalAlignment="Left" VerticalAlignment="Top" Height="26" Width="130"/>
                     <TextBox x:Name="NumberOfPersons" HorizontalAlignment="Left" Height="23" Margin="0,26,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="74" TextChanged="BDChanged"/>
                     <CheckBox x:Name="Check3" Content="Fantazyjne dekoracje" HorizontalAlignment="Left" Margin="0,54,0,0" VerticalAlignment="Top" Click="BDChangedCheck"/>
                     <Label Content="Napis na torcie:" HorizontalAlignment="Left" VerticalAlignment="Top" Height="26" Width="137" Margin="126,0,0,0"/>

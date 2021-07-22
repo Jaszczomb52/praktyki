@@ -53,7 +53,10 @@ namespace Torty
                 {
                     party.Refresh(numberOfPeople, decorCheck, healthCheck);
                 }
-                Price.Text = party.GetThePrice().ToString();
+                if (numberOfPeople < 1000000)
+                    Price.Text = party.GetThePrice().ToString();
+                else
+                    MessageBox.Show("Za dużo ludzi");
             }
             catch (Exception)
             {
@@ -94,7 +97,10 @@ namespace Torty
                 {
                     BDparty.Refresh(numberOfPeople, decorCheck, cakeText, BDParty.CakeTextCheck(numberOfPeople));
                 }
-                BDPrice.Text = BDparty.GetThePrice().ToString();
+                if (numberOfPeople < 1000000)
+                    BDPrice.Text = BDparty.GetThePrice().ToString();
+                else
+                    MessageBox.Show("Za dużo ludzi");
                 
             }
             catch(Exception)

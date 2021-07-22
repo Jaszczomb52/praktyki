@@ -26,7 +26,6 @@ namespace IdzNaRyby
         public MainWindow()
         {
             InitializeComponent();
-
         }
 
         private void Start_Click(object sender, RoutedEventArgs e)
@@ -40,8 +39,12 @@ namespace IdzNaRyby
         
         private void GibCard_Click(object sender, RoutedEventArgs e)
         {
+            if(game.CheckForTheEmptyDeck())
+            {
+                MessageBox.Show("Koniec gry!");
+            }
             Player main = game.GetPlayer();
-            game.Checker(main, hand.SelectedIndex,gameWindow,groups) ;
+            game.Checker(main, hand.SelectedIndex,gameWindow,groups);
             RefreshHand(hand, main);
         }
 
@@ -54,7 +57,7 @@ namespace IdzNaRyby
             {
                 hand.Items.Add(card);
             }
-        }
+        } 
         
     }
 }
