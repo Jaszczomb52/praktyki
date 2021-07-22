@@ -37,8 +37,9 @@ namespace IdzNaRyby
             nameBox.IsEnabled = false;
             game.GetPlayer().CheckForGroups();
             game.RefreshHand(hand, game.GetPlayer());
-            game.tcs?.TrySetResult(true);
+            
             game.GameLoop(hand);
+            game.tcs?.TrySetResult(true);
         }
         
         private void GibCard_Click(object sender, RoutedEventArgs e)

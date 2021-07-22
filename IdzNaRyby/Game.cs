@@ -36,7 +36,7 @@ namespace IdzNaRyby
             bool hasDeal = false;
             if (selectedIndex >= 0)
             {
-                gameWindow.Text += checker.Name + " chce dostać karty o nominale" + checker.DeckOfPlayer.cards[selectedIndex].Value + "! \n";
+                gameWindow.Text += checker.Name + " chce dostać karty o nominale " + checker.DeckOfPlayer.cards[selectedIndex].Value + "! \n";
                 if (CheckForTheEmptyDeck()) { }
                 //GameOver();
                 else
@@ -63,7 +63,7 @@ namespace IdzNaRyby
                 }
                 if (!hasDeal)
                 {
-                    gameWindow.Text += " nikt nie miał takiej karty! \n";
+                    gameWindow.Text += "Nikt nie miał takiej karty! \n";
                     GibCardFromMainDeck(checker);
                 }
                 
@@ -92,15 +92,27 @@ namespace IdzNaRyby
         {
             int temp = rand.Next(deck.Count);
             player.DeckOfPlayer.Add(deck.cards[temp]);
+            if (player.Name == GetPlayer().Name)
+                gameWindow.Text += "Musisz dobrać kartę! Karta to - " + deck.cards[temp] + "\n";
+            else
+            gameWindow.Text += player.Name + " musi dobrać kartę! \n";
             deck.cards.RemoveAt(temp);
         }
 
         public void Start(string name)
         {
             players.Add(GenerateOpponent(name));
-            players.Add(GenerateOpponent("Zbychu"));
-            players.Add(GenerateOpponent("Jacek"));
-            //showOpCards();
+            if (name != "Zbychu" && name != "Jacek")
+            {
+                players.Add(GenerateOpponent("Zbychu"));
+                players.Add(GenerateOpponent("Jacek"));
+            }
+            else
+            {
+                players.Add(GenerateOpponent("Maniek"));
+                players.Add(GenerateOpponent("Rychu"));
+            }
+                //showOpCards();
         }
 
         public async void GameLoop(ListBox hand)
@@ -128,7 +140,10 @@ namespace IdzNaRyby
                         tcs = new TaskCompletionSource<bool>();
                         await tcs.Task;
                     }
+                    gameWindow.Text += "\n";
                 }
+                gameWindow.ScrollToEnd();
+                groups.ScrollToEnd();
             }
             
         }
