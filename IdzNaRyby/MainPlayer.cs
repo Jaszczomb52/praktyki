@@ -14,8 +14,5 @@ namespace IdzNaRyby
 
         }
 
-        // tu se beda metody tylko dla glownego gracza (osoba grajaca)
-
-        
     }
 }
