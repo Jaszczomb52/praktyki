@@ -1,0 +1,30 @@
+﻿<Window x:Class="Wymówki.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Wymówki"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="194.262" Width="584.836">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Label Content="Wymówka" HorizontalAlignment="Left" Margin="10,6,0,0" VerticalAlignment="Top" Width="152"/>
+        <Label Content="Wyniki użycia" HorizontalAlignment="Left" Margin="10,34,0,0" VerticalAlignment="Top" Width="152"/>
+        <Label Content="Ostatnio użyte" HorizontalAlignment="Left" Margin="10,62,0,0" VerticalAlignment="Top" Width="152"/>
+        <Label Content="Data pliku" HorizontalAlignment="Left" Margin="10,90,0,0" VerticalAlignment="Top" Width="152"/>
+        <Button Content="Folder"  HorizontalAlignment="Left" Margin="10,132,0,0" VerticalAlignment="Top" Width="95" Click="Button_Click"/>
+        <TextBox x:Name="excuseBox" HorizontalAlignment="Left" Height="23" Margin="182,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="390"/>
+        <TextBox x:Name="resultBox" HorizontalAlignment="Left" Height="23" Margin="182,38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="390"/>
+        <TextBox x:Name="fileDateBox" HorizontalAlignment="Left" Height="23" Margin="182,94,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="390" IsEnabled="False"/>
+        <DatePicker x:Name="dateBox" HorizontalAlignment="Left" Margin="182,66,0,0" VerticalAlignment="Top" Width="390"/>
+        <Button x:Name="saveButton" Content="Zapisz" HorizontalAlignment="Left" Margin="135,132,0,0" VerticalAlignment="Top" Width="94" IsEnabled="False" Click="saveButton_Click"/>
+        <Button x:Name="loadButton" Content="Wczytaj" HorizontalAlignment="Left" Margin="257,132,0,0" VerticalAlignment="Top" Width="94" IsEnabled="False" Click="loadButton_Click"/>
+        <Button x:Name="randomButton" Content="Losowa wymówka" HorizontalAlignment="Left" Margin="375,132,0,0" VerticalAlignment="Top" Width="192" IsEnabled="False" Click="randomButton_Click"/>
+
+    </Grid>
+</Window>
