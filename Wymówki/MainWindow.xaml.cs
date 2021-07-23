@@ -38,6 +38,10 @@ namespace Wymówki
                 loadButton.IsEnabled = true;
                 randomButton.IsEnabled = true;
             }
+            else
+            {
+                System.Windows.MessageBox.Show("Wybierz poprawną ścieżkę folderu");
+            }
         }
 
         private void saveButton_Click(object sender, RoutedEventArgs e)
@@ -50,20 +54,34 @@ namespace Wymówki
 
         private void loadButton_Click(object sender, RoutedEventArgs e)
         {
-            string[] temp = dir.LoadFile().Split(new string[] { "*;&&;*" }, 2, StringSplitOptions.None);
-            excuseBox.Text = temp[0];
-            resultBox.Text = temp[1];
-            fileDateBox.Text = dir.LastFileCreat.ToLongDateString();
-            dateBox.SelectedDate = dir.LastFileMod;
+            try
+            {
+                string[] temp = dir.LoadFile().Split(new string[] { "*;&&;*" }, 2, StringSplitOptions.None);
+                excuseBox.Text = temp[0];
+                resultBox.Text = temp[1];
+                fileDateBox.Text = dir.LastFileCreat.ToLongDateString();
+                dateBox.SelectedDate = dir.LastFileMod;
+            }
+            catch(Exception)
+            {
+                System.Windows.MessageBox.Show("Błąd podczas ładowania pliku.");
+            }
         }
 
         private void randomButton_Click(object sender, RoutedEventArgs e)
         {
-            string[] temp = dir.LoadRandomFile().Split(new string[] { "*;&&;*" }, 2, StringSplitOptions.None);
-            excuseBox.Text = temp[0];
-            resultBox.Text = temp[1];
-            fileDateBox.Text = dir.LastFileCreat.ToLongDateString();
-            dateBox.SelectedDate = dir.LastFileMod;
+            try
+            {
+                string[] temp = dir.LoadRandomFile().Split(new string[] { "*;&&;*" }, 2, StringSplitOptions.None);
+                excuseBox.Text = temp[0];
+                resultBox.Text = temp[1];
+                fileDateBox.Text = dir.LastFileCreat.ToLongDateString();
+                dateBox.SelectedDate = dir.LastFileMod;
+            }
+            catch (Exception)
+            {
+                System.Windows.MessageBox.Show("Błąd podczas ładowania pliku.");
+            }
         }
     }
 }
