@@ -13,11 +13,14 @@ namespace Wymówki
         public string DirectoryPath { get; set; }
         public DateTime LastFileMod { get; private set; }
         public DateTime LastFileCreat { get; private set; }
+        public string Name { get; private set; }
+        public string Text { get; private set; }
+        public string Result { get; private set; }
         public DialogResult GetDirectory()
         {
             try
             {
-                var dialog = new FolderBrowserDialog();
+                FolderBrowserDialog dialog = new FolderBrowserDialog();
                 DialogResult res = dialog.ShowDialog();
                 if (res == DialogResult.OK)
                 {
@@ -29,7 +32,7 @@ namespace Wymówki
                     return res;
                 }
             }
-            catch(Exception)
+            catch (Exception)
             {
                 MessageBox.Show("Błąd podczas pobierania ścieżki");
                 return DialogResult.None;
@@ -40,72 +43,79 @@ namespace Wymówki
         {
             try
             {
-                var dialog = new SaveFileDialog();
-                dialog.InitialDirectory = DirectoryPath;
-                dialog.Filter = "Pliki tekstowe (*.txt) | *.txt";
-                dialog.DefaultExt = ".txt";
+                SaveFileDialog dialog = new SaveFileDialog
+                {
+                    InitialDirectory = DirectoryPath,
+                    Filter = "Pliki tekstowe (*.txt) | *.txt",
+                    DefaultExt = ".txt"
+                };
                 dialog.ShowDialog();
-                StreamWriter writer = new StreamWriter(dialog.FileName);
-                writer.WriteLine(text);
-                writer.WriteLine(result);
-                writer.Flush();
-                writer.Close();
-                File.SetLastWriteTime(dialog.FileName, time);
+                if (dialog.CheckFileExists)
+                {
+                    File.Delete(dialog.FileName);
+                }
+                using (StreamWriter writer = new StreamWriter(dialog.FileName))
+                {
+                    writer.WriteLine(text);
+                    writer.WriteLine(result);
+                    writer.WriteLine(time);
+                    writer.Flush();
+                }
             }
-            catch(Exception)
+            catch (Exception)
             {
                 MessageBox.Show("Bład podczas zapisywania pliku");
             }
         }
 
-        public string LoadFile()
+        public void LoadFile()
         {
             try
             {
-                var dialog = new OpenFileDialog();
-                dialog.InitialDirectory = DirectoryPath;
-                dialog.Filter = "Pliki tekstowe (*.txt) | *.txt";
+                OpenFileDialog dialog = new OpenFileDialog
+                {
+                    InitialDirectory = DirectoryPath,
+                    Filter = "Pliki tekstowe (*.txt) | *.txt"
+                };
                 dialog.ShowDialog();
                 if (dialog.FileName.Length != 0)
                 {
-                    FileStream fs = new FileStream(dialog.FileName, FileMode.Open, FileAccess.Read);
-                    StreamReader reader = new StreamReader(fs);
-                    LastFileCreat = File.GetCreationTime(dialog.FileName);
-                    LastFileMod = File.GetLastWriteTime(dialog.FileName);
-                    return reader.ReadLine() + "*;&&;*" + reader.ReadLine();
-                }
-                else
-                {
-                    return "no_file";
+                    using (StreamReader reader = new StreamReader(dialog.FileName))
+                    {
+                        Text = reader.ReadLine();
+                        Result = reader.ReadLine();
+                        LastFileCreat = File.GetCreationTime(dialog.FileName);
+                        LastFileMod = DateTime.Parse(reader.ReadLine());
+                        Name = dialog.SafeFileName;
+                    }
                 }
             }
             catch(Exception)
             {
                 MessageBox.Show("Błąd podczas ładowania pliku");
-                return "no_file";
             }
         }
 
-        public string LoadRandomFile()
+        public void LoadRandomFile()
         {
             try
             {
-                List<string> files = Directory.GetFiles(DirectoryPath).ToList();
                 Random rand = new Random();
+                List<string> files = Directory.GetFiles(DirectoryPath).ToList();
                 string file = files[rand.Next(files.Count)];
-                FileStream fs = new FileStream(file, FileMode.Open, FileAccess.Read);
-                StreamReader reader = new StreamReader(fs);
-                LastFileCreat = File.GetCreationTime(file);
-                LastFileMod = File.GetLastWriteTime(file);
-                return reader.ReadLine() + "*;&&;*" + reader.ReadLine();
+                using (StreamReader reader = new StreamReader(file))
+                {
+                    Text = reader.ReadLine();
+                    Result = reader.ReadLine();
+                    LastFileCreat = File.GetCreationTime(file);
+                    LastFileMod = DateTime.Parse(reader.ReadLine());
+                    Name = file.Substring(DirectoryPath.Length+1, file.Length - DirectoryPath.Length-1);
+                }
             }
             catch (Exception)
             {
                 MessageBox.Show("Błąd podczas ładowania losowego pliku");
-                return "no_file";
             }
         }
-
-
-        }
     }
+}

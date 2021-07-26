@@ -23,6 +23,8 @@ namespace Wymówki
     public partial class MainWindow : Window
     {
         Files dir;
+        bool changed = false;
+        bool isFocused = false;
         public MainWindow()
         {
             InitializeComponent();
@@ -47,7 +49,10 @@ namespace Wymówki
         private void saveButton_Click(object sender, RoutedEventArgs e)
         {
             if (excuseBox.Text != "" && resultBox.Text != "" && dateBox.SelectedDate != null)
+            {
                 dir.SaveFile(excuseBox.Text, resultBox.Text, (DateTime)dateBox.SelectedDate);
+                ChangeHandler(false);
+            }
             else
                 System.Windows.MessageBox.Show("Wprowadź poprawne dane i wybierz datę ostatniego użycia wymówki");
         }
@@ -56,11 +61,27 @@ namespace Wymówki
         {
             try
             {
-                string[] temp = dir.LoadFile().Split(new string[] { "*;&&;*" }, 2, StringSplitOptions.None);
-                excuseBox.Text = temp[0];
-                resultBox.Text = temp[1];
-                fileDateBox.Text = dir.LastFileCreat.ToLongDateString();
-                dateBox.SelectedDate = dir.LastFileMod;
+                dir.LoadFile();
+                if (changed)
+                {
+                    if (System.Windows.MessageBox.Show("Nie zapisano zmian. Czy chcesz kontynuować?", "Warning", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                    {
+                        excuseBox.Text = dir.Text;
+                        resultBox.Text = dir.Result;
+                        fileDateBox.Text = dir.LastFileCreat.ToLongDateString();
+                        dateBox.SelectedDate = dir.LastFileMod;
+                        ChangeHandler(false);
+                        Main.Title = dir.Name;
+                    }
+                }
+                else 
+                {
+                    excuseBox.Text = dir.Text;
+                    resultBox.Text = dir.Result;
+                    fileDateBox.Text = dir.LastFileCreat.ToLongDateString();
+                    dateBox.SelectedDate = dir.LastFileMod;
+                    Main.Title = dir.Name;
+                }
             }
             catch(Exception)
             {
@@ -72,16 +93,92 @@ namespace Wymówki
         {
             try
             {
-                string[] temp = dir.LoadRandomFile().Split(new string[] { "*;&&;*" }, 2, StringSplitOptions.None);
-                excuseBox.Text = temp[0];
-                resultBox.Text = temp[1];
-                fileDateBox.Text = dir.LastFileCreat.ToLongDateString();
-                dateBox.SelectedDate = dir.LastFileMod;
+                dir.LoadRandomFile();
+                if (changed)
+                {
+                    if (System.Windows.MessageBox.Show("Nie zapisano zmian. Czy chcesz kontynuować?", "Warning", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                    {
+                        excuseBox.Text = dir.Text;
+                        resultBox.Text = dir.Result;
+                        fileDateBox.Text = dir.LastFileCreat.ToLongDateString();
+                        dateBox.SelectedDate = dir.LastFileMod;
+                        ChangeHandler(false);
+                        Main.Title = dir.Name;
+                    }
+                }
+                else
+                {
+                    excuseBox.Text = dir.Text;
+                    resultBox.Text = dir.Result;
+                    fileDateBox.Text = dir.LastFileCreat.ToLongDateString();
+                    dateBox.SelectedDate = dir.LastFileMod;
+                    Main.Title = dir.Name;
+                }
             }
             catch (Exception)
             {
                 System.Windows.MessageBox.Show("Błąd podczas ładowania pliku.");
             }
+        }
+
+        private void DataChanged(object sender, TextChangedEventArgs e)
+        {
+            if(isFocused)
+            ChangeHandler(true);
+        }
+
+        private void DataChangedDate(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if(isFocused)
+            ChangeHandler(true);
+        }
+
+        private void ChangeHandler(bool status)
+        {
+            changed = status;
+            if (status)
+            {
+                if (Main.Title.Substring(Main.Title.Length - 2, 2) != " *")
+                    Main.Title += " *";
+            }
+            else
+                //if (Main.Title != "MainWindow")
+                    Main.Title = Main.Title.Substring(0, Main.Title.Length - 2);
+        }
+
+        private void FocusHandler(bool status)
+        {
+            isFocused = status;
+        }
+
+        private void excuseBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            FocusHandler(true);
+        }
+
+        private void excuseBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            FocusHandler(false);
+        }
+
+        private void resultBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            FocusHandler(true);
+        }
+
+        private void resultBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            FocusHandler(false);
+        }
+
+        private void dateBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            FocusHandler(true);
+        }
+
+        private void dateBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            FocusHandler(false);
         }
     }
 }
