@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -87,6 +89,19 @@ namespace Deck
                 MessageBox.Show("Wylosowana przez Ciebie karta - " + card + " to as!");
             else
                 MessageBox.Show("Wylosowana przez Ciebie karta - " + card + " to nie as");
+        }
+
+        private void SerializeClick(object sender, RoutedEventArgs e)
+        {
+            BinaryFormatter formatter = new BinaryFormatter();
+            using (Stream output = File.Create("C:\\Users\\cmdrb\\documents\\karta1.dat"))
+            {
+                formatter.Serialize(output, getCard());
+            }
+            using (Stream output = File.Create("C:\\Users\\cmdrb\\documents\\karta2.dat"))
+            {
+                formatter.Serialize(output, getCard());
+            }
         }
     }
 }

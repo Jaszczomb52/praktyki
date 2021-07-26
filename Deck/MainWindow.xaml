@@ -5,12 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Deck"
         mc:Ignorable="d"
-        Title="MainWindow" Height="187.76" Width="156.926">
+        Title="MainWindow" Height="256.76" Width="156.926">
     <Grid>
         <Button Content="Losuj kartę" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="126" Height="29" Click="randomCard"/>
         <Button Content="Losuj poker" HorizontalAlignment="Left" Margin="10,44,0,0" VerticalAlignment="Top" Width="126" Height="29" Click="randomHands"/>
         <Button Content="Sprawdź wartość" HorizontalAlignment="Left" Margin="10,78,0,0" VerticalAlignment="Top" Width="126" Height="29" Click="ValueClick"/>
         <Button Content="Sprawdź symbol" HorizontalAlignment="Left" Margin="10,112,0,0" VerticalAlignment="Top" Width="126" Height="29" Click="SuitClick"/>
+        <Button Content="Serializuj 2 karty" HorizontalAlignment="Left" Margin="10,146,0,0" VerticalAlignment="Top" Width="126" Height="29" Click="SerializeClick"/>
 
     </Grid>
 </Window>

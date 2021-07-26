@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Deck
+namespace HexComparer
 {
     [Serializable]
     public class Card : IComparable<Card>
@@ -17,7 +17,7 @@ namespace Deck
 
         public Suits Suit { get; set; }
         public Values Value { get; set; }
-        
+
         public int CompareTo(Card compare)
         {
             if (this.Value > compare.Value)
@@ -28,7 +28,7 @@ namespace Deck
                 return 0;
         }
 
-        
+
         public string Name
         {
             get
@@ -64,7 +64,7 @@ namespace Deck
         public SortCriteria SortBy = SortCriteria.Value;
         public int Compare(Card x, Card y)
         {
-            if(SortBy == SortCriteria.Value)
+            if (SortBy == SortCriteria.Value)
             {
                 if (x.Value > y.Value)
                     return 1;
