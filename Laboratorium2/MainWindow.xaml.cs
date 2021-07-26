@@ -32,6 +32,10 @@ namespace Laboratorium2
             InitializeComponent();
             maxX = canvas.Width-(rect.Width/2);
             maxY = canvas.Height-(rect.Height/2);
+            TranslateTransform translate = new TranslateTransform();
+            translate.X = currX += 0;
+            translate.Y = currY += 100;
+            rect.RenderTransform = translate;
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)

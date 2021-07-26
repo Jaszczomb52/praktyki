@@ -11,6 +11,6 @@
             <Rectangle x:Name="rect" Fill="Blue" HorizontalAlignment="Left" Height="25" Stroke="Black" VerticalAlignment="Top" Width="25"/>
         </Canvas>
         <Image HorizontalAlignment="Left" Height="70" Margin="0,354,0,0" VerticalAlignment="Top" Width="792" Panel.ZIndex="-1" Source="ekwipunek.png" Stretch="Fill"/>
-        <Image HorizontalAlignment="Left" Height="354" VerticalAlignment="Top" Width="792" Panel.ZIndex="-1" Source="bck.png" Stretch="Fill"/>
+        <Image HorizontalAlignment="Left" Height="354" VerticalAlignment="Top" Width="792" Panel.ZIndex="-1" Stretch="Fill" Source="bck.png"/>
     </Grid>
 </Window>

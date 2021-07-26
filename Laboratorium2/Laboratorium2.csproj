@@ -95,9 +95,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="york.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="bck.png" />
   </ItemGroup>
   <ItemGroup>
