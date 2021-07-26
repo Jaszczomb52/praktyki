@@ -36,7 +36,7 @@ namespace Laboratorium2
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.Down)
+            if (e.Key == Key.S)
             {
                 if(currY+25 < maxY)
                 {
@@ -46,7 +46,7 @@ namespace Laboratorium2
                     rect.RenderTransform = translate;
                 }
             }
-            if (e.Key == Key.Up)
+            if (e.Key == Key.W)
             {
                 if(currY - 25 >= 0)
                 {
@@ -56,7 +56,7 @@ namespace Laboratorium2
                     rect.RenderTransform = translate;
                 }
             }
-            if (e.Key == Key.Left)
+            if (e.Key == Key.A)
             {
                 if(currX - 25 >= 0)
                 {
@@ -66,7 +66,7 @@ namespace Laboratorium2
                     rect.RenderTransform = translate;
                 }
             }
-            if (e.Key == Key.Right)
+            if (e.Key == Key.D)
             {
                 if(currX + 25 < maxX)
                 {
