@@ -1,0 +1,25 @@
+﻿<Window x:Class="Serializacja.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Serializacja"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="301.816" Width="350">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Label x:Name="JoeLabel" Content="" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="322" Grid.ColumnSpan="2"/>
+        <Label x:Name="BobLabel" Content="" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top" Width="322" Grid.ColumnSpan="2"/>
+        <Label x:Name="BankLabel" Content="" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top" Width="322" Grid.ColumnSpan="2"/>
+        <Button Content="Wyślij 10zł do Joe'a" HorizontalAlignment="Left" Margin="10,103,0,0" VerticalAlignment="Top" Width="151" Height="41" Click="Button_Click"/>
+        <Button Content="Ściągnij 5zł od Boba" HorizontalAlignment="Left" Margin="10,103,0,0" VerticalAlignment="Top" Width="151" Height="41" Grid.Column="1" Click="Button_Click_1"/>
+        <Button Content="Joe wysyła 10zł Bobowi" HorizontalAlignment="Left" Margin="10,149,0,0" VerticalAlignment="Top" Width="151" Height="41" Click="Button_Click_2"/>
+        <Button Content="Bob wysyła 5zł do Joe'a" HorizontalAlignment="Left" Margin="10,149,0,0" VerticalAlignment="Top" Width="151" Height="41" Grid.Column="1" Click="Button_Click_3"/>
+        <Button Content="Serializuj Joe'a" HorizontalAlignment="Left" Margin="10,214,0,0" VerticalAlignment="Top" Width="151" Height="41" Click="Button_Click_4"/>
+        <Button Content="Deserializuj Joe'a" HorizontalAlignment="Left" Margin="10,214,0,0" VerticalAlignment="Top" Width="151" Height="41" Grid.Column="1" Click="Button_Click_5"/>
+
+    </Grid>
+</Window>
