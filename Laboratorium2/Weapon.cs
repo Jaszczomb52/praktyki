@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Windows;
 
 namespace Laboratorium2
@@ -7,7 +8,7 @@ namespace Laboratorium2
     {
         public bool PickedUp { get; set; }
 
-        public Weapon(Game game, Point location):base(game, location)
+        public Weapon(Game game, System.Windows.Point location):base(game, location)
         {
             PickedUp = false;
         }
@@ -21,6 +22,7 @@ namespace Laboratorium2
         public abstract void Attack(Direction direction, Random random);
         protected bool DamageEnemy(Direction direction, int radius, int damage, Random random)
         {
+            System.Windows.Point target = game.PlayerLocation;
             for(int distance = 0; distance < radius; distance++)
             {
                 foreach(Enemy enemy in game.Enemies)
@@ -34,6 +36,16 @@ namespace Laboratorium2
                 target = Move(direction, target, game.Boundaries);
             }
             return false;
+        }
+
+        private bool Nearby(System.Windows.Point location, System.Windows.Point target, int distance)
+        {
+            return false;
+        }
+
+        private System.Windows.Point Move(Direction direction, System.Windows.Point target, Rectangle boundaries)
+        {
+            return target;
         }
     }
 }
