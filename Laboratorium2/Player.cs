@@ -13,14 +13,18 @@ namespace Laboratorium2
 {
     class Player : Mover
     {
+        public IEnumerable<string> Weapons { get; set; }
+        int HP { get; set; }
         List<Enemy> EnemiesInRange { get; set; }
         List<Enemy> Enemies { get; set; }
         Label Label;
-        public Player(Point currentLoc, List<Enemy> enemy, Label label) :base(currentLoc)
+        Random rand = new Random();
+        public Player(Point currentLoc) :base(currentLoc)
         {
-            Enemies = enemy;
+            //Enemies = enemy;
             EnemiesInRange = new List<Enemy>();
-            Label = label;
+            //Label = label;
+            this.HP = HP;
         }
 
         public void Move(KeyEventArgs e, Rectangle rect, Point max)
@@ -91,6 +95,11 @@ namespace Laboratorium2
                 else
                     Label.Content = "Brak";
             }
+        }
+
+        public void Attack()
+        {
+
         }
     }
 }

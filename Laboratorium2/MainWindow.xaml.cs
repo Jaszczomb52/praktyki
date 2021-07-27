@@ -34,8 +34,8 @@ namespace Laboratorium2
         public MainWindow()
         {
             InitializeComponent();
-            enemies = new List<Enemy> { new Enemy(new Point(100, 150)) };
-            player = new Player(new Point(0, 100), enemies, inRange);
+            enemies = new List<Enemy> { new Enemy(new Point(100, 150),25) };
+            player = new Player(new Point(0, 100), enemies, inRange,100);
             max.X = canvas.Width-(rect.Width/2);
             max.Y = canvas.Height-(rect.Height/2);
             TranslateTransform translate = new TranslateTransform

@@ -14,16 +14,15 @@ namespace Laboratorium2
     {
         //TranslateTransform translate = new TranslateTransform();
         Random rand = new Random();
-        public Enemy(Point currentLoc):base(currentLoc)
+        int HP { get; set; }
+        public Enemy(Point currentLoc, int HP):base(currentLoc)
         {
-
+            this.HP = HP;
         }
 
         public void Move(Rectangle rect, Point max, Player player, TranslateTransform translate)
         {
-
             int direction = rand.Next(0,8);
-            
             if(!LookForPlayer(player))
             {
                 if (direction == 0 && currY + 25 < max.Y)
