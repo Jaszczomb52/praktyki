@@ -6,41 +6,61 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Shapes;
+using System.Drawing;
 
 namespace Laboratorium2
 {
     abstract class Mover
     {
-        public double currY;
-        public double currX;
-        public Point CurrentLoc { get { return new Point(currX, currY); } }
-        public TranslateTransform Translate { get; set; }
-        public Mover (Point currentLoc)
+        private const int MoveInterval = 10;
+        protected System.Windows.Point location;
+        public System.Windows.Point Location { get { return location; } }
+        protected Game game;
+        public Mover(Game game, System.Windows.Point location)
         {
-            currY = currentLoc.Y;
-            currX = currentLoc.X;
+            this.game = game;
+            this.location = location;
         }
 
-        public bool Nearby(Point LocationToCheck)
+        public bool Nearby(System.Windows.Point locationToCheck, int distance)
         {
-            Vector distance = new Point(currX,currY) - LocationToCheck;
-            if (distance.X < 0)
-                distance.X *= -1;
-            if (distance.Y < 0)
-                distance.Y *= -1;
-            if (distance.X <= 25 && distance.Y == 0)
+            if (Math.Abs(location.X - locationToCheck.X) < distance &&
+                Math.Abs(location.Y - locationToCheck.Y) < distance)
+            {
                 return true;
-            else if (distance.Y <= 25 && distance.X == 0)
-                return true;
+            }
             else
+            {
                 return false;
+            }
+
         }
 
-        public double CheckDistance(Point LocationToCheck)
+        public System.Windows.Point Move(Direction direction, Rectangle boundaries)
         {
-            Vector distance = new Point(currX, currY) - LocationToCheck;
-            return distance.Length;
+            System.Windows.Point newLocation = location;
+            switch (direction)
+            {
+                case Direction.Up:
+                    if (newLocation.Y - MoveInterval >= boundaries.Top)
+                        newLocation.Y -= MoveInterval;
+                    break;
+                case Direction.Down:
+                    if (newLocation.Y + MoveInterval <= boundaries.Bottom)
+                        newLocation.Y += MoveInterval;
+                    break;
+                case Direction.Left:
+                    if (newLocation.X - MoveInterval >= boundaries.Left)
+                        newLocation.X -= MoveInterval;
+                    break;
+                case Direction.Right:
+                    if (newLocation.X + MoveInterval <= boundaries.Right)
+                        newLocation.X += MoveInterval;
+                    break;
+                default: break;
+            }
+            return newLocation;
+        
         }
     }
 }

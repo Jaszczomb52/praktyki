@@ -10,18 +10,23 @@ using System.Windows.Shapes;
 
 namespace Laboratorium2
 {
-    class Enemy : Mover
+    abstract class Enemy : Mover
     {
-        //TranslateTransform translate = new TranslateTransform();
-        Random rand = new Random();
-        int HP { get; set; }
-        public Enemy(Point currentLoc, int HP):base(currentLoc)
+        private const int NearPlayerDistance = 25;
+        public int HP { get; private set; }
+        public bool Dead { get
+            {
+                if (HP <= 0) return true;
+                else return false;
+            } 
+        }
+        public Enemy(Game game,Point currentLoc, int HP):base(game,currentLoc)
         {
             this.HP = HP;
         }
 
-        public void Move(Rectangle rect, Point max, Player player, TranslateTransform translate)
-        {
+        public abstract void Move(Random random);
+        /*{
             int direction = rand.Next(0,8);
             if(!LookForPlayer(player))
             {
@@ -48,42 +53,28 @@ namespace Laboratorium2
             Translate = translate;
             //if (Nearby(player.CurrentLoc))
                 //MessageBox.Show("hit");
+        }*/
+        public void Hit(int maxDamage, Random random)
+        {
+            HP -= random.Next(1, maxDamage);
         }
 
-        private bool LookForPlayer(Player player)
+        protected bool NearPlayer()
         {
-            double temp = CheckDistance(player.CurrentLoc);
-            if(temp < 200 && rand.Next(0,2) == 1)
-            {
-                Vector vec = CurrentLoc - player.CurrentLoc;
-                if (Math.Abs(vec.X) > Math.Abs(vec.Y))
-                {
-                    if (vec.X > 0)
-                    {
-                        currX -= 25;
-                        return true;
-                    }
-                    else
-                    {
-                        currX += 25;
-                        return true;
-                    }
-                }
-                else
-                {
-                    if (vec.Y > 0)
-                    {
-                        currY -= 25;
-                        return true;
-                    }
-                    else
-                    {
-                        currY += 25;
-                        return true;
-                    }
-                }
-            }
-            return false;
+            return (Nearby(game.PlayerLocation, NearPlayerDistance));
+        }
+        protected Direction FindPlayerDirection(Point playerLocation)
+        {
+            Direction directionToMove;
+            if (playerLocation.X > location.X + 10)
+                directionToMove = Direction.Right;
+            else if (playerLocation.X < location.X - 10)
+                directionToMove = Direction.Left;
+            else if (playerLocation.Y < location.Y - 10)
+                directionToMove = Direction.Up;
+            else
+                directionToMove = Direction.Down;
+            return directionToMove;
         }
     }
 }

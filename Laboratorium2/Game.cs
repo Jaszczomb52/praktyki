@@ -14,7 +14,7 @@ namespace Laboratorium2
         public Weapon WeaponInRoom { get; private set; }
 
         private Player player;
-        public System.Windows.Point PlayerLocation { get { return player.CurrentLoc; } }
+        public System.Windows.Point PlayerLocation { get { return player.Location; } }
         public IEnumerable<string> PlayerWeapons { get { return player.Weapons; } }
         private int level = 0;
         public int Level { get { return level; } }
@@ -25,7 +25,7 @@ namespace Laboratorium2
         public Game(Rectangle boundaries)
         {
             this.boundaries = boundaries;
-            player = new Player(new System.Windows.Point(boundaries.Left + 25, boundaries.Top + 75));
+            player = new Player(this,new System.Windows.Point(boundaries.Left + 10, boundaries.Top + 70));
         }
         public void Move(Direction direction, Random random)
         {
@@ -45,7 +45,7 @@ namespace Laboratorium2
         }
         public void HitPlayer(int maxDamage, Random random)
         {
-            Player.Hit(maxDamage, random);
+            player.Hit(maxDamage, random);
         }
         public void IncreasePlayerHealth(int health, Random random)
         {
@@ -72,7 +72,7 @@ namespace Laboratorium2
                 case 1:
                     Enemies = new List<Enemy>();
                     Enemies.Add(new Bat(this, GetRandomLocation(random)));
-                    WeaponInRoom = new Swrod(this, GetRandomLocation(random));
+                    WeaponInRoom = new Sword(this, GetRandomLocation(random));
                     break;
                 case 2:
                     Enemies = new List<Enemy>();

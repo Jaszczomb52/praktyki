@@ -13,91 +13,52 @@ namespace Laboratorium2
 {
     class Player : Mover
     {
-        public IEnumerable<string> Weapons { get; set; }
-        int HP { get; set; }
-        List<Enemy> EnemiesInRange { get; set; }
-        List<Enemy> Enemies { get; set; }
-        Label Label;
-        Random rand = new Random();
-        public Player(Point currentLoc) :base(currentLoc)
+        private Weapon equippedWeapon;
+        public int HP { get; private set; }
+        private List<Weapon> inventory = new List<Weapon>();
+        public IEnumerable<string> Weapons { 
+            get 
+                {
+                List<string> names = new List<string>();
+                foreach (Weapon weapon in inventory)
+                    names.Add(weapon.Name);
+                return names;
+                }
+        }
+        public Player(Game game, Point currentLoc) :base(game,currentLoc)
         {
-            //Enemies = enemy;
-            EnemiesInRange = new List<Enemy>();
-            //Label = label;
-            this.HP = HP;
+            HP = 10;
         }
 
-        public void Move(KeyEventArgs e, Rectangle rect, Point max)
+        public void Hit(int maxDamage, Random random)
         {
-            if (e.Key == Key.S)
-            {
-                if (currY + 25 < max.Y)
-                {
-                    TranslateTransform translate = new TranslateTransform
-                    {
-                        X = currX += 0,
-                        Y = currY += 25
-                    };
-                    rect.RenderTransform = translate;
-                }
-            }
-            if (e.Key == Key.W)
-            {
-                if (currY - 25 >= 0)
-                {
-                    TranslateTransform translate = new TranslateTransform
-                    {
-                        X = currX += 0,
-                        Y = currY -= 25
-                    };
-                    rect.RenderTransform = translate;
-                }
-            }
-            if (e.Key == Key.A)
-            {
-                if (currX - 25 >= 0)
-                {
-                    TranslateTransform translate = new TranslateTransform
-                    {
-                        X = currX -= 25,
-                        Y = currY += 0
-                    };
-                    rect.RenderTransform = translate;
-                }
-            }
-            if (e.Key == Key.D)
-            {
-                if (currX + 25 < max.X)
-                {
-                    TranslateTransform translate = new TranslateTransform
-                    {
-                        X = currX += 25,
-                        Y = currY += 0
-                    };
-                    rect.RenderTransform = translate;
-                }
-            }
-            CheckTheRange();
+            HP -= random.Next(1, maxDamage);
         }
 
-        private void CheckTheRange()
+        public void IncreaseHealth(int health, Random random)
         {
-            EnemiesInRange.Clear();
-            foreach(Enemy enemy in Enemies)
+            HP += random.Next(1, health);
+        }
+
+        public void Equip(string weaponName)
+        {
+            foreach(Weapon weapon in inventory)
             {
-                Vector vec = CurrentLoc - enemy.CurrentLoc;
-                if (vec.X <= 25 && vec.X >= -25 && vec.Y <= 25 && vec.Y >= -25)
-                {
-                    EnemiesInRange.Add(enemy);
-                    if (EnemiesInRange.Count != 0)
-                        Label.Content = EnemiesInRange.First().ToString();
-                }
-                else
-                    Label.Content = "Brak";
+                if (weapon.Name == weaponName)
+                    equippedWeapon = weapon;
             }
         }
 
-        public void Attack()
+        public void Move(Direction direction)
+        {
+            base.location = Move(direction, game.Boundaries);
+            if(!game.WeaponInRoom.PickedUp)
+            {
+
+            }
+        }
+
+        public void Attack(Direction direction, Random random)
         {
 
         }
