@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Shapes;
+using System.Drawing;
 
 namespace Laboratorium2
 {
@@ -18,11 +18,13 @@ namespace Laboratorium2
             {
                 if (HP <= 0) return true;
                 else return false;
-            } 
+            }
         }
-        public Enemy(Game game,Point currentLoc, int HP):base(game,currentLoc)
+        protected System.Windows.Controls.Image img { get; set; }
+        public Enemy(Game game,Point currentLoc, int HP, System.Windows.Controls.Image img):base(game,currentLoc)
         {
             this.HP = HP;
+            this.img = img;
         }
 
         public abstract void Move(Random random);
@@ -61,7 +63,7 @@ namespace Laboratorium2
 
         protected bool NearPlayer()
         {
-            return (Nearby(game.PlayerLocation, NearPlayerDistance));
+            return Nearby(game.PlayerLocation, NearPlayerDistance);
         }
         protected Direction FindPlayerDirection(Point playerLocation)
         {

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
 using System.Drawing;
 
 namespace Laboratorium2
@@ -14,22 +13,28 @@ namespace Laboratorium2
         public Weapon WeaponInRoom { get; private set; }
 
         private Player player;
-        public System.Windows.Point PlayerLocation { get { return player.Location; } }
+        public Point PlayerLocation { get { return player.Location; } }
         public IEnumerable<string> PlayerWeapons { get { return player.Weapons; } }
         private int level = 0;
         public int Level { get { return level; } }
 
         private Rectangle boundaries;
         public Rectangle Boundaries { get { return boundaries; } }
+        protected System.Windows.Controls.Image GhostImg;
+        protected System.Windows.Controls.Image GhoulImg;
+        protected System.Windows.Controls.Image BatImg;
 
-        public Game(Rectangle boundaries)
+        public Game(Rectangle boundaries, System.Windows.Controls.Image GhostImg, System.Windows.Controls.Image GhoulImg, System.Windows.Controls.Image BatImg)
         {
             this.boundaries = boundaries;
-            player = new Player(this,new System.Windows.Point(boundaries.Left + 10, boundaries.Top + 70));
+            player = new Player(this,new Point(boundaries.Left + 10, boundaries.Top + 70));
+            this.GhostImg = GhostImg;
+            this.GhoulImg = GhoulImg;
+            this.BatImg = BatImg;
         }
         public void Move(Direction direction, Random random)
         {
-            player.Move(direction);
+            //player.Move(direction);
             foreach (Enemy enemy in Enemies)
             {
                 enemy.Move(random);
@@ -57,9 +62,9 @@ namespace Laboratorium2
             foreach (Enemy enemy in Enemies)
                 enemy.Move(random);
         }
-        private System.Windows.Point GetRandomLocation(Random random)
+        private Point GetRandomLocation(Random random)
         {
-            return new System.Windows.Point(boundaries.Left +
+            return new Point(boundaries.Left +
                 random.Next(boundaries.Right / 10 - boundaries.Left / 10) * 10,
                 boundaries.Top +
                 random.Next(boundaries.Bottom / 10 - boundaries.Top / 10) * 10);
@@ -71,23 +76,23 @@ namespace Laboratorium2
             {
                 case 1:
                     Enemies = new List<Enemy>();
-                    Enemies.Add(new Bat(this, GetRandomLocation(random)));
+                    Enemies.Add(new Bat(this, GetRandomLocation(random),BatImg));
                     WeaponInRoom = new Sword(this, GetRandomLocation(random));
                     break;
                 case 2:
                     Enemies = new List<Enemy>();
-                    Enemies.Add(new Ghost(this, GetRandomLocation(random)));
+                    Enemies.Add(new Ghost(this, GetRandomLocation(random),GhostImg));
                     WeaponInRoom = new BluePotion(this, GetRandomLocation(random));
                     break;
                 case 3:
                     Enemies = new List<Enemy>();
-                    Enemies.Add(new Ghoul(this, GetRandomLocation(random)));
+                    Enemies.Add(new Ghoul(this, GetRandomLocation(random),GhoulImg));
                     WeaponInRoom = new Bow(this, GetRandomLocation(random));
                     break;
                 case 4:
                     Enemies = new List<Enemy>();
-                    Enemies.Add(new Bat(this, GetRandomLocation(random)));
-                    Enemies.Add(new Ghoul(this, GetRandomLocation(random)));
+                    Enemies.Add(new Bat(this, GetRandomLocation(random),BatImg));
+                    Enemies.Add(new Ghoul(this, GetRandomLocation(random),GhoulImg));
                     if (!PlayerWeapons.Contains("Bow"))
                         WeaponInRoom = new Bow(this, GetRandomLocation(random));
                     else if (!PlayerWeapons.Contains("BluePotion"))
@@ -95,23 +100,23 @@ namespace Laboratorium2
                     break;
                 case 5:
                     Enemies = new List<Enemy>();
-                    Enemies.Add(new Bat(this, GetRandomLocation(random)));
-                    Enemies.Add(new Ghoul(this, GetRandomLocation(random)));
+                    Enemies.Add(new Bat(this, GetRandomLocation(random),BatImg));
+                    Enemies.Add(new Ghoul(this, GetRandomLocation(random),GhoulImg));
                     if (!PlayerWeapons.Contains("RedPotion"))
                         WeaponInRoom = new RedPotion(this, GetRandomLocation(random));
                     break;
                 case 6:
                     Enemies = new List<Enemy>();
-                    Enemies.Add(new Ghost(this, GetRandomLocation(random)));
-                    Enemies.Add(new Ghoul(this, GetRandomLocation(random)));
+                    Enemies.Add(new Ghost(this, GetRandomLocation(random),GhostImg));
+                   Enemies.Add(new Ghoul(this, GetRandomLocation(random),GhoulImg));
                     if (!PlayerWeapons.Contains("Mace"))
                         WeaponInRoom = new Mace(this, GetRandomLocation(random));
                     break;
                 case 7:
                     Enemies = new List<Enemy>();
-                    Enemies.Add(new Bat(this, GetRandomLocation(random)));
-                    Enemies.Add(new Ghost(this, GetRandomLocation(random)));
-                    Enemies.Add(new Ghoul(this, GetRandomLocation(random)));
+                    Enemies.Add(new Bat(this, GetRandomLocation(random),BatImg));
+                    Enemies.Add(new Ghost(this, GetRandomLocation(random),GhostImg));
+                    Enemies.Add(new Ghoul(this, GetRandomLocation(random),GhoulImg));
                     if (!PlayerWeapons.Contains("Mace"))
                         WeaponInRoom = new Mace(this, GetRandomLocation(random));
                     if (!PlayerWeapons.Contains("RedPotion"))

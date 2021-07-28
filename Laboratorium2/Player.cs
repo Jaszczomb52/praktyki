@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -7,7 +8,6 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Shapes;
 
 namespace Laboratorium2
 {
@@ -25,7 +25,7 @@ namespace Laboratorium2
                 return names;
                 }
         }
-        public Player(Game game, Point currentLoc) :base(game,currentLoc)
+        public Player(Game game, System.Drawing.Point currentLoc) :base(game,currentLoc)
         {
             HP = 10;
         }
@@ -49,13 +49,20 @@ namespace Laboratorium2
             }
         }
 
-        public void Move(Direction direction)
+        public void Move(Direction direction, System.Windows.Controls.Image player)
         {
-            base.location = Move(direction, game.Boundaries);
-            if(!game.WeaponInRoom.PickedUp)
+            if (direction == Direction.Right && Canvas.GetLeft(player) < 575)
+                Canvas.SetLeft(player, Canvas.GetLeft(player) + 10);
+            else if (direction == Direction.Down && Canvas.GetTop(player) < 175)
+                Canvas.SetTop(player, Canvas.GetTop(player) + 10);
+            else if (direction == Direction.Left && Canvas.GetLeft(player) > 0)
+                Canvas.SetLeft(player, Canvas.GetLeft(player) - 10);
+            else if (direction == Direction.Up && Canvas.GetTop(player) > 0)
+                Canvas.SetTop(player, Canvas.GetTop(player) - 10);
+            /*if(!game.WeaponInRoom.PickedUp)
             {
 
-            }
+            }*/
         }
 
         public void Attack(Direction direction, Random random)

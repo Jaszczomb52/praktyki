@@ -56,7 +56,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Bat.cs" />
+    <Compile Include="BluePotion.cs" />
+    <Compile Include="Bow.cs" />
     <Compile Include="Direction.cs" />
+    <Compile Include="Ghost.cs" />
+    <Compile Include="Ghoul.cs" />
+    <Compile Include="IPotion.cs" />
+    <Compile Include="Mace.cs" />
+    <Compile Include="RedPotion.cs" />
+    <Compile Include="Sword.cs" />
     <Compile Include="Weapon.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
