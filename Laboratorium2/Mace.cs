@@ -9,7 +9,7 @@ namespace Laboratorium2
 {
     class Mace : Weapon
     {
-        public Mace(Game game, Point location):base(game,location)
+        public Mace(Game game, Point location, System.Windows.Controls.Image img) :base(game,location,img)
         {
 
         }

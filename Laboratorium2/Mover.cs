@@ -15,10 +15,12 @@ namespace Laboratorium2
         protected Point location;
         public Point Location { get { return location; } }
         protected Game game;
-        public Mover(Game game, Point location)
+        protected System.Windows.Controls.Image img { get; set; }
+        public Mover(Game game, Point location, System.Windows.Controls.Image img)
         {
             this.game = game;
             this.location = location;
+            this.img = img;
         }
 
         public bool Nearby(Point locationToCheck, int distance)

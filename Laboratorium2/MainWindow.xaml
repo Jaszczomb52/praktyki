@@ -8,13 +8,14 @@
         Title="MainWindow" Height="455" Width="800" KeyDown="Window_KeyDown">
     <Grid x:Name="grid" Margin="0,0,0,0">
         <Canvas x:Name="canvas" Width="600" Height="200" Margin="96,77,96,147" Background="#FFB2B2B2">
-            <Image x:Name="playerImg"  Height="25" Canvas.Left="10" Canvas.Top="100" Width="25" Source="ekwipunek.png" Stretch="Fill" RenderTransformOrigin="0.5,0.5"/>
-            <Image x:Name="GhostImg"  Height="25" Canvas.Left="450" Canvas.Top="100" Width="25" Source="ekwipunek.png" Stretch="Fill" RenderTransformOrigin="0.5,0.5"/>
-            <Image x:Name="GhoulImg"  Height="25" Canvas.Left="450" Canvas.Top="100" Width="25" Source="ekwipunek.png" Stretch="Fill" RenderTransformOrigin="0.5,0.5"/>
-            <Image x:Name="BatImg"  Height="25" Canvas.Left="450" Canvas.Top="100" Width="25" Source="ekwipunek.png" Stretch="Fill" RenderTransformOrigin="0.5,0.5"/>
+            <Image x:Name="playerImg"  Height="25" Canvas.Left="10" Canvas.Top="100" Width="25" Source="player.png" Stretch="Fill" RenderTransformOrigin="0.5,0.5"/>
+            <Image x:Name="GhostImg"  Height="25" Canvas.Left="450" Canvas.Top="100" Width="25" Source="ghost.png" Stretch="Fill" RenderTransformOrigin="0.5,0.5"/>
+            <Image x:Name="GhoulImg"  Height="25" Canvas.Left="450" Canvas.Top="100" Width="25" Source="ghoul.png" Stretch="Fill" RenderTransformOrigin="0.5,0.5"/>
+            <Image x:Name="BluePotionImg"  Height="25" Canvas.Left="450" Canvas.Top="100" Width="25" Source="ghoul.png" Stretch="Fill" RenderTransformOrigin="0.5,0.5"/>
+            <Image x:Name="RedPotionImg"  Height="25" Canvas.Left="450" Canvas.Top="100" Width="25" Source="ghoul.png" Stretch="Fill" RenderTransformOrigin="0.5,0.5"/>
+            <Image x:Name="BatImg"  Height="25" Canvas.Left="450" Canvas.Top="100" Width="25" Source="bat.png" Stretch="Fill" RenderTransformOrigin="0.5,0.5"/>
         </Canvas>
         <Image HorizontalAlignment="Left" Height="70" Margin="0,354,0,0" VerticalAlignment="Top" Width="792" Panel.ZIndex="-1" Source="ekwipunek.png" Stretch="Fill"/>
         <Image HorizontalAlignment="Left" Height="354" VerticalAlignment="Top" Width="792" Panel.ZIndex="-1" Stretch="Fill" Source="bck.png"/>
-        <Label x:Name="inRange" Content="Label" HorizontalAlignment="Left" Margin="121,20,0,0" VerticalAlignment="Top" Width="170"/>
     </Grid>
 </Window>

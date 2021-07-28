@@ -7,7 +7,7 @@ namespace Laboratorium2
     {
         public bool PickedUp { get; set; }
 
-        public Weapon(Game game, Point location):base(game, location)
+        public Weapon(Game game, Point location, System.Windows.Controls.Image img) :base(game, location,img)
         {
             PickedUp = false;
         }

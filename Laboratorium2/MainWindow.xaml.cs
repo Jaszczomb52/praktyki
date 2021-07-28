@@ -29,8 +29,8 @@ namespace Laboratorium2
         public MainWindow()
         {
             InitializeComponent();
-            game = new Game(new System.Drawing.Rectangle() { Width = 600, Height = 200, Location = new System.Drawing.Point(96, 77) },GhostImg,GhoulImg,BatImg);
-            player = new Player(game,new System.Drawing.Point());
+            game = new Game(new System.Drawing.Rectangle() { Width = 600, Height = 200, Location = new System.Drawing.Point(96, 77) },GhostImg,GhoulImg,BatImg,playerImg,RedPotionImg,BluePotionImg);
+            player = new Player(game,new System.Drawing.Point(),playerImg);
             game.NewLevel(random);
             Canvas.SetLeft(GhostImg, 1000);
             Canvas.SetLeft(GhoulImg, 1000);

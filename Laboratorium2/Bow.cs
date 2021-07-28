@@ -9,7 +9,7 @@ namespace Laboratorium2
 {
     class Bow : Weapon
     {
-        public Bow(Game game, Point location) : base(game, location)
+        public Bow(Game game, Point location, System.Windows.Controls.Image img) : base(game, location,img)
         {
 
         }

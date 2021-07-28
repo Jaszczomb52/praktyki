@@ -20,8 +20,8 @@ namespace Laboratorium2
                 else return false;
             }
         }
-        protected System.Windows.Controls.Image img { get; set; }
-        public Enemy(Game game,Point currentLoc, int HP, System.Windows.Controls.Image img):base(game,currentLoc)
+        
+        public Enemy(Game game,Point currentLoc, int HP, System.Windows.Controls.Image img):base(game,currentLoc,img)
         {
             this.HP = HP;
             this.img = img;

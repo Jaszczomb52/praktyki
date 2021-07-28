@@ -25,7 +25,7 @@ namespace Laboratorium2
                 return names;
                 }
         }
-        public Player(Game game, System.Drawing.Point currentLoc) :base(game,currentLoc)
+        public Player(Game game, System.Drawing.Point currentLoc, System.Windows.Controls.Image img) :base(game,currentLoc,img)
         {
             HP = 10;
         }

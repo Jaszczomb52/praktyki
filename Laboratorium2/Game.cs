@@ -21,17 +21,23 @@ namespace Laboratorium2
 
         private Rectangle boundaries;
         public Rectangle Boundaries { get { return boundaries; } }
+        protected System.Windows.Controls.Image PlayerImg;
         protected System.Windows.Controls.Image GhostImg;
         protected System.Windows.Controls.Image GhoulImg;
         protected System.Windows.Controls.Image BatImg;
+        protected System.Windows.Controls.Image BluePotion;
+        protected System.Windows.Controls.Image RedPotion;
 
-        public Game(Rectangle boundaries, System.Windows.Controls.Image GhostImg, System.Windows.Controls.Image GhoulImg, System.Windows.Controls.Image BatImg)
+        public Game(Rectangle boundaries, System.Windows.Controls.Image GhostImg, System.Windows.Controls.Image GhoulImg, System.Windows.Controls.Image BatImg, System.Windows.Controls.Image PlayerImg, System.Windows.Controls.Image RedPotion, System.Windows.Controls.Image BluePotion)
         {
             this.boundaries = boundaries;
-            player = new Player(this,new Point(boundaries.Left + 10, boundaries.Top + 70));
+            player = new Player(this,new Point(boundaries.Left + 10, boundaries.Top + 70),PlayerImg);
             this.GhostImg = GhostImg;
             this.GhoulImg = GhoulImg;
             this.BatImg = BatImg;
+            this.PlayerImg = PlayerImg;
+            this.BluePotion = BluePotion;
+            this.RedPotion = RedPotion;
         }
         public void Move(Direction direction, Random random)
         {
@@ -80,21 +86,21 @@ namespace Laboratorium2
                     resetCanvas();
                     Canvas.SetLeft(BatImg, random.Next(0, 570));
                     Enemies.Add(new Bat(this, GetRandomLocation(random), BatImg));
-                    WeaponInRoom = new Sword(this, GetRandomLocation(random));
+                    WeaponInRoom = new Sword(this, GetRandomLocation(random),RedPotion);
                     break;
                 case 2:
                     Enemies = new List<Enemy>();
                     resetCanvas();
                     Canvas.SetLeft(GhostImg, random.Next(0, 570));
                     Enemies.Add(new Ghost(this, GetRandomLocation(random), GhostImg));
-                    WeaponInRoom = new BluePotion(this, GetRandomLocation(random));
+                    WeaponInRoom = new BluePotion(this, GetRandomLocation(random), BluePotion);
                     break;
                 case 3:
                     Enemies = new List<Enemy>();
                     resetCanvas();
                     Canvas.SetLeft(GhoulImg, random.Next(0, 570));
                     Enemies.Add(new Ghoul(this, GetRandomLocation(random), GhoulImg));
-                    WeaponInRoom = new Bow(this, GetRandomLocation(random));
+                    WeaponInRoom = new Bow(this, GetRandomLocation(random),RedPotion);
                     break;
                 case 4:
                     Enemies = new List<Enemy>();
@@ -104,9 +110,9 @@ namespace Laboratorium2
                     Enemies.Add(new Bat(this, GetRandomLocation(random), BatImg));
                     Enemies.Add(new Ghoul(this, GetRandomLocation(random), GhoulImg));
                     if (!PlayerWeapons.Contains("Bow"))
-                        WeaponInRoom = new Bow(this, GetRandomLocation(random));
+                        WeaponInRoom = new Bow(this, GetRandomLocation(random),RedPotion);
                     else if (!PlayerWeapons.Contains("BluePotion"))
-                        WeaponInRoom = new BluePotion(this, GetRandomLocation(random));
+                        WeaponInRoom = new BluePotion(this, GetRandomLocation(random), BluePotion);
                     break;
                 case 5:
                     Enemies = new List<Enemy>();
@@ -116,7 +122,7 @@ namespace Laboratorium2
                     Enemies.Add(new Bat(this, GetRandomLocation(random), BatImg));
                     Enemies.Add(new Ghoul(this, GetRandomLocation(random), GhoulImg));
                     if (!PlayerWeapons.Contains("RedPotion"))
-                        WeaponInRoom = new RedPotion(this, GetRandomLocation(random));
+                        WeaponInRoom = new RedPotion(this, GetRandomLocation(random),RedPotion);
                     break;
                 case 6:
                     Enemies = new List<Enemy>();
@@ -126,7 +132,7 @@ namespace Laboratorium2
                     Enemies.Add(new Ghost(this, GetRandomLocation(random), GhostImg));
                     Enemies.Add(new Ghoul(this, GetRandomLocation(random), GhoulImg));
                     if (!PlayerWeapons.Contains("Mace"))
-                        WeaponInRoom = new Mace(this, GetRandomLocation(random));
+                        WeaponInRoom = new Mace(this, GetRandomLocation(random),RedPotion);
                     break;
                 case 7:
                     Enemies = new List<Enemy>();
@@ -138,9 +144,9 @@ namespace Laboratorium2
                     Enemies.Add(new Ghost(this, GetRandomLocation(random), GhostImg));
                     Enemies.Add(new Ghoul(this, GetRandomLocation(random), GhoulImg));
                     if (!PlayerWeapons.Contains("Mace"))
-                        WeaponInRoom = new Mace(this, GetRandomLocation(random));
+                        WeaponInRoom = new Mace(this, GetRandomLocation(random),RedPotion);
                     if (!PlayerWeapons.Contains("RedPotion"))
-                        WeaponInRoom = new RedPotion(this, GetRandomLocation(random));
+                        WeaponInRoom = new RedPotion(this, GetRandomLocation(random),RedPotion);
                     break;
                 case 8:
                     break;

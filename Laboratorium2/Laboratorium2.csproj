@@ -116,5 +116,13 @@
   <ItemGroup>
     <Resource Include="ekwipunek.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="bat.png" />
+    <Resource Include="ghost.png" />
+    <Resource Include="ghoul.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="player.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

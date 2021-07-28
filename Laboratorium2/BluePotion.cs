@@ -11,7 +11,7 @@ namespace Laboratorium2
     {
         public override string Name { get; }
         public bool Used { get; private set; }
-        public BluePotion(Game game, Point location):base(game,location)
+        public BluePotion(Game game, Point location, System.Windows.Controls.Image img) :base(game,location,img)
         {
             Name = "Niebieska mikstura";
             Used = false;
