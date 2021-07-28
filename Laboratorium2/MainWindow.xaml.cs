@@ -32,6 +32,8 @@ namespace Laboratorium2
             game = new Game(new System.Drawing.Rectangle() { Width = 600, Height = 200, Location = new System.Drawing.Point(96, 77) },GhostImg,GhoulImg,BatImg);
             player = new Player(game,new System.Drawing.Point());
             game.NewLevel(random);
+            Canvas.SetLeft(GhostImg, 1000);
+            Canvas.SetLeft(GhoulImg, 1000);
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
@@ -45,10 +47,8 @@ namespace Laboratorium2
             else if (e.Key == Key.W)
                 player.Move(Direction.Up, playerImg);
             game.Move(Direction.Down, random);
-            if(Canvas.GetLeft(playerImg) > 570)
-            {
+            if (e.Key == Key.Enter)
                 game.NewLevel(random);
-            }
         }
     }
 }
